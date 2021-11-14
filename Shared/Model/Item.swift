@@ -30,7 +30,8 @@ struct Name: Codable {
     let value: String
 }
 
-struct GameData {
+struct GameData: Identifiable {
+    let uid = UUID()
     let name: String
     let year: String?
     let id: String

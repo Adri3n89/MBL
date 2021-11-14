@@ -35,6 +35,8 @@
 		7A4C2A37272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A35272FFA1C00C4AC30 /* BottomLogInView.swift */; };
 		7A4C2A39272FFAC900C4AC30 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */; };
 		7A4C2A3A272FFAC900C4AC30 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */; };
+		7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A3E3274019BC00686E3D /* AuthRepository.swift */; };
+		7A62A3E5274019BC00686E3D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A3E3274019BC00686E3D /* AuthRepository.swift */; };
 		7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25A273020C9001EE307 /* SignUpView.swift */; };
 		7A6FA25C273020C9001EE307 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25A273020C9001EE307 /* SignUpView.swift */; };
 		7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25D27302184001EE307 /* TFSignUpView.swift */; };
@@ -47,6 +49,8 @@
 		7A6FA26827302D3B001EE307 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26627302D3B001EE307 /* CardView.swift */; };
 		7A93A8B5273E770600F920A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */; };
 		7A93A8B6273E770600F920A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */; };
+		7AA64399274129F80051EC70 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA64398274129F80051EC70 /* GameCellView.swift */; };
+		7AA6439A274129F80051EC70 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA64398274129F80051EC70 /* GameCellView.swift */; };
 		7AB6EB852731574500E60A49 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB842731574500E60A49 /* SearchResult.swift */; };
 		7AB6EB862731574500E60A49 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB842731574500E60A49 /* SearchResult.swift */; };
 		7AB6EB882731577500E60A49 /* ItemInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB872731577500E60A49 /* ItemInfos.swift */; };
@@ -77,12 +81,14 @@
 		7A4C2A32272FF96400C4AC30 /* TFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFView.swift; sourceTree = "<group>"; };
 		7A4C2A35272FFA1C00C4AC30 /* BottomLogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLogInView.swift; sourceTree = "<group>"; };
 		7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		7A62A3E3274019BC00686E3D /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		7A6FA25A273020C9001EE307 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		7A6FA25D27302184001EE307 /* TFSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSignUpView.swift; sourceTree = "<group>"; };
 		7A6FA26027302CE4001EE307 /* MockedCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedCards.swift; sourceTree = "<group>"; };
 		7A6FA26327302D11001EE307 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7A6FA26627302D3B001EE307 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7AA64398274129F80051EC70 /* GameCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCellView.swift; sourceTree = "<group>"; };
 		7AB6EB842731574500E60A49 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		7AB6EB872731577500E60A49 /* ItemInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfos.swift; sourceTree = "<group>"; };
 		7AB6EB8A2731579E00E60A49 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		7AB6EB8D273157A700E60A49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A62A3E3274019BC00686E3D /* AuthRepository.swift */,
 				7AB6EB842731574500E60A49 /* SearchResult.swift */,
 				7AB6EB8A2731579E00E60A49 /* Item.swift */,
 				7AB6EB872731577500E60A49 /* ItemInfos.swift */,
@@ -190,6 +197,7 @@
 				7A4C2A35272FFA1C00C4AC30 /* BottomLogInView.swift */,
 				7A4C2A29272FF6D800C4AC30 /* CustomTabView.swift */,
 				7A6FA26627302D3B001EE307 /* CardView.swift */,
+				7AA64398274129F80051EC70 /* GameCellView.swift */,
 			);
 			path = "custom View";
 			sourceTree = "<group>";
@@ -411,6 +419,7 @@
 				7A6FA26427302D11001EE307 /* Card.swift in Sources */,
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */,
+				7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */,
 				7A6FA26727302D3B001EE307 /* CardView.swift in Sources */,
 				7AB6EB882731577500E60A49 /* ItemInfos.swift in Sources */,
 				7AB6EB852731574500E60A49 /* SearchResult.swift in Sources */,
@@ -420,6 +429,7 @@
 				7A6FA26127302CE4001EE307 /* MockedCards.swift in Sources */,
 				7A4C2A2D272FF74500C4AC30 /* LogInView.swift in Sources */,
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
+				7AA64399274129F80051EC70 /* GameCellView.swift in Sources */,
 				7A4C2A06272FEF1200C4AC30 /* MGLApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +449,7 @@
 				7A6FA26527302D11001EE307 /* Card.swift in Sources */,
 				7A4C2A37272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25C273020C9001EE307 /* SignUpView.swift in Sources */,
+				7A62A3E5274019BC00686E3D /* AuthRepository.swift in Sources */,
 				7A6FA26827302D3B001EE307 /* CardView.swift in Sources */,
 				7AB6EB892731577500E60A49 /* ItemInfos.swift in Sources */,
 				7AB6EB862731574500E60A49 /* SearchResult.swift in Sources */,
@@ -448,6 +459,7 @@
 				7A6FA26227302CE4001EE307 /* MockedCards.swift in Sources */,
 				7A4C2A2E272FF74500C4AC30 /* LogInView.swift in Sources */,
 				7A4C2A19272FEF6500C4AC30 /* Top50View.swift in Sources */,
+				7AA6439A274129F80051EC70 /* GameCellView.swift in Sources */,
 				7A4C2A07272FEF1200C4AC30 /* MGLApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

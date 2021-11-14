@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ApiService {
+class ApiService: ObservableObject {
 
     // MARK: - Private Variables
 

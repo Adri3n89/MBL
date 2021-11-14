@@ -176,6 +176,7 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseAuth-macOS/FirebaseAuth.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore-macOS/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-macOS/FirebaseCoreDiagnostics.framework"
@@ -183,9 +184,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleDataTransport-macOS/GoogleDataTransport.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-df6f21d7/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC-macOS/FBLPromises.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage-macOS/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImageSwiftUI-macOS/SDWebImageSwiftUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb-macOS/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseAuth-macOS/FirebaseAuth.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore-macOS/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-macOS/FirebaseCoreDiagnostics.framework"
@@ -193,6 +197,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleDataTransport-macOS/GoogleDataTransport.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-df6f21d7/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC-macOS/FBLPromises.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage-macOS/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImageSwiftUI-macOS/SDWebImageSwiftUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb-macOS/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

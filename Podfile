@@ -7,6 +7,8 @@ target 'MGL (iOS)' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'SDWebImageSwiftUI'
+  pod 'Alamofire', '5.4.4'
 
 end
 
@@ -16,4 +18,6 @@ target 'MGL (macOS)' do
 
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
+    pod 'SDWebImageSwiftUI'
+    pod 'Alamofire', '5.4.4'
 end

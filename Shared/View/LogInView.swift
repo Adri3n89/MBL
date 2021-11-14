@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct LogInView: View {
-    
-    @EnvironmentObject var viewModel: AppViewModel
+    @ObservedObject var auth: AuthRepository
     @State var isPresented = false
     @State var email: String = ""
     @State var password: String = ""
+    
     var body: some View {
         VStack {
             HeaderView()
@@ -22,7 +22,7 @@ struct LogInView: View {
             TFView(email: $email, password: $password)
             Spacer()
             Button("Log In") {
-                viewModel.signIn(email: email, password: password)
+                auth.signIn(email: email, password: password)
                 self.isPresented.toggle()
             }.fullScreenCover(isPresented: $isPresented) {
                 CustomTabView()
@@ -35,6 +35,6 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        LogInView()
+        LogInView(auth: AuthRepository())
     }
 }

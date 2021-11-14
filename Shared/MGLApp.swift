@@ -15,9 +15,9 @@ struct MGLApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let viewModel = AppViewModel()
+            let auth = AuthRepository()
             ContentView()
-                .environmentObject(viewModel)
+                .environmentObject(auth)
         }
     }
 }

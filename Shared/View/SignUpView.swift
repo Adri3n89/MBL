@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var viewModel: AppViewModel
+    @EnvironmentObject var auth: AuthRepository
     @State var isCreated = false
     @State var email: String = ""
     @State var password: String = ""
@@ -25,7 +25,7 @@ struct SignUpView: View {
             TFSignUpView(email: $email, password: $password, name: $name, lastName: $lastName, city: $city)
             Spacer()
             Button("Create Account") {
-                viewModel.signUp(email: email, password: password, name: name, lastName: lastName, city: city)
+                auth.signUp(email: email, password: password, name: name, lastName: lastName, city: city)
                 self.isCreated.toggle()
             }.fullScreenCover(isPresented: $isCreated) {
                 CustomTabView()

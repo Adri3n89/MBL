@@ -7,12 +7,12 @@
 		<key>MGL (iOS).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>24</integer>
+			<integer>30</integer>
 		</dict>
 		<key>MGL (macOS).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>31</integer>
 		</dict>
 	</dict>
 </dict>
