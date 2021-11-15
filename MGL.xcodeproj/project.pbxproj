@@ -8,57 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		4BA6E765D0022F15F79521CA /* Pods_MGL__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7969FE3C4A47832D05E4193E /* Pods_MGL__iOS_.framework */; };
-		6C57FDED0B071DAC0ECE9D69 /* Pods_MGL__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DF25CF6AF9907E70DECCF5 /* Pods_MGL__macOS_.framework */; };
 		7A4C2A06272FEF1200C4AC30 /* MGLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */; };
-		7A4C2A07272FEF1200C4AC30 /* MGLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */; };
 		7A4C2A08272FEF1200C4AC30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F7272FEF1100C4AC30 /* ContentView.swift */; };
-		7A4C2A09272FEF1200C4AC30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F7272FEF1100C4AC30 /* ContentView.swift */; };
 		7A4C2A0A272FEF1200C4AC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */; };
-		7A4C2A0B272FEF1200C4AC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */; };
 		7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A17272FEF6500C4AC30 /* Top50View.swift */; };
-		7A4C2A19272FEF6500C4AC30 /* Top50View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A17272FEF6500C4AC30 /* Top50View.swift */; };
 		7A4C2A1B272FEF6C00C4AC30 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A1A272FEF6C00C4AC30 /* SearchView.swift */; };
-		7A4C2A1C272FEF6C00C4AC30 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A1A272FEF6C00C4AC30 /* SearchView.swift */; };
 		7A4C2A1E272FEF7300C4AC30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A1D272FEF7300C4AC30 /* MapView.swift */; };
-		7A4C2A1F272FEF7300C4AC30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A1D272FEF7300C4AC30 /* MapView.swift */; };
 		7A4C2A21272FEF7C00C4AC30 /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A20272FEF7C00C4AC30 /* ProfilView.swift */; };
-		7A4C2A22272FEF7C00C4AC30 /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A20272FEF7C00C4AC30 /* ProfilView.swift */; };
 		7A4C2A24272FEF8400C4AC30 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A23272FEF8400C4AC30 /* ChatView.swift */; };
-		7A4C2A25272FEF8400C4AC30 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A23272FEF8400C4AC30 /* ChatView.swift */; };
 		7A4C2A2A272FF6D800C4AC30 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A29272FF6D800C4AC30 /* CustomTabView.swift */; };
-		7A4C2A2B272FF6D800C4AC30 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A29272FF6D800C4AC30 /* CustomTabView.swift */; };
 		7A4C2A2D272FF74500C4AC30 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A2C272FF74500C4AC30 /* LogInView.swift */; };
-		7A4C2A2E272FF74500C4AC30 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A2C272FF74500C4AC30 /* LogInView.swift */; };
 		7A4C2A33272FF96400C4AC30 /* TFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A32272FF96400C4AC30 /* TFView.swift */; };
-		7A4C2A34272FF96400C4AC30 /* TFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A32272FF96400C4AC30 /* TFView.swift */; };
 		7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A35272FFA1C00C4AC30 /* BottomLogInView.swift */; };
-		7A4C2A37272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A35272FFA1C00C4AC30 /* BottomLogInView.swift */; };
 		7A4C2A39272FFAC900C4AC30 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */; };
-		7A4C2A3A272FFAC900C4AC30 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */; };
 		7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A3E3274019BC00686E3D /* AuthRepository.swift */; };
-		7A62A3E5274019BC00686E3D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A3E3274019BC00686E3D /* AuthRepository.swift */; };
 		7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25A273020C9001EE307 /* SignUpView.swift */; };
-		7A6FA25C273020C9001EE307 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25A273020C9001EE307 /* SignUpView.swift */; };
 		7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25D27302184001EE307 /* TFSignUpView.swift */; };
-		7A6FA25F27302184001EE307 /* TFSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25D27302184001EE307 /* TFSignUpView.swift */; };
 		7A6FA26127302CE4001EE307 /* MockedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26027302CE4001EE307 /* MockedCards.swift */; };
-		7A6FA26227302CE4001EE307 /* MockedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26027302CE4001EE307 /* MockedCards.swift */; };
 		7A6FA26427302D11001EE307 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26327302D11001EE307 /* Card.swift */; };
-		7A6FA26527302D11001EE307 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26327302D11001EE307 /* Card.swift */; };
 		7A6FA26727302D3B001EE307 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26627302D3B001EE307 /* CardView.swift */; };
-		7A6FA26827302D3B001EE307 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA26627302D3B001EE307 /* CardView.swift */; };
 		7A93A8B5273E770600F920A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */; };
-		7A93A8B6273E770600F920A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */; };
+		7AA604EE274168C100CA6E5D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA604ED274168C100CA6E5D /* Extension.swift */; };
 		7AA64399274129F80051EC70 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA64398274129F80051EC70 /* GameCellView.swift */; };
-		7AA6439A274129F80051EC70 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA64398274129F80051EC70 /* GameCellView.swift */; };
 		7AB6EB852731574500E60A49 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB842731574500E60A49 /* SearchResult.swift */; };
-		7AB6EB862731574500E60A49 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB842731574500E60A49 /* SearchResult.swift */; };
 		7AB6EB882731577500E60A49 /* ItemInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB872731577500E60A49 /* ItemInfos.swift */; };
-		7AB6EB892731577500E60A49 /* ItemInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB872731577500E60A49 /* ItemInfos.swift */; };
 		7AB6EB8B2731579E00E60A49 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB8A2731579E00E60A49 /* Item.swift */; };
-		7AB6EB8C2731579E00E60A49 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB8A2731579E00E60A49 /* Item.swift */; };
 		7AB6EB902731580200E60A49 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB8F2731580200E60A49 /* ApiService.swift */; };
-		7AB6EB912731580200E60A49 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB8F2731580200E60A49 /* ApiService.swift */; };
+		7AD0526B2741564200EADB7F /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD0526A2741564200EADB7F /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +45,6 @@
 		7A4C29F7272FEF1100C4AC30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A4C29FD272FEF1200C4AC30 /* MGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A4C2A03272FEF1200C4AC30 /* MGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A4C2A05272FEF1200C4AC30 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		7A4C2A17272FEF6500C4AC30 /* Top50View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50View.swift; sourceTree = "<group>"; };
 		7A4C2A1A272FEF6C00C4AC30 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		7A4C2A1D272FEF7300C4AC30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -88,11 +62,13 @@
 		7A6FA26327302D11001EE307 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7A6FA26627302D3B001EE307 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7AA604ED274168C100CA6E5D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7AA64398274129F80051EC70 /* GameCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCellView.swift; sourceTree = "<group>"; };
 		7AB6EB842731574500E60A49 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		7AB6EB872731577500E60A49 /* ItemInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfos.swift; sourceTree = "<group>"; };
 		7AB6EB8A2731579E00E60A49 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7AB6EB8F2731580200E60A49 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		7AD0526A2741564200EADB7F /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		A3386060E7F7948FD54F54F4 /* Pods-MGL (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (macOS).debug.xcconfig"; path = "Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 		EB2A453099065CE4EDEF7AA5 /* Pods-MGL (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (macOS).release.xcconfig"; path = "Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS).release.xcconfig"; sourceTree = "<group>"; };
 		FD0CD6FCC118B5B7934C6928 /* Pods-MGL (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (iOS).debug.xcconfig"; path = "Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,55 +83,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7A4C2A00272FEF1200C4AC30 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6C57FDED0B071DAC0ECE9D69 /* Pods_MGL__macOS_.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7A4C29F0272FEF1000C4AC30 = {
 			isa = PBXGroup;
 			children = (
-				7A4C29F5272FEF1100C4AC30 /* Shared */,
-				7A4C2A04272FEF1200C4AC30 /* macOS */,
+				7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */,
+				7AB6EB8E273157C500E60A49 /* View */,
+				7AB6EB8D273157A700E60A49 /* Model */,
+				7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */,
+				7AA604ED274168C100CA6E5D /* Extension.swift */,
+				7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */,
 				7A4C29FE272FEF1200C4AC30 /* Products */,
 				F1081B297E6B9B9E69708FAB /* Pods */,
 				7C6642B5C49A600AC56B07B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		7A4C29F5272FEF1100C4AC30 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */,
-				7AB6EB8E273157C500E60A49 /* View */,
-				7AB6EB8D273157A700E60A49 /* Model */,
-				7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */,
-				7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
 		7A4C29FE272FEF1200C4AC30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				7A4C29FD272FEF1200C4AC30 /* MGL.app */,
-				7A4C2A03272FEF1200C4AC30 /* MGL.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7A4C2A04272FEF1200C4AC30 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				7A4C2A05272FEF1200C4AC30 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		7AB6EB8D273157A700E60A49 /* Model */ = {
@@ -198,6 +149,7 @@
 				7A4C2A29272FF6D800C4AC30 /* CustomTabView.swift */,
 				7A6FA26627302D3B001EE307 /* CardView.swift */,
 				7AA64398274129F80051EC70 /* GameCellView.swift */,
+				7AD0526A2741564200EADB7F /* DetailsView.swift */,
 			);
 			path = "custom View";
 			sourceTree = "<group>";
@@ -244,25 +196,6 @@
 			productReference = 7A4C29FD272FEF1200C4AC30 /* MGL.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7A4C2A02272FEF1200C4AC30 /* MGL (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7A4C2A11272FEF1200C4AC30 /* Build configuration list for PBXNativeTarget "MGL (macOS)" */;
-			buildPhases = (
-				0451A83000476118EAB1C984 /* [CP] Check Pods Manifest.lock */,
-				7A4C29FF272FEF1200C4AC30 /* Sources */,
-				7A4C2A00272FEF1200C4AC30 /* Frameworks */,
-				7A4C2A01272FEF1200C4AC30 /* Resources */,
-				BC9E234DD555AF80CFF927F8 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MGL (macOS)";
-			productName = "MGL (macOS)";
-			productReference = 7A4C2A03272FEF1200C4AC30 /* MGL.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -274,9 +207,6 @@
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					7A4C29FC272FEF1200C4AC30 = {
-						CreatedOnToolsVersion = 13.1;
-					};
-					7A4C2A02272FEF1200C4AC30 = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
@@ -296,7 +226,6 @@
 			projectRoot = "";
 			targets = (
 				7A4C29FC272FEF1200C4AC30 /* MGL (iOS) */,
-				7A4C2A02272FEF1200C4AC30 /* MGL (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -311,57 +240,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7A4C2A01272FEF1200C4AC30 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7A4C2A0B272FEF1200C4AC30 /* Assets.xcassets in Resources */,
-				7A93A8B6273E770600F920A5 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0451A83000476118EAB1C984 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MGL (macOS)-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BC9E234DD555AF80CFF927F8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS)-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BCB6F775161AD7AF0F2F7DE2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,10 +294,12 @@
 				7A4C2A21272FEF7C00C4AC30 /* ProfilView.swift in Sources */,
 				7A4C2A33272FF96400C4AC30 /* TFView.swift in Sources */,
 				7A4C2A1E272FEF7300C4AC30 /* MapView.swift in Sources */,
+				7AD0526B2741564200EADB7F /* DetailsView.swift in Sources */,
 				7AB6EB902731580200E60A49 /* ApiService.swift in Sources */,
 				7A4C2A39272FFAC900C4AC30 /* HeaderView.swift in Sources */,
 				7A4C2A2A272FF6D800C4AC30 /* CustomTabView.swift in Sources */,
 				7A6FA26427302D11001EE307 /* Card.swift in Sources */,
+				7AA604EE274168C100CA6E5D /* Extension.swift in Sources */,
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */,
 				7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */,
@@ -431,36 +314,6 @@
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
 				7AA64399274129F80051EC70 /* GameCellView.swift in Sources */,
 				7A4C2A06272FEF1200C4AC30 /* MGLApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7A4C29FF272FEF1200C4AC30 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7AB6EB8C2731579E00E60A49 /* Item.swift in Sources */,
-				7A4C2A1C272FEF6C00C4AC30 /* SearchView.swift in Sources */,
-				7A4C2A22272FEF7C00C4AC30 /* ProfilView.swift in Sources */,
-				7A4C2A34272FF96400C4AC30 /* TFView.swift in Sources */,
-				7A4C2A1F272FEF7300C4AC30 /* MapView.swift in Sources */,
-				7AB6EB912731580200E60A49 /* ApiService.swift in Sources */,
-				7A4C2A3A272FFAC900C4AC30 /* HeaderView.swift in Sources */,
-				7A4C2A2B272FF6D800C4AC30 /* CustomTabView.swift in Sources */,
-				7A6FA26527302D11001EE307 /* Card.swift in Sources */,
-				7A4C2A37272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
-				7A6FA25C273020C9001EE307 /* SignUpView.swift in Sources */,
-				7A62A3E5274019BC00686E3D /* AuthRepository.swift in Sources */,
-				7A6FA26827302D3B001EE307 /* CardView.swift in Sources */,
-				7AB6EB892731577500E60A49 /* ItemInfos.swift in Sources */,
-				7AB6EB862731574500E60A49 /* SearchResult.swift in Sources */,
-				7A4C2A09272FEF1200C4AC30 /* ContentView.swift in Sources */,
-				7A4C2A25272FEF8400C4AC30 /* ChatView.swift in Sources */,
-				7A6FA25F27302184001EE307 /* TFSignUpView.swift in Sources */,
-				7A6FA26227302CE4001EE307 /* MockedCards.swift in Sources */,
-				7A4C2A2E272FF74500C4AC30 /* LogInView.swift in Sources */,
-				7A4C2A19272FEF6500C4AC30 /* Top50View.swift in Sources */,
-				7AA6439A274129F80051EC70 /* GameCellView.swift in Sources */,
-				7A4C2A07272FEF1200C4AC30 /* MGLApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,66 +502,6 @@
 			};
 			name = Release;
 		};
-		7A4C2A12272FEF1200C4AC30 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3386060E7F7948FD54F54F4 /* Pods-MGL (macOS).debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45CCMZA383;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.MGL;
-				PRODUCT_NAME = MGL;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		7A4C2A13272FEF1200C4AC30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB2A453099065CE4EDEF7AA5 /* Pods-MGL (macOS).release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45CCMZA383;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.MGL;
-				PRODUCT_NAME = MGL;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -726,15 +519,6 @@
 			buildConfigurations = (
 				7A4C2A0F272FEF1200C4AC30 /* Debug */,
 				7A4C2A10272FEF1200C4AC30 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7A4C2A11272FEF1200C4AC30 /* Build configuration list for PBXNativeTarget "MGL (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7A4C2A12272FEF1200C4AC30 /* Debug */,
-				7A4C2A13272FEF1200C4AC30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -19,22 +19,26 @@ struct ItemsInfo: Codable {
 }
 
 // MARK: - ItemInfo
-struct ItemInfo: Codable {
+struct ItemInfo: Codable, Identifiable {
     let type, id: String
     let thumbnail, image: String
+//    let name: [GameName]
     let itemDescription: String
     let yearpublished, minplayers, maxplayers: Maxplayers
-    let playingtime, minplaytime, maxplaytime: Maxplayers
+    let playingtime, minplaytime, maxplaytime, minage: Maxplayers
 
-
-    enum CodingKeys: String, CodingKey {
-        case type, id, thumbnail, image
-        case itemDescription = "description"
-        case yearpublished, minplayers, maxplayers, playingtime, minplaytime, maxplaytime
-    }
+   enum CodingKeys: String, CodingKey {
+       case type, id, thumbnail, image
+       case itemDescription = "description"
+       case yearpublished, minplayers, maxplayers, playingtime, minplaytime, maxplaytime, minage
+   }
 }
 
 // MARK: - Maxplayers
 struct Maxplayers: Codable {
     let value: String
 }
+
+//struct GameName: Codable {
+//    let type, sortindex, value: String
+//}

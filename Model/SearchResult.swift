@@ -20,9 +20,9 @@ struct ItemsResult: Codable {
 }
 
 // MARK: - Item
-struct ItemResult: Codable {
-    let type: ItemType
+struct ItemResult: Codable, Identifiable {
     let id: String
+    let type: ItemType
     let name: NameResult
     let yearpublished: Yearpublished?
 }

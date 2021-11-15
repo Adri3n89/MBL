@@ -8,22 +8,20 @@
 import SwiftUI
 
 struct ProfilView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     @State var type = "library"
+    @StateObject var api = ApiService()
     private var allType = ["library", "wishlist"]
     
-    // 1. Number of items will be display in row
-       var columns: [GridItem] = [
-           GridItem(.flexible()),
-           GridItem(.flexible())
-       ]
-       // 2. Fixed height of card
-       let height: CGFloat = 150
-       // 3. Get mock cards data
-       let cards: [Card] = MockStore.cards
+    var columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+
     
     var body: some View {
-        ScrollView {
+        GeometryReader { geo in
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "person.circle")
@@ -60,15 +58,26 @@ struct ProfilView: View {
                 }
                 .pickerStyle(.segmented)
                 Spacer()
-                LazyVGrid(columns: columns, spacing: 16) {
-                                ForEach(cards) { card in
-                                    CardView(title: card.title)
-                                        .frame(height: height)
-                                }
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 5) {
+                        ForEach(type == "library" ? api.favorite : api.wish) { fav in
+                            NavigationLink {
+                                DetailsView(id: fav.id)
+                            } label: {
+                                GameCellView(game: fav, width: geo.size.width)
                             }
-                            .padding()
+                            .foregroundColor(Color.black)
+                        }
+                    }
+                    .padding()
+                }
+            }
+            .onAppear {
+                api.getFavorite(favoritesID: api.favoriteID)
+                api.getWish(wishID: api.wishID)
             }
         }
+            
     }
 }
 
