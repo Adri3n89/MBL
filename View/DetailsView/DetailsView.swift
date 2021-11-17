@@ -37,13 +37,15 @@ struct DetailsView: View {
                     HStack {
                         Spacer()
                         Button {
-                            // ajouter a la bibliotèque
+                            // ajouter à la bibliotèque
+                            viewModel.addToLibrary(id: id)
                         } label: {
                             Text("Add to library ✅")
                         }
                         Spacer()
                         Button {
-                            
+                            // ajouter à la wishlist
+                            viewModel.addToWishlist(id: id)
                         } label: {
                             Text("Add to wish-list 🙏🏻")
                         }

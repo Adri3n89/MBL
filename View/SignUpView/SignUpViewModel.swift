@@ -23,6 +23,15 @@ final class SignUpViewModel: ObservableObject {
             switch result {
                 case .success(_):
                     self.isCreated = true
+                    AuthRepository.shared.signIn(email: self.email, password: self.password) { result in
+                        switch result {
+                            case .success(_):
+                                AuthRepository.shared.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
+                            case .failure(let error):
+                                self.error = error.localizedDescription
+                                self.showError = true
+                        }
+                    }
                 case .failure(let error):
                     self.error = error.localizedDescription
                     self.showError = true

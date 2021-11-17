@@ -74,9 +74,9 @@ class ApiService: NSObject {
         }.resume()
     }
 
-    func getFavorite(favoritesID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+    func getLibrary(libraryID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
         var favoriteGames: [GameData] = []
-        for favorite in favoritesID {
+        for favorite in libraryID {
             let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(favorite)"
             guard let url = URL(string: urlString)?.absoluteURL else {
                 completed(.failure(.badURL))
@@ -95,7 +95,7 @@ class ApiService: NSObject {
                                 let item = apiResponse.items.item
                                 let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
                                 favoriteGames.append(game)
-                                if favoritesID.count == favoriteGames.count {
+                                if libraryID.count == favoriteGames.count {
                                     completed(.success(favoriteGames))
                                 }
                             } else {

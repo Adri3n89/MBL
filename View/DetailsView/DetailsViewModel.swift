@@ -24,4 +24,12 @@ final class DetailsViewModel: ObservableObject {
         }
     }
     
+    func addToLibrary(id: String) {
+        AuthRepository.shared.addToLibrary(id: id)
+    }
+    
+    func addToWishlist(id: String) {
+        AuthRepository.shared.addToWishlist(id: id)
+    }
+    
 }

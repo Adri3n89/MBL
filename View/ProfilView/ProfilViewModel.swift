@@ -13,9 +13,8 @@ final class ProfilViewModel: ObservableObject {
     @Published var type = "library"
     @Published var wishGames: [GameData] = []
     @Published var libraryGames: [GameData] = []
-    
-    let favoriteID: [String] = ["1345","2930", "12345"]
-    let wishID: [String] = ["3245", "2134", "9230", "99999"]
+    @Published var libraryID: [String] = []
+    @Published var wishID: [String] = []
     var allType = ["library", "wishlist"]
     
     var columns: [GridItem] = [
@@ -34,14 +33,28 @@ final class ProfilViewModel: ObservableObject {
         }
     }
     
-    func getLibraryGame() {
-        ApiService.shared.getFavorite(favoritesID: favoriteID) { result in
+    private func getLibraryGame() {
+        ApiService.shared.getLibrary(libraryID: libraryID) { result in
             switch result {
                 case .success(let game):
                     self.libraryGames = game
                 case .failure(let error):
                     print(error.localizedDescription)
             }
+        }
+    }
+    
+    func fetchLibraryID() {
+        AuthRepository.shared.fetchUserGame(type: "Library") { libraryID in
+            self.libraryID = libraryID
+            self.getLibraryGame()
+        }
+    }
+    
+    func fetchWishlistID() {
+        AuthRepository.shared.fetchUserGame(type: "Wishlist") { wishID in
+            self.wishID = wishID
+            self.getWishGame()
         }
     }
     

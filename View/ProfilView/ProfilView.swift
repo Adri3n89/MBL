@@ -66,8 +66,8 @@ struct ProfilView: View {
                     }
                 }
                 .onAppear {
-                    viewModel.getWishGame()
-                    viewModel.getLibraryGame()
+                    viewModel.fetchWishlistID()
+                    viewModel.fetchLibraryID()
                 }
             }
         }
