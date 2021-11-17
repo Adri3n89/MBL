@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct GameCellView: View {
     var game: GameData?
@@ -14,11 +13,14 @@ struct GameCellView: View {
 
     var body: some View {
         ZStack {
-            WebImage(url: URL(string: game!.image))
-                .resizable()
-                .scaledToFill()
-            
-                .frame(width: (width / 2.3) , height: (width / 2.3), alignment: .center)
+            AsyncImage(url: URL(string: game!.image)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Color.purple.opacity(0.1)
+            }
+                .frame(width: (width / 2.3) , height: (width / 2.3))
                 .clipped()
             Text(game!.year ?? "?")
                 .offset(x: -(width / 2.3)/3.1, y: -(width / 2.3)/2.5)
@@ -30,6 +32,7 @@ struct GameCellView: View {
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.01)
         }.frame(width: (width / 2.3) , height: (width / 2.3) , alignment: .center)
+            .cornerRadius(10)
     }
 }
 

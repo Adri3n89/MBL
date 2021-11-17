@@ -8,32 +8,32 @@
 import Foundation
 import FirebaseAuth
 
-class AuthRepository: ObservableObject {
+final class AuthRepository: ObservableObject {
     
-    let auth = Auth.auth()
+    static let shared = AuthRepository()
+    private let auth = Auth.auth()
     
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
     
-    func signIn(email: String, password: String) {
+    func signIn(email: String, password: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
-                print("error")
+                completed(.failure(error!))
                 return
             }
-            // SUCCESS
-            print("success")
+            completed(.success(result!))
         }
     }
     
-    func signUp(email: String, password: String, name: String, lastName: String, city: String) {
+    func signUp(email: String, password: String, name: String, lastName: String, city: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
-                print("error")
+                completed(.failure(error!))
                 return
             }
-            // SUCCESS
+            completed(.success(result!))
         }
     }
 }

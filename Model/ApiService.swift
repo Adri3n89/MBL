@@ -6,98 +6,170 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftUI
 
-class ApiService: ObservableObject {
+class ApiService: NSObject {
     
-    // MARK: Variable
-    var sessionManager: Session = {
-           let configuration = URLSessionConfiguration.af.default
-           return Session(configuration: configuration)
-       }()
-    
-    @Published var top50: [GameData] = []
-    @Published var gameInfo: ItemInfo?
-    @Published var searchResult: [ItemResult] = []
-    @Published var favorite: [GameData] = []
-    @Published var wish: [GameData] = []
-    let favoriteID: [String] = ["1345","2930"]
-    let wishID: [String] = ["3245", "2134", "9230"]
+    static let shared = ApiService()
 
     // MARK: - Methods
-    func getHotGame() {
-        top50 = []
-        let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/hot?type=boardgame"
-        if let url = URL(string: urlString) {
-            let request = sessionManager.request(url)
-            request.responseDecodable(of: Game.self) { response in
-                if let items = response.value?.items.item {
-                    for item in items {
-                        let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: item.thumbnail.value)
-                        self.top50.append(game)
+    func getHotGame(_ urlString: String = Constantes.top50URL, _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+        var top: [GameData] = []
+        guard let url = URL(string: urlString)?.absoluteURL else {
+            completed(.failure(.badURL))
+            return
+        }
+        session.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                guard let response = response as? HTTPURLResponse else {
+                    completed(.failure(.badResponse))
+                    return
+                }
+                do {
+                    if response.statusCode == 200 {
+                        if let data = data {
+                            let apiResponse = try JSONDecoder().decode(Game.self, from: data)
+                            for item in apiResponse.items.item {
+                                let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: item.thumbnail.value)
+                                top.append(game)
+                                if top.count == 50 {
+                                    completed(.success(top))
+                                }
+                            }
+                        } else {
+                            completed(.failure(.noData))
+                        }
                     }
+                } catch {
+                    completed(.failure(.undecodableData))
                 }
             }
-        }
+        }.resume()
     }
-    
-    func getGameByID(id: String) {
-        gameInfo = nil
+
+    func getGameByID(id: String, _ session: URLSession = .shared, completed: @escaping (Result<ItemInfo, NetworkError>) -> Void) {
         let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(id)"
-        if let url = URL(string: urlString) {
-            let request = sessionManager.request(url)
-            request.responseDecodable(of: ItemInfos.self) { response in
-                if let item = response.value?.items.item {
-                    self.gameInfo = item
+        guard let url = URL(string: urlString)?.absoluteURL else {
+            completed(.failure(.badURL))
+            return
+        }
+        session.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                guard let response = response as? HTTPURLResponse else {
+                    completed(.failure(.badResponse))
+                    return
+                }
+                do {
+                    if response.statusCode == 200 {
+                        if let data = data {
+                            let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
+                            completed(.success(apiResponse.items.item))
+                        } else {
+                            completed(.failure(.noData))
+                        }
+                    }
+                } catch {
+                    completed(.failure(.undecodableData))
                 }
             }
-        }
+        }.resume()
     }
-    
-    func getFavorite(favoritesID: [String]) {
-        favorite = []
+
+    func getFavorite(favoritesID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+        var favoriteGames: [GameData] = []
         for favorite in favoritesID {
             let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(favorite)"
-            if let url = URL(string: urlString) {
-                let request = sessionManager.request(url)
-                request.responseDecodable(of: ItemInfos.self) { response in
-                    if let item = response.value?.items.item {
-                        let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
-                        self.favorite.append(game)
+            guard let url = URL(string: urlString)?.absoluteURL else {
+                completed(.failure(.badURL))
+                return
+            }
+            session.dataTask(with: url) { data, response, error in
+                DispatchQueue.main.async {
+                    guard let response = response as? HTTPURLResponse else {
+                        completed(.failure(.badResponse))
+                        return
+                    }
+                    do {
+                        if response.statusCode == 200 {
+                            if let data = data {
+                                let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
+                                let item = apiResponse.items.item
+                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
+                                favoriteGames.append(game)
+                                if favoritesID.count == favoriteGames.count {
+                                    completed(.success(favoriteGames))
+                                }
+                            } else {
+                                completed(.failure(.noData))
+                            }
+                        }
+                    } catch {
+                        completed(.failure(.undecodableData))
                     }
                 }
-            }
+            }.resume()
         }
     }
-    
-    func getWish(wishID: [String]) {
-        wish = []
+
+    func getWish(wishID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+        var wishGames: [GameData] = []
         for wish in wishID {
             let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(wish)"
-            if let url = URL(string: urlString) {
-                let request = sessionManager.request(url)
-                request.responseDecodable(of: ItemInfos.self) { response in
-                    if let item = response.value?.items.item {
-                        let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
-                        self.wish.append(game)
+            guard let url = URL(string: urlString)?.absoluteURL else {
+                completed(.failure(.badURL))
+                return
+            }
+            session.dataTask(with: url) { data, response, error in
+                DispatchQueue.main.async {
+                    guard let response = response as? HTTPURLResponse else {
+                        completed(.failure(.badResponse))
+                        return
+                    }
+                    do {
+                        if response.statusCode == 200 {
+                            if let data = data {
+                                let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
+                                let item = apiResponse.items.item
+                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
+                                wishGames.append(game)
+                                if wishID.count == wishGames.count {
+                                    completed(.success(wishGames))
+                                }
+                            } else {
+                                completed(.failure(.noData))
+                            }
+                        }
+                    } catch {
+                        completed(.failure(.undecodableData))
                     }
                 }
-            }
+            }.resume()
         }
     }
-    
-    func searchGameName(name: String) {
-        searchResult = []
+
+    func searchGameName(name: String, _ session: URLSession = .shared, completed: @escaping (Result<[ItemResult], NetworkError>) -> Void) {
         let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/search?query=\(name)&type=boardgame,boardgameaccessory,boardgameexpansion"
-        if let url = URL(string: urlString) {
-            let request = sessionManager.request(url)
-            request.responseDecodable(of: SearchResult.self) { response in
-                if let result = response.value {
-                    self.searchResult = result.items.item
-                }
-            }
+        guard let url = URL(string: urlString)?.absoluteURL else {
+            completed(.failure(.badURL))
+            return
         }
+        session.dataTask(with: url) { data, response, error in
+            guard let response = response as? HTTPURLResponse else {
+                completed(.failure(.badResponse))
+                return
+            }
+            do {
+                if response.statusCode == 200 {
+                    if let data = data {
+                        let apiResponse = try JSONDecoder().decode(SearchResult.self, from: data)
+                        completed(.success(apiResponse.items.item))
+                    } else {
+                        completed(.failure(.noData))
+                    }
+                }
+            } catch {
+                completed(.failure(.undecodableData))
+            }
+        }.resume()
     }
 
 

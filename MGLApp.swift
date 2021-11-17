@@ -27,4 +27,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         return true
     }
+    
+    let userDefault = UserDefaults.standard
+    let launchedBefore = UserDefaults.standard.bool(forKey: "usersignedin")
 }
