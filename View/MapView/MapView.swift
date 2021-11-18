@@ -7,17 +7,23 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct MapView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 48.34, longitude: 3.06), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    
+    @StateObject var viewModel = MapViewModel()
 
         var body: some View {
-            GeometryReader { geometry in
-                let width = geometry.size.width
-                let height = geometry.size.height
-                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
-                    .frame(width: width, height: height)
-            }
+            Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { coord in
+                MapMarker(coordinate: coord.coordinates , tint: .blue)
+            })
+                .onAppear {
+                    viewModel.geoCode(addresses: viewModel.allAdress) { placemarks in
+                        for index in 0...placemarks.count-1 {
+                            viewModel.allCoordinates.append(Coord(coordinates: CLLocationCoordinate2D(latitude: (placemarks[index].location?.coordinate.latitude)! , longitude: (placemarks[index].location?.coordinate.longitude)!)))
+                        }
+                    }
+                }
         }
 }
 

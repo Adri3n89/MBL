@@ -37,14 +37,14 @@ struct DetailsView: View {
                     HStack {
                         Spacer()
                         Button {
-                            // ajouter à la bibliotèque
+                            // modifier par "delete from library" si déja dedans
                             viewModel.addToLibrary(id: id)
                         } label: {
                             Text("Add to library ✅")
                         }
                         Spacer()
                         Button {
-                            // ajouter à la wishlist
+                            // modifier par "delete from wishlist" si déja dedans
                             viewModel.addToWishlist(id: id)
                         } label: {
                             Text("Add to wish-list 🙏🏻")

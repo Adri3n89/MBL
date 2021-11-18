@@ -26,6 +26,7 @@ struct Top50View: View {
                         }
                     }
                 }
+                .padding(.horizontal)
                 .onAppear {
                     viewModel.getTop50()
                 }

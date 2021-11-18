@@ -23,13 +23,14 @@ struct ProfilView: View {
                             .clipShape(Circle())
                             .padding([.leading, .trailing], 30)
                         VStack(alignment: .leading) {
-                            Text("Adrien")
+                            Text(viewModel.userInfo.name)
                                 .padding([.bottom], 20)
-                            Text("PEREA")
+                            Text(viewModel.userInfo.lastName)
                         }
                         Spacer()
                         Button {
                             presentationMode.wrappedValue.dismiss()
+                            viewModel.logOut()
                         } label: {
                             Text("logout")
                             Image(systemName: "power.circle.fill")
@@ -41,9 +42,9 @@ struct ProfilView: View {
                     Divider()
                     HStack {
                         Text("Adress :")
-                        Text("89340 VILLENEUVE LA GUYARD ET BLA BLA BLA BLA BLA ")
+                        Text(viewModel.userInfo.city)
                             .multilineTextAlignment(.leading)
-                    }
+                    }.padding()
                     Picker("type", selection: $viewModel.type) {
                         ForEach(viewModel.allType, id: \.self) {
                             Text($0)
@@ -68,7 +69,9 @@ struct ProfilView: View {
                 .onAppear {
                     viewModel.fetchWishlistID()
                     viewModel.fetchLibraryID()
+                    viewModel.fetchUserInfo()
                 }
+                .navigationBarHidden(true)
             }
         }
     }

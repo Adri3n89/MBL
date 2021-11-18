@@ -10,11 +10,14 @@ import SwiftUI
 
 final class ProfilViewModel: ObservableObject {
     
+    // trier les ID library et wishlist par numero pour ne pas qu'ils changent d'ordre
+    
     @Published var type = "library"
     @Published var wishGames: [GameData] = []
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var wishID: [String] = []
+    @Published var userInfo: UserData = UserData(name: "", lastName: "", city: "")
     var allType = ["library", "wishlist"]
     
     var columns: [GridItem] = [
@@ -55,6 +58,18 @@ final class ProfilViewModel: ObservableObject {
         AuthRepository.shared.fetchUserGame(type: "Wishlist") { wishID in
             self.wishID = wishID
             self.getWishGame()
+        }
+    }
+    
+    func logOut() {
+        AuthRepository.shared.logOut()
+    }
+    
+    func fetchUserInfo() {
+        AuthRepository.shared.fetchUserInfo { userInfo in
+            self.userInfo.city = userInfo.city
+            self.userInfo.lastName = userInfo.lastName
+            self.userInfo.name = userInfo.name
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LogInView: View {
     
@@ -20,6 +21,7 @@ struct LogInView: View {
             TFView(email: $viewModel.email, password: $viewModel.password)
             Spacer()
             Button("Log In") {
+                print(viewModel.email)
                 viewModel.signIn()
             }.fullScreenCover(isPresented: $viewModel.isPresented) {
                 CustomTabView()
@@ -28,6 +30,9 @@ struct LogInView: View {
             BottomLogInView()
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
             Button("OK", role: .cancel) { }
+        }
+        .onAppear {
+            AuthRepository.shared.logOut()
         }
     }
 }
