@@ -14,16 +14,15 @@ struct MapView: View {
     @StateObject var viewModel = MapViewModel()
 
         var body: some View {
-            Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { coord in
-                MapMarker(coordinate: coord.coordinates , tint: .blue)
-            })
-                .onAppear {
-                    viewModel.geoCode(addresses: viewModel.allAdress) { placemarks in
-                        for index in 0...placemarks.count-1 {
-                            viewModel.allCoordinates.append(Coord(coordinates: CLLocationCoordinate2D(latitude: (placemarks[index].location?.coordinate.latitude)! , longitude: (placemarks[index].location?.coordinate.longitude)!)))
-                        }
-                    }
+            Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { user in
+                MapAnnotation(coordinate: user.coordinates) {
+                    MapPinView(name: user.name, lastName: user.lastName)
+                        .foregroundColor(.blue)
                 }
+            })
+            .onAppear {
+                viewModel.getAllUsers()
+            }
         }
 }
 

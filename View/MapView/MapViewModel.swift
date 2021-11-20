@@ -15,13 +15,29 @@ final class MapViewModel: ObservableObject {
         center: CLLocationCoordinate2D(latitude: 48.34, longitude: 3.06),
         span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
     )
-    @Published var allUsers: [UserData] = [UserData(name: "Toto", lastName: "Uno", city: "89340 VILLENEUVE LA GUYARD"),
-                                           UserData(name: "Tata", lastName: "Dos", city: "77130 MAROLLES-SUR-SEINE"),
-                                           UserData(name: "Tutu", lastName: "Tres", city: "77130 MISY-SUR-YONNE"),
-                                           UserData(name: "Titi", lastName: "Quatro", city: "89100 SENS")]
+    @Published var allUsers: [UserData] = []
+    @Published var allCoordinates: [PinInfo] = []
+    @Published var allAdresses: [String] = []
     
-    @Published var allAdress = ["89340 VILLENEUVE LA GUYARD", "77130 MAROLLES-SUR-SEINE", "77130 MISY-SUR-YONNE", "89100 SENS"]
-    @Published var allCoordinates: [Coord] = []
+    func getAllUsers() {
+        AuthRepository.shared.fetchAllUsers { usersInfo in
+            self.allUsers = usersInfo
+            self.getAllAdresses()
+        }
+    }
+    
+    func getAllAdresses() {
+        var all = [String]()
+        for user in allUsers {
+            all.append(user.city)
+        }
+        allAdresses = all
+        geoCode(addresses: allAdresses) { placemarks in
+            for index in 0...placemarks.count-1 {
+                self.allCoordinates.append(PinInfo(name: self.allUsers[index].name, lastName: self.allUsers[index].lastName,userID: self.allUsers[index].userID, coordinates: CLLocationCoordinate2D(latitude: (placemarks[index].location?.coordinate.latitude)! , longitude: (placemarks[index].location?.coordinate.longitude)!)))
+            }
+        }
+    }
     
     func geoCode(addresses: [String], results: [CLPlacemark] = [], completion: @escaping ([CLPlacemark]) -> Void ) {
         guard let address = addresses.first else {
@@ -45,9 +61,4 @@ final class MapViewModel: ObservableObject {
     }
     
     
-}
-
-struct Coord: Identifiable {
-    let id = UUID()
-    let coordinates: CLLocationCoordinate2D
 }

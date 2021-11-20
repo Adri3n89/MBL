@@ -7,13 +7,15 @@
 
 import Foundation
 import CoreLocation
+import SwiftUI
 
 struct UserData: Identifiable {
     var id = UUID()
     var name: String
     var lastName: String
+    var userID: String
     var city: String
     var wish: [String] = []
     var library: [String] = []
-    var coordinates: CLLocationCoordinate2D?
+    var coordinates = CLLocationCoordinate2D()
 }

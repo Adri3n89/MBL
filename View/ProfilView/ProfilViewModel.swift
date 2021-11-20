@@ -17,7 +17,7 @@ final class ProfilViewModel: ObservableObject {
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var wishID: [String] = []
-    @Published var userInfo: UserData = UserData(name: "", lastName: "", city: "")
+    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
     var allType = ["library", "wishlist"]
     
     var columns: [GridItem] = [

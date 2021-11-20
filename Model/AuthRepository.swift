@@ -107,7 +107,25 @@ final class AuthRepository: ObservableObject {
             let name = value?["Name"] as! String
             let lastName = value?["LastName"] as! String
             let city = value?["City"] as! String
-            completed(UserData(name: name, lastName: lastName, city: city))
+            let userID = value?["UserID"] as! String
+            completed(UserData(name: name, lastName: lastName,userID: userID, city: city))
         })
+    }
+    
+    func fetchAllUsers(completed: @escaping ([UserData]) -> Void) {
+        var usersInfo: [UserData] = []
+        ref.child("Users").observe(.value) { users in
+            for user in users.children.allObjects as! [DataSnapshot] {
+                let value = user.value as? NSDictionary
+                let name = value?["Name"] as! String
+                let lastName = value?["LastName"] as! String
+                let city = value?["City"] as! String
+                let userID = value?["Userid"] as! String
+                usersInfo.append(UserData(name: name, lastName: lastName, userID: userID, city: city))
+                if users.children.allObjects.count == usersInfo.count {
+                    completed(usersInfo)
+                }
+            }
+        }
     }
 }
