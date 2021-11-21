@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 final class SignUpViewModel: ObservableObject {
     
@@ -19,22 +20,35 @@ final class SignUpViewModel: ObservableObject {
     @Published var error: String = ""
     
     func signUp() {
-        AuthRepository.shared.signUp(email: email, password: password, name: name, lastName: lastName, city: city) { result in
-            switch result {
-                case .success(_):
-                    self.isCreated = true
-                    AuthRepository.shared.signIn(email: self.email, password: self.password) { result in
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(city) { placemarks, error in
+            if (placemarks?.first) != nil {
+                if self.name.count >= 1 && self.lastName.count >= 1 {
+                    AuthRepository.shared.signUp(email: self.email, password: self.password, name: self.name, lastName: self.lastName, city: self.city) { result in
                         switch result {
                             case .success(_):
-                                AuthRepository.shared.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
+                                self.isCreated = true
+                                AuthRepository.shared.signIn(email: self.email, password: self.password) { result in
+                                    switch result {
+                                        case .success(_):
+                                            AuthRepository.shared.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
+                                        case .failure(let error):
+                                            self.error = error.localizedDescription
+                                            self.showError = true
+                                    }
+                                }
                             case .failure(let error):
                                 self.error = error.localizedDescription
                                 self.showError = true
                         }
                     }
-                case .failure(let error):
-                    self.error = error.localizedDescription
+                } else {
+                    self.error = "Name and LastName must be complete"
                     self.showError = true
+                }
+            } else {
+                self.error = "Adress not determined, try with only your city"
+                self.showError = true
             }
         }
     }
