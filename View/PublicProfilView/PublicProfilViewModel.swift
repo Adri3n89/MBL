@@ -1,44 +1,24 @@
 //
-//  ProfilViewModel.swift
+//  PublicProfilViewModel.swift
 //  MGL (iOS)
 //
-//  Created by Adrien PEREA on 16/11/2021.
+//  Created by Adrien PEREA on 21/11/2021.
 //
 
 import Foundation
 import SwiftUI
 
-final class ProfilViewModel: ObservableObject {
-    
-    // trier les ID library et wishlist par numero pour ne pas qu'ils changent d'ordre
+final class PublicProfilViewModel: ObservableObject {
     
     @Published var type = "library"
-    @Published var wishGames: [GameData] = []
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
-    @Published var wishID: [String] = []
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
-    @Published var showAlert = false
-    @Published var showPicker = false
-    @State var sourcePicker: UIImagePickerController.SourceType = .photoLibrary
-    var allType = ["library", "wishlist"]
-    let picker = UIImagePickerController()
     
     var columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
-    private func getWishGame() {
-        ApiService.shared.getWish(wishID: wishID) { result in
-            switch result {
-                case .success(let game):
-                    self.wishGames = game
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-    }
     
     private func getLibraryGame() {
         ApiService.shared.getLibrary(libraryID: libraryID) { result in
@@ -58,27 +38,12 @@ final class ProfilViewModel: ObservableObject {
         }
     }
     
-    func fetchWishlistID() {
-        AuthRepository.shared.fetchUserGame(type: "Wishlist") { wishID in
-            self.wishID = wishID
-            self.getWishGame()
-        }
-    }
-    
-    func logOut() {
-        AuthRepository.shared.logOut()
-    }
-    
     func fetchUserInfo() {
         AuthRepository.shared.fetchUserInfo { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
         }
-    }
-    
-    func updatePicture() {
-        showAlert = true
     }
     
 }

@@ -16,7 +16,7 @@ struct SearchResult: Codable {
 struct ItemsResult: Codable {
     let total: String
     let termsofuse: String
-    let item: [ItemResult]
+    let item: [ItemResult]?
 }
 
 // MARK: - Item

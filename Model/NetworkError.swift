@@ -12,6 +12,7 @@ enum NetworkError: Error {
     case badResponse
     case undecodableData
     case badURL
+    case noResult
 }
 
 extension NetworkError: LocalizedError {
@@ -21,6 +22,7 @@ extension NetworkError: LocalizedError {
         case .badResponse: return NSLocalizedString("Bad response from API.", comment: "Network Error")
         case .undecodableData: return NSLocalizedString("Undecodable Datas, try again", comment: "Network Error")
         case .badURL: return NSLocalizedString("Bad URL.", comment: "Network Error")
+        case .noResult: return NSLocalizedString("No Result", comment: "Network Error")
         }
     }
 }

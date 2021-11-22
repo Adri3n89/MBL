@@ -37,6 +37,9 @@ struct SearchView: View {
                 }
                 .padding()
             }
+            .alert(viewModel.error, isPresented: $viewModel.showError) {
+                Button("OK", role: .cancel) { }
+            }
             .navigationBarHidden(true)
         }
     }

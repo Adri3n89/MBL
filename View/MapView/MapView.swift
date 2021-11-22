@@ -16,7 +16,7 @@ struct MapView: View {
         var body: some View {
             Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { user in
                 MapAnnotation(coordinate: user.coordinates) {
-                    MapPinView(name: user.name, lastName: user.lastName)
+                    MapPinView(user: user)
                         .foregroundColor(.blue)
                 }
             })

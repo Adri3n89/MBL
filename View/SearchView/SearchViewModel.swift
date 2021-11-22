@@ -11,6 +11,8 @@ final class SearchViewModel: ObservableObject {
     
     @Published var gameName: String = ""
     @Published var searchResult: [ItemResult] = []
+    @Published var error = ""
+    @Published var showError = false
     
     func searchGame() {
         ApiService.shared.searchGameName(name: gameName.replacingOccurrences(of: " ", with: "_")) { result in
@@ -19,7 +21,8 @@ final class SearchViewModel: ObservableObject {
                     case .success(let games):
                         self.searchResult = games
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        self.error = error.localizedDescription
+                        self.showError = true
                 }
             }
         }

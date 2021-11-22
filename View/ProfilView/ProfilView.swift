@@ -11,17 +11,34 @@ struct ProfilView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel = ProfilViewModel()
+    @State var image = UIImage()
     
     var body: some View {
         GeometryReader { geo in
             NavigationView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Image(systemName: "person.circle")
-                            .frame(width: 80, height: 80)
-                            .background(Color.red)
-                            .clipShape(Circle())
-                            .padding([.leading, .trailing], 30)
+                        Button {
+                            // changer la photo de profil
+                            viewModel.updatePicture()
+                        } label: {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 80, height: 80)
+                                .background(Color.red)
+                                .clipShape(Circle())
+                                .padding([.leading, .trailing], 30)
+                        }.alert("Change profil Picture ?", isPresented: $viewModel.showAlert) {
+                            Button("Camera") {
+                                viewModel.sourcePicker = .camera
+                                viewModel.showPicker = true
+                            }
+                            Button("Gallery") {
+                                viewModel.sourcePicker = .photoLibrary
+                                viewModel.showPicker = true
+                            }
+                            Button("Cancel", role: .cancel) { }
+                        }
                         VStack(alignment: .leading) {
                             Text(viewModel.userInfo.name)
                                 .padding([.bottom], 20)
@@ -38,6 +55,8 @@ struct ProfilView: View {
                         .foregroundColor(Color.red)
 
                         Spacer()
+                    }.sheet(isPresented: $viewModel.showPicker) {
+                        ImagePicker(sourceType: viewModel.sourcePicker, selectedImage: $image)
                     }
                     Divider()
                     HStack {

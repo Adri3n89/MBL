@@ -6,42 +6,52 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct MapPinView: View {
     
     @State private var showTitle = true
-    let name: String
-    let lastName: String
+    @State var showLibrary = false
+    let user: PinInfo
   
-  var body: some View {
-    VStack(spacing: 0) {
-      Text(name + " " + lastName)
-        .font(.callout)
-        .padding(5)
-        .background(Color(.white))
-        .cornerRadius(10)
-        .opacity(showTitle ? 0 : 1)
-      
-      Image(systemName: "mappin.circle.fill")
-        .font(.title)
-        .foregroundColor(.red)
-      
-      Image(systemName: "arrowtriangle.down.fill")
-        .font(.caption)
-        .foregroundColor(.red)
-        .offset(x: 0, y: -5)
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack {
+                Text(user.name + " " + user.lastName)
+                Divider()
+                Button {
+                    showLibrary.toggle()
+                } label: {
+                    Text("Library")
+                }.sheet(isPresented: $showLibrary) {
+                    PublicProfilView(userID: "toto")
+                }
+            }
+            .font(.callout)
+            .padding()
+            .background(Color(.white))
+            .cornerRadius(10)
+            .opacity(showTitle ? 0 : 1)
+            Image(systemName: "mappin.circle.fill")
+            .font(.title)
+            .foregroundColor(.red)
+          
+            Image(systemName: "arrowtriangle.down.fill")
+            .font(.caption)
+            .foregroundColor(.red)
+            .offset(x: 0, y: -5)
+        }
+        .onTapGesture {
+              withAnimation(.easeInOut) {
+                showTitle.toggle()
+              }
+        }
     }
-    .onTapGesture {
-          withAnimation(.easeInOut) {
-            showTitle.toggle()
-          }
-    }
-  }
 }
 
 struct MapPinView_Previews: PreviewProvider {
     static var previews: some View {
-        MapPinView(name: "Adrien", lastName: "PEREA")
+        MapPinView(user: PinInfo(id: UUID(), name: "Adrien", lastName: "PEREA", userID: "43", coordinates: CLLocationCoordinate2D()))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -7,12 +7,13 @@
 
 import Foundation
 
-class ApiService: NSObject {
+final class ApiService: ObservableObject {
     
     static let shared = ApiService()
 
     // MARK: - Methods
     func getHotGame(_ urlString: String = Constantes.top50URL, _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+        //reccupération du top50 des jeux du moment
         var top: [GameData] = []
         guard let url = URL(string: urlString)?.absoluteURL else {
             completed(.failure(.badURL))
@@ -75,6 +76,7 @@ class ApiService: NSObject {
     }
 
     func getLibrary(libraryID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+        //reccupération des informations pour l'ensemble des ID de jeu de la library de l'utilisateur
         var favoriteGames: [GameData] = []
         for favorite in libraryID {
             let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(favorite)"
@@ -111,6 +113,7 @@ class ApiService: NSObject {
     }
 
     func getWish(wishID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+        //reccupération des informations pour l'ensemble des ID de jeu de la wishList de l'utilisateur
         var wishGames: [GameData] = []
         for wish in wishID {
             let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(wish)"
@@ -147,6 +150,7 @@ class ApiService: NSObject {
     }
 
     func searchGameName(name: String, _ session: URLSession = .shared, completed: @escaping (Result<[ItemResult], NetworkError>) -> Void) {
+        //retourne la liste de jeu correspondant a la reherche faite par l'utilisateur
         let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/search?query=\(name)&type=boardgame,boardgameaccessory,boardgameexpansion"
         guard let url = URL(string: urlString)?.absoluteURL else {
             completed(.failure(.badURL))
@@ -161,7 +165,11 @@ class ApiService: NSObject {
                 if response.statusCode == 200 {
                     if let data = data {
                         let apiResponse = try JSONDecoder().decode(SearchResult.self, from: data)
-                        completed(.success(apiResponse.items.item))
+                        guard let items = apiResponse.items.item else {
+                            completed(.failure(.noResult))
+                            return
+                        }
+                        completed(.success(items))
                     } else {
                         completed(.failure(.noData))
                     }

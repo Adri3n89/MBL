@@ -40,14 +40,14 @@ struct DetailsView: View {
                             // modifier par "delete from library" si déja dedans
                             viewModel.addToLibrary(id: id)
                         } label: {
-                            Text("Add to library ✅")
+                            Text(viewModel.libraryButtonText)
                         }
                         Spacer()
                         Button {
                             // modifier par "delete from wishlist" si déja dedans
                             viewModel.addToWishlist(id: id)
                         } label: {
-                            Text("Add to wish-list 🙏🏻")
+                            Text(viewModel.wishListButtonText)
                         }
                         Spacer()
                     }
@@ -58,6 +58,8 @@ struct DetailsView: View {
             }
             .onAppear {
                 viewModel.id = id
+                viewModel.getWishID()
+                viewModel.getLibraryID()
                 viewModel.getDetail()
             }
         }

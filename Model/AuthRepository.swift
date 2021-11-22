@@ -13,7 +13,7 @@ final class AuthRepository: ObservableObject {
     
     static let shared = AuthRepository()
     private let auth = Auth.auth()
-    private var userID = Auth.auth().currentUser?.uid
+    var userID = Auth.auth().currentUser?.uid
     private let ref = Database.database(url: "https://myboardgamelibrary-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     var isSignedIn: Bool {
@@ -26,7 +26,7 @@ final class AuthRepository: ObservableObject {
                 completed(.failure(error!))
                 return
             }
-            print(self.isSignedIn ? self.userID : "pas d'utilisateur connecté")
+            print(self.isSignedIn ? self.userID as Any : "pas d'utilisateur connecté" as Any)
             completed(.success(result!))
         }
     }
@@ -52,6 +52,7 @@ final class AuthRepository: ObservableObject {
     }
     
     func addToLibrary(id: String) {
+        // ajoute l'id d'un jeu dans la library de l'utilisateur et si le jeu y est déja il le retire
         ref.child("Users").child(userID!).child("Library").observeSingleEvent(of: .value, with: { games in
             for game in games.children.allObjects as! [DataSnapshot] {
                 let value = game.value as? NSDictionary
@@ -66,6 +67,7 @@ final class AuthRepository: ObservableObject {
     }
     
     func addToWishlist(id: String) {
+        // ajoute l'id d'un jeu dans la wishList de l'utilisateur et si le jeu y est déja il le retire
         ref.child("Users").child(userID!).child("Wishlist").observeSingleEvent(of: .value, with: { games in
             for game in games.children.allObjects as! [DataSnapshot] {
                 let value = game.value as? NSDictionary
