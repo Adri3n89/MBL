@@ -14,9 +14,10 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
-            HeaderView()
+            HeaderView().foregroundColor(.white)
             Spacer()
             TFSignUpView(email: $viewModel.email, password: $viewModel.password, name: $viewModel.name, lastName: $viewModel.lastName, city: $viewModel.city)
+                .foregroundColor(.white)
             Spacer()
             Button("Create Account") {
                 viewModel.signUp()
@@ -24,13 +25,16 @@ struct SignUpView: View {
             .fullScreenCover(isPresented: $viewModel.isCreated) {
                 CustomTabView()
             }
+            .tint(.white)
             Spacer()
             VStack {
                 Text("Already have an account ?")
+                    .foregroundColor(.white)
                 Button("Sign In") {
                     presentationMode.wrappedValue.dismiss()
                 }
                 .padding([.bottom], 20)
+                .tint(.white)
             }
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
             Button("OK", role: .cancel) { }

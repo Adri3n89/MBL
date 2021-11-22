@@ -14,12 +14,14 @@ struct BottomLogInView: View {
     var body: some View {
         VStack {
             Text("Doesn't have an account yet ? ")
+                .foregroundColor(.white)
             Button("Sign Up") {
                 self.showSignUp.toggle()
             }.fullScreenCover(isPresented: $showSignUp, content: {
                 SignUpView()
             })
             .padding([.bottom], 20)
+            .tint(.white)
         }
     }
 }

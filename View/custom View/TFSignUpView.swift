@@ -22,24 +22,36 @@ struct TFSignUpView: View {
                     Spacer()
                 }
                 .padding([.trailing, .leading], 30)
-                TextField("name", text: $name, prompt:Text("Enter your name here"))
+                TextField("name", text: $name)
+                    .placeholder(when: name.isEmpty) {
+                        Text(" Enter your name here").foregroundColor(.black)
+                }
                     .background(.secondary)
+                    .cornerRadius(5)
                     .padding([.trailing, .leading], 30)
                 HStack {
                     Text("last name :")
                     Spacer()
                 }
                 .padding([.trailing, .leading], 30)
-                TextField("last name", text: $lastName, prompt:Text("Enter your last name here"))
+                TextField("last name", text: $lastName)
+                    .placeholder(when: lastName.isEmpty) {
+                        Text(" Enter your last name here").foregroundColor(.black)
+                }
                     .background(.secondary)
+                    .cornerRadius(5)
                     .padding([.trailing, .leading], 30)
                 HStack {
                     Text("city : (ex 77000 MELUN)")
                     Spacer()
                 }
                 .padding([.trailing, .leading], 30)
-                TextField("city", text: $city, prompt:Text("Enter your city here"))
+                TextField("city", text: $city)
+                    .placeholder(when: city.isEmpty) {
+                        Text(" Enter your city here").foregroundColor(.black)
+                }
                     .background(.secondary)
+                    .cornerRadius(5)
                     .padding([.trailing, .leading], 30)
             }
         }

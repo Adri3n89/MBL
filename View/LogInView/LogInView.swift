@@ -15,15 +15,17 @@ struct LogInView: View {
     var body: some View {
         VStack {
             HeaderView()
+                .foregroundColor(.white)
             Spacer()
             TFView(email: $viewModel.email, password: $viewModel.password)
+                .foregroundColor(.white)
             Spacer()
             Button("Log In") {
                 print(viewModel.email)
                 viewModel.signIn()
             }.fullScreenCover(isPresented: $viewModel.isPresented) {
                 CustomTabView()
-            }
+            }.tint(.white)
             Spacer()
             BottomLogInView()
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
