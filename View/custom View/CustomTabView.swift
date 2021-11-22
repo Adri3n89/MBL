@@ -10,6 +10,10 @@ import SwiftUI
 struct CustomTabView: View {
     @State var selection = 1
     
+    init() {
+        UITabBar.appearance().barTintColor = UIColor.black
+    }
+    
     var body: some View {
         TabView(selection: $selection) {
             Top50View()
@@ -37,7 +41,7 @@ struct CustomTabView: View {
                 Text("Profil")
                 Image(systemName: "person")
             }.tag(5)
-        }
+        }.tint(.gray)
     }
 }
 

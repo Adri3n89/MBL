@@ -23,6 +23,7 @@ struct SearchView: View {
                 } label: {
                     Text("Search")
                 }
+                .foregroundColor(.black)
                 ScrollView {
                     ForEach(viewModel.searchResult) { game in
                         NavigationLink {

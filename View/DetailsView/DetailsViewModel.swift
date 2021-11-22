@@ -37,14 +37,14 @@ final class DetailsViewModel: ObservableObject {
     }
     
     func getLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: "Library") { libraryID in
+        AuthRepository.shared.fetchUserGame(type: "Library", user: AuthRepository.shared.userID!) { libraryID in
             self.libraryID = libraryID
             self.checkLibrary()
         }
     }
     
     func getWishID() {
-        AuthRepository.shared.fetchUserGame(type: "Wishlist") { wishID in
+        AuthRepository.shared.fetchUserGame(type: "Wishlist", user: AuthRepository.shared.userID!) { wishID in
             self.wishID = wishID
             self.checkWishlist()
         }

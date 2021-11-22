@@ -37,7 +37,6 @@ struct LogInView: View {
                         .ignoresSafeArea()
                         .scaledToFill()
         )
-        .foregroundColor(.white)
     }
 }
 

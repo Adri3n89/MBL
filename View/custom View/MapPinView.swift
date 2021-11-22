@@ -24,7 +24,7 @@ struct MapPinView: View {
                 } label: {
                     Text("Library")
                 }.sheet(isPresented: $showLibrary) {
-                    PublicProfilView(userID: "toto")
+                    PublicProfilView(userID: user.userID)
                 }
             }
             .font(.callout)

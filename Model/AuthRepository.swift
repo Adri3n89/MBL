@@ -82,8 +82,8 @@ final class AuthRepository: ObservableObject {
         
     }
     
-    func fetchUserGame(type: String, completed: @escaping ([String]) -> Void) {
-        ref.child("Users").child(self.userID!).child(type).observe(.value, with: { games in
+    func fetchUserGame(type: String, user: String, completed: @escaping ([String]) -> Void) {
+        ref.child("Users").child(user).child(type).observe(.value, with: { games in
             var gameID: [String] = []
             for game in games.children.allObjects as! [DataSnapshot] {
                 let value = game.value as? NSDictionary
@@ -103,8 +103,8 @@ final class AuthRepository: ObservableObject {
         catch { print("already logged out") }
     }
     
-    func fetchUserInfo(completed: @escaping (UserData) -> Void) {
-        ref.child("Users").child(self.userID!).observe(.value, with: { info in
+    func fetchUserInfo(user: String,completed: @escaping (UserData) -> Void) {
+        ref.child("Users").child(user).observe(.value, with: { info in
             let value = info.value as? NSDictionary
             let name = value?["Name"] as! String
             let lastName = value?["LastName"] as! String

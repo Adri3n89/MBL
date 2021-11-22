@@ -52,14 +52,14 @@ final class ProfilViewModel: ObservableObject {
     }
     
     func fetchLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: "Library") { libraryID in
+        AuthRepository.shared.fetchUserGame(type: "Library", user: AuthRepository.shared.userID!) { libraryID in
             self.libraryID = libraryID
             self.getLibraryGame()
         }
     }
     
     func fetchWishlistID() {
-        AuthRepository.shared.fetchUserGame(type: "Wishlist") { wishID in
+        AuthRepository.shared.fetchUserGame(type: "Wishlist", user: AuthRepository.shared.userID!) { wishID in
             self.wishID = wishID
             self.getWishGame()
         }
@@ -70,7 +70,7 @@ final class ProfilViewModel: ObservableObject {
     }
     
     func fetchUserInfo() {
-        AuthRepository.shared.fetchUserInfo { userInfo in
+        AuthRepository.shared.fetchUserInfo(user: AuthRepository.shared.userID!) { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name

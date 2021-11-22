@@ -20,7 +20,8 @@ struct SignUpView: View {
             Spacer()
             Button("Create Account") {
                 viewModel.signUp()
-            }.fullScreenCover(isPresented: $viewModel.isCreated) {
+            }
+            .fullScreenCover(isPresented: $viewModel.isCreated) {
                 CustomTabView()
             }
             Spacer()
@@ -39,7 +40,6 @@ struct SignUpView: View {
                         .ignoresSafeArea()
                         .scaledToFill()
         )
-        .foregroundColor(.white)
     }
 }
 

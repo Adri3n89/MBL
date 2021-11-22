@@ -31,15 +31,15 @@ final class PublicProfilViewModel: ObservableObject {
         }
     }
     
-    func fetchLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: "Library") { libraryID in
+    func fetchLibraryID(user: String) {
+        AuthRepository.shared.fetchUserGame(type: "Library", user: user) { libraryID in
             self.libraryID = libraryID
             self.getLibraryGame()
         }
     }
     
-    func fetchUserInfo() {
-        AuthRepository.shared.fetchUserInfo { userInfo in
+    func fetchUserInfo(user: String) {
+        AuthRepository.shared.fetchUserInfo(user: user) { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name

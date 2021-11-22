@@ -62,9 +62,8 @@ struct PublicProfilView: View {
                     }
                 }
                 .onAppear {
-                    viewModel.fetchLibraryID()
-                    viewModel.fetchUserInfo()
-                    print(userID)
+                    viewModel.fetchLibraryID(user: userID)
+                    viewModel.fetchUserInfo(user: userID)
                 }
                 .navigationBarHidden(true)
             }
@@ -74,6 +73,6 @@ struct PublicProfilView: View {
 
 struct PublicProfilView_Previews: PreviewProvider {
     static var previews: some View {
-        PublicProfilView(userID: "toto")
+        PublicProfilView(userID: "preview")
     }
 }
