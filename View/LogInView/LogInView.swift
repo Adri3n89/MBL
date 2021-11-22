@@ -16,8 +16,6 @@ struct LogInView: View {
         VStack {
             HeaderView()
             Spacer()
-            Text("Please enter your account informations")
-                .padding([.bottom], 20)
             TFView(email: $viewModel.email, password: $viewModel.password)
             Spacer()
             Button("Log In") {
@@ -34,6 +32,12 @@ struct LogInView: View {
         .onAppear {
             AuthRepository.shared.logOut()
         }
+        .background(Image("background")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .scaledToFill()
+        )
+        .foregroundColor(.white)
     }
 }
 

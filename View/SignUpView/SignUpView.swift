@@ -34,6 +34,12 @@ struct SignUpView: View {
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
             Button("OK", role: .cancel) { }
         }
+        .background(Image("background")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .scaledToFill()
+        )
+        .foregroundColor(.white)
     }
 }
 

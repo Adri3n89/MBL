@@ -23,6 +23,7 @@ struct TFSignUpView: View {
                 }
                 .padding([.trailing, .leading], 30)
                 TextField("name", text: $name, prompt:Text("Enter your name here"))
+                    .background(.secondary)
                     .padding([.trailing, .leading], 30)
                 HStack {
                     Text("last name :")
@@ -30,6 +31,7 @@ struct TFSignUpView: View {
                 }
                 .padding([.trailing, .leading], 30)
                 TextField("last name", text: $lastName, prompt:Text("Enter your last name here"))
+                    .background(.secondary)
                     .padding([.trailing, .leading], 30)
                 HStack {
                     Text("city : (ex 77000 MELUN)")
@@ -37,6 +39,7 @@ struct TFSignUpView: View {
                 }
                 .padding([.trailing, .leading], 30)
                 TextField("city", text: $city, prompt:Text("Enter your city here"))
+                    .background(.secondary)
                     .padding([.trailing, .leading], 30)
             }
         }

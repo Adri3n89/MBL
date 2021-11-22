@@ -18,14 +18,16 @@ struct TFView: View {
                 Spacer()
             }
             .padding([.trailing, .leading], 30)
-            TextField("email", text: $email, prompt:Text("Enter your mail here"))
+            TextField("email", text: $email, prompt:Text(" Enter your mail here"))
+                .background(.secondary)
                 .padding([.trailing, .leading], 30)
             HStack {
                 Text("password :")
                 Spacer()
             }
             .padding([.trailing, .leading], 30)
-            SecureField("password", text: $password, prompt:Text("Enter your password here"))
+            SecureField("password", text: $password, prompt:Text(" Enter your password here"))
+                .background(.secondary)
                 .padding([.trailing, .leading], 30)
         }
     }
