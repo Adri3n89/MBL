@@ -21,12 +21,18 @@ struct Top50View: View {
                                 DetailsView(id: top.id)
                             } label: {
                                 GameCellView(game: top, width: geo.size.width)
+                                    .shadow(color: .black, radius: 2, x: 2, y: 2)
                             }
                             .foregroundColor(Color.black)
                         }
                     }
                 }
                 .padding(.horizontal)
+                .background(Image("background")
+                                .resizable()
+                                .ignoresSafeArea()
+                                .scaledToFill()
+                )
                 .onAppear {
                     viewModel.getTop50()
                 }

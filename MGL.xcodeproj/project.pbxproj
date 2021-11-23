@@ -33,12 +33,12 @@
 		7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A3E3274019BC00686E3D /* AuthRepository.swift */; };
 		7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25A273020C9001EE307 /* SignUpView.swift */; };
 		7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FA25D27302184001EE307 /* TFSignUpView.swift */; };
+		7A87477C274CE87C00FB46A8 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87477B274CE87C00FB46A8 /* GlowBorder.swift */; };
 		7A93A8B5273E770600F920A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */; };
 		7A97668E2743A46500E82079 /* Top50ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97668D2743A46500E82079 /* Top50ViewModel.swift */; };
 		7A9766922743AD5B00E82079 /* ProfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9766912743AD5B00E82079 /* ProfilViewModel.swift */; };
 		7A9766952743B3B600E82079 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9766942743B3B600E82079 /* DetailsViewModel.swift */; };
 		7A9766982743E35200E82079 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9766972743E35200E82079 /* LogInViewModel.swift */; };
-		7AA604EE274168C100CA6E5D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA604ED274168C100CA6E5D /* Extension.swift */; };
 		7AA64399274129F80051EC70 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA64398274129F80051EC70 /* GameCellView.swift */; };
 		7AAC6D672747A9FD00E19556 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC6D662747A9FD00E19556 /* PinInfo.swift */; };
 		7AAC6D6B2747ADE500E19556 /* MapPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC6D6A2747ADE500E19556 /* MapPinView.swift */; };
@@ -82,12 +82,12 @@
 		7A62A3E3274019BC00686E3D /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		7A6FA25A273020C9001EE307 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		7A6FA25D27302184001EE307 /* TFSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSignUpView.swift; sourceTree = "<group>"; };
+		7A87477B274CE87C00FB46A8 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A97668D2743A46500E82079 /* Top50ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50ViewModel.swift; sourceTree = "<group>"; };
 		7A9766912743AD5B00E82079 /* ProfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewModel.swift; sourceTree = "<group>"; };
 		7A9766942743B3B600E82079 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		7A9766972743E35200E82079 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
-		7AA604ED274168C100CA6E5D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7AA64398274129F80051EC70 /* GameCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCellView.swift; sourceTree = "<group>"; };
 		7AAC6D662747A9FD00E19556 /* PinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 		7AAC6D6A2747ADE500E19556 /* MapPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinView.swift; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 				7AB6EB8E273157C500E60A49 /* View */,
 				7AB6EB8D273157A700E60A49 /* Model */,
 				7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */,
-				7AA604ED274168C100CA6E5D /* Extension.swift */,
 				7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */,
 				7A4C29FE272FEF1200C4AC30 /* Products */,
 				F1081B297E6B9B9E69708FAB /* Pods */,
@@ -241,6 +240,7 @@
 				7A46557527468FA3002BE831 /* UserData.swift */,
 				7AAC6D662747A9FD00E19556 /* PinInfo.swift */,
 				7A436EB5274C3D9B00D8D28F /* Extensions.swift */,
+				7A87477B274CE87C00FB46A8 /* GlowBorder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,7 +428,6 @@
 				7A4C2A39272FFAC900C4AC30 /* HeaderView.swift in Sources */,
 				7A4C2A2A272FF6D800C4AC30 /* CustomTabView.swift in Sources */,
 				7AAC6D672747A9FD00E19556 /* PinInfo.swift in Sources */,
-				7AA604EE274168C100CA6E5D /* Extension.swift in Sources */,
 				7ACB1735274A6B1D00C88CE8 /* PictureRepository.swift in Sources */,
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */,
@@ -447,6 +446,7 @@
 				7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */,
 				7A4C2A2D272FF74500C4AC30 /* LogInView.swift in Sources */,
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
+				7A87477C274CE87C00FB46A8 /* GlowBorder.swift in Sources */,
 				7A436EB6274C3D9B00D8D28F /* Extensions.swift in Sources */,
 				7AA64399274129F80051EC70 /* GameCellView.swift in Sources */,
 				7A4C2A06272FEF1200C4AC30 /* MGLApp.swift in Sources */,

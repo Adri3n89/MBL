@@ -24,15 +24,19 @@ struct GameCellView: View {
                 .clipped()
             Text(game!.year ?? "?")
                 .offset(x: -(width / 2.3)/3.1, y: -(width / 2.3)/2.5)
+                .glowBorder(color: .black, lineWidth: 4)
             Text(game!.rank)
                 .offset(x: (width / 2.3)/2.5, y: -(width / 2.3)/2.5)
+                .glowBorder(color: .black, lineWidth: 4)
             Text(game!.name)
                 .offset(x: 0, y: (width / 2.3)/3)
                 .frame(width: width / 2.3, height: (width / 2.3)/3, alignment: .center)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.01)
+                .glowBorder(color: .black, lineWidth: 4)
         }.frame(width: (width / 2.3) , height: (width / 2.3) , alignment: .center)
             .cornerRadius(10)
+            .foregroundColor(.white)
     }
 }
 
