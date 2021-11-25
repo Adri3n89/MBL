@@ -18,28 +18,31 @@ struct SignUpView: View {
             Spacer()
             TFSignUpView(email: $viewModel.email, password: $viewModel.password, name: $viewModel.name, lastName: $viewModel.lastName, city: $viewModel.city)
                 .foregroundColor(.white)
-            Spacer()
-            Button("Create Account") {
+            Button(Constantes.createAccount) {
                 viewModel.signUp()
             }
             .fullScreenCover(isPresented: $viewModel.isCreated) {
                 CustomTabView()
             }
-            .tint(.white)
+                .tint(.black)
+                .padding(10)
+                .background(.gray)
+                .cornerRadius(10)
+                .padding(.top, 30)
             Spacer()
             VStack {
-                Text("Already have an account ?")
+                Text(Constantes.alreadyAccount)
                     .foregroundColor(.white)
-                Button("Sign In") {
+                Button(Constantes.signIn) {
                     presentationMode.wrappedValue.dismiss()
                 }
                 .padding([.bottom], 20)
                 .tint(.white)
             }
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
-            Button("OK", role: .cancel) { }
+            Button(Constantes.ok, role: .cancel) { }
         }
-        .background(Image("background")
+        .background(Image(Constantes.background)
                         .resizable()
                         .ignoresSafeArea()
                         .scaledToFill()

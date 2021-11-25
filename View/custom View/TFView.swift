@@ -14,28 +14,30 @@ struct TFView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("e-mail :")
+                Text(Constantes.email)
                 Spacer()
             }
             .padding([.trailing, .leading], 30)
-            TextField("email", text: $email)
+            TextField("", text: $email)
                 .placeholder(when: email.isEmpty) {
-                    Text(" Enter your email here").foregroundColor(.black)
+                    Text(Constantes.emailTF).foregroundColor(.black)
             }
+                .frame(height: 50)
                 .background(.secondary)
-                .cornerRadius(5)
+                .cornerRadius(15)
                 .padding([.trailing, .leading], 30)
             HStack {
-                Text("password :")
+                Text(Constantes.password)
                 Spacer()
             }
             .padding([.trailing, .leading], 30)
-            SecureField("password", text: $password)
+            SecureField("", text: $password)
                 .placeholder(when: password.isEmpty) {
-                    Text(" Enter your password here").foregroundColor(.black)
+                    Text(Constantes.passwordTF).foregroundColor(.black)
             }
+                .frame(height: 50)
                 .background(.secondary)
-                .cornerRadius(5)
+                .cornerRadius(15)
                 .padding([.trailing, .leading], 30)
         }
     }

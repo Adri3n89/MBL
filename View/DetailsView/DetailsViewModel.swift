@@ -11,8 +11,8 @@ final class DetailsViewModel: ObservableObject {
     
     var id = ""
     @Published var gameInfo: ItemInfo?
-    @Published var libraryButtonText = "Add to library ✅"
-    @Published var wishListButtonText = "Add to wishlist 🙏🏻"
+    @Published var libraryButtonText = Constantes.addLibrary
+    @Published var wishListButtonText = Constantes.addWish
     @Published var wishID = [String]()
     @Published var libraryID = [String]()
     
@@ -37,14 +37,14 @@ final class DetailsViewModel: ObservableObject {
     }
     
     func getLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: "Library", user: AuthRepository.shared.userID!) { libraryID in
+        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
             self.libraryID = libraryID
             self.checkLibrary()
         }
     }
     
     func getWishID() {
-        AuthRepository.shared.fetchUserGame(type: "Wishlist", user: AuthRepository.shared.userID!) { wishID in
+        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
             self.wishID = wishID
             self.checkWishlist()
         }
@@ -57,7 +57,7 @@ final class DetailsViewModel: ObservableObject {
                 index += 1
             }
         }
-        libraryButtonText = index == 0 ? "Add to library ✅" : "Remove from library ❌"
+        libraryButtonText = index == 0 ? Constantes.addLibrary : Constantes.removeLibrary
     }
     
     private func checkWishlist() {
@@ -67,7 +67,7 @@ final class DetailsViewModel: ObservableObject {
                 index += 1
             }
         }
-        wishListButtonText = index == 0 ? "Add to wishlist 🙏🏻" : "Remove from wishlist ❌"
+        wishListButtonText = index == 0 ? Constantes.addWish : Constantes.removeWish
     }
     
 }

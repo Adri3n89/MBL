@@ -33,8 +33,8 @@ struct PublicProfilView: View {
                     Button {
                       
                     } label: {
-                        Text("Contact")
-                        Image(systemName: "envelope.fill")
+                        Text(Constantes.contact)
+                        Image(systemName: Constantes.envelope)
                     }
                     .foregroundColor(Color.blue)
                     Spacer()
@@ -42,7 +42,7 @@ struct PublicProfilView: View {
                 .padding()
                 Divider()
                 HStack {
-                    Text("Adress :")
+                    Text(Constantes.city)
                     Text(viewModel.userInfo.city)
                         .multilineTextAlignment(.leading)
                 }.padding()

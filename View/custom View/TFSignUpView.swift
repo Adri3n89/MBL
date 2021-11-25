@@ -18,40 +18,43 @@ struct TFSignUpView: View {
             VStack {
                 TFView(email: $email, password: $password)
                 HStack {
-                    Text("name :")
+                    Text(Constantes.name)
                     Spacer()
                 }
                 .padding([.trailing, .leading], 30)
-                TextField("name", text: $name)
+                TextField("", text: $name)
                     .placeholder(when: name.isEmpty) {
-                        Text(" Enter your name here").foregroundColor(.black)
+                        Text(Constantes.nameTF).foregroundColor(.black)
                 }
+                    .frame(height: 50)
                     .background(.secondary)
-                    .cornerRadius(5)
+                    .cornerRadius(15)
                     .padding([.trailing, .leading], 30)
                 HStack {
-                    Text("last name :")
+                    Text(Constantes.lastName)
                     Spacer()
                 }
                 .padding([.trailing, .leading], 30)
-                TextField("last name", text: $lastName)
+                TextField("", text: $lastName)
                     .placeholder(when: lastName.isEmpty) {
-                        Text(" Enter your last name here").foregroundColor(.black)
+                        Text(Constantes.lastNameTF).foregroundColor(.black)
                 }
+                    .frame(height: 50)
                     .background(.secondary)
-                    .cornerRadius(5)
+                    .cornerRadius(15)
                     .padding([.trailing, .leading], 30)
                 HStack {
-                    Text("city : (ex 77000 MELUN)")
+                    Text(Constantes.city)
                     Spacer()
                 }
                 .padding([.trailing, .leading], 30)
-                TextField("city", text: $city)
+                TextField("", text: $city)
                     .placeholder(when: city.isEmpty) {
-                        Text(" Enter your city here").foregroundColor(.black)
+                        Text(Constantes.cityTF).foregroundColor(.black)
                 }
+                    .frame(height: 50)
                     .background(.secondary)
-                    .cornerRadius(5)
+                    .cornerRadius(15)
                     .padding([.trailing, .leading], 30)
             }
         }

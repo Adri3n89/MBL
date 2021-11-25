@@ -19,22 +19,22 @@ struct LogInView: View {
             Spacer()
             TFView(email: $viewModel.email, password: $viewModel.password)
                 .foregroundColor(.white)
-            Spacer()
-            Button("Log In") {
-                print(viewModel.email)
+            Button(Constantes.logIn) {
                 viewModel.signIn()
             }.fullScreenCover(isPresented: $viewModel.isPresented) {
                 CustomTabView()
-            }.tint(.white)
+            }
+                .padding(10)
+                .background(.gray)
+                .cornerRadius(10)
+                .padding(.top, 30)
+                .tint(.black)
             Spacer()
             BottomLogInView()
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
-            Button("OK", role: .cancel) { }
+            Button(Constantes.ok, role: .cancel) { }
         }
-        .onAppear {
-            AuthRepository.shared.logOut()
-        }
-        .background(Image("background")
+        .background(Image(Constantes.background)
                         .resizable()
                         .ignoresSafeArea()
                         .scaledToFill()

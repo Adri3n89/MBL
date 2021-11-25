@@ -12,7 +12,7 @@ final class ProfilViewModel: ObservableObject {
     
     // trier les ID library et wishlist par numero pour ne pas qu'ils changent d'ordre
     
-    @Published var type = "library"
+    @Published var type = Constantes.gameType[0]
     @Published var wishGames: [GameData] = []
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
@@ -20,8 +20,8 @@ final class ProfilViewModel: ObservableObject {
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
     @Published var showAlert = false
     @Published var showPicker = false
+    var allType = Constantes.gameType
     @State var sourcePicker: UIImagePickerController.SourceType = .photoLibrary
-    var allType = ["library", "wishlist"]
     let picker = UIImagePickerController()
     
     var columns: [GridItem] = [
@@ -52,14 +52,14 @@ final class ProfilViewModel: ObservableObject {
     }
     
     func fetchLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: "Library", user: AuthRepository.shared.userID!) { libraryID in
+        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
             self.libraryID = libraryID
             self.getLibraryGame()
         }
     }
     
     func fetchWishlistID() {
-        AuthRepository.shared.fetchUserGame(type: "Wishlist", user: AuthRepository.shared.userID!) { wishID in
+        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
             self.wishID = wishID
             self.getWishGame()
         }

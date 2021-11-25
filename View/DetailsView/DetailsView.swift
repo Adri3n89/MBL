@@ -30,9 +30,9 @@ struct DetailsView: View {
                         Spacer()
                     }
                     VStack {
-                        Text("Year : \(viewModel.gameInfo?.yearpublished.value ?? "?")")
-                        Text("Players : \(viewModel.gameInfo?.minplayers.value ?? "") - \(viewModel.gameInfo?.maxplayers.value ?? "")")
-                        Text("Estimate play time : \(viewModel.gameInfo?.minplaytime.value ?? "") - \(viewModel.gameInfo?.maxplaytime.value ?? "")")
+                        Text(Constantes.year + (viewModel.gameInfo?.yearpublished.value ?? "?"))
+                        Text(Constantes.player + (viewModel.gameInfo?.minplayers.value ?? "") + "-" + (viewModel.gameInfo?.maxplayers.value ?? ""))
+                        Text(Constantes.time + (viewModel.gameInfo?.minplaytime.value ?? "") + "-" + (viewModel.gameInfo?.maxplaytime.value ?? ""))
                     }.padding()
                     HStack {
                         Spacer()
@@ -52,7 +52,7 @@ struct DetailsView: View {
                         Spacer()
                     }
                     Divider()
-                    Text(viewModel.gameInfo?.itemDescription.decodingUnicodeCharacters.replacingOccurrences(of: "&mdash;", with: "-") ?? "no description")
+                    Text(viewModel.gameInfo?.itemDescription.decodingUnicodeCharacters ?? Constantes.noDescription)
                         .padding()
                 }
             }

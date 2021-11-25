@@ -12,7 +12,7 @@ final class ApiService: ObservableObject {
     static let shared = ApiService()
 
     // MARK: - Methods
-    func getHotGame(_ urlString: String = Constantes.top50URL, _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+    func getHotGame(_ urlString: String = Constantes.urlTop50, _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
         //reccupération du top50 des jeux du moment
         var top: [GameData] = []
         guard let url = URL(string: urlString)?.absoluteURL else {
@@ -48,7 +48,7 @@ final class ApiService: ObservableObject {
     }
 
     func getGameByID(id: String, _ session: URLSession = .shared, completed: @escaping (Result<ItemInfo, NetworkError>) -> Void) {
-        let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(id)"
+        let urlString = Constantes.urlByID + id
         guard let url = URL(string: urlString)?.absoluteURL else {
             completed(.failure(.badURL))
             return
@@ -79,7 +79,7 @@ final class ApiService: ObservableObject {
         //reccupération des informations pour l'ensemble des ID de jeu de la library de l'utilisateur
         var favoriteGames: [GameData] = []
         for favorite in libraryID {
-            let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(favorite)"
+            let urlString = Constantes.urlByID + favorite
             guard let url = URL(string: urlString)?.absoluteURL else {
                 completed(.failure(.badURL))
                 return
@@ -116,7 +116,7 @@ final class ApiService: ObservableObject {
         //reccupération des informations pour l'ensemble des ID de jeu de la wishList de l'utilisateur
         var wishGames: [GameData] = []
         for wish in wishID {
-            let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/thing?id=\(wish)"
+            let urlString = Constantes.urlByID + wish
             guard let url = URL(string: urlString)?.absoluteURL else {
                 completed(.failure(.badURL))
                 return
@@ -151,7 +151,7 @@ final class ApiService: ObservableObject {
 
     func searchGameName(name: String, _ session: URLSession = .shared, completed: @escaping (Result<[ItemResult], NetworkError>) -> Void) {
         //retourne la liste de jeu correspondant a la reherche faite par l'utilisateur
-        let urlString = "https://api.factmaven.com/xml-to-json/?xml=https://api.geekdo.com/xmlapi2/search?query=\(name)&type=boardgame,boardgameaccessory,boardgameexpansion"
+        let urlString = Constantes.urlByName(name: name)
         guard let url = URL(string: urlString)?.absoluteURL else {
             completed(.failure(.badURL))
             return

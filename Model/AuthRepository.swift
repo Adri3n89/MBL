@@ -13,12 +13,12 @@ final class AuthRepository: ObservableObject {
     
     static let shared = AuthRepository()
     private let auth = Auth.auth()
-    var userID = Auth.auth().currentUser?.uid
-    private let ref = Database.database(url: "https://myboardgamelibrary-default-rtdb.europe-west1.firebasedatabase.app").reference()
-    
-    var isSignedIn: Bool {
-        return auth.currentUser != nil
+    var userID: String? {
+        get {
+            return auth.currentUser?.uid
+        }
     }
+    private let ref = Database.database(url: Constantes.refURL).reference()
     
     func signIn(email: String, password: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
@@ -26,7 +26,6 @@ final class AuthRepository: ObservableObject {
                 completed(.failure(error!))
                 return
             }
-            print(self.isSignedIn ? self.userID as Any : "pas d'utilisateur connecté" as Any)
             completed(.success(result!))
         }
     }
@@ -53,31 +52,31 @@ final class AuthRepository: ObservableObject {
     
     func addToLibrary(id: String) {
         // ajoute l'id d'un jeu dans la library de l'utilisateur et si le jeu y est déja il le retire
-        ref.child("Users").child(userID!).child("Library").observeSingleEvent(of: .value, with: { games in
+        ref.child("Users").child(userID!).child(Constantes.gameType[0]).observeSingleEvent(of: .value, with: { games in
             for game in games.children.allObjects as! [DataSnapshot] {
                 let value = game.value as? NSDictionary
                 let gameId = value?["ID"] as! String
                 if id == gameId {
-                    self.ref.child("Users").child(self.userID!).child("Library").child(game.key).removeValue()
+                    self.ref.child("Users").child(self.userID!).child(Constantes.gameType[0]).child(game.key).removeValue()
                     return
                 }
             }
-            self.ref.child("Users").child(self.userID!).child("Library").childByAutoId().child("ID").setValue(id)
+            self.ref.child("Users").child(self.userID!).child(Constantes.gameType[0]).childByAutoId().child("ID").setValue(id)
          })
     }
     
     func addToWishlist(id: String) {
         // ajoute l'id d'un jeu dans la wishList de l'utilisateur et si le jeu y est déja il le retire
-        ref.child("Users").child(userID!).child("Wishlist").observeSingleEvent(of: .value, with: { games in
+        ref.child("Users").child(userID!).child(Constantes.gameType[1]).observeSingleEvent(of: .value, with: { games in
             for game in games.children.allObjects as! [DataSnapshot] {
                 let value = game.value as? NSDictionary
                 let gameId = value?["ID"] as! String
                 if id == gameId {
-                    self.ref.child("Users").child(self.userID!).child("Wishlist").child(game.key).removeValue()
+                    self.ref.child("Users").child(self.userID!).child(Constantes.gameType[1]).child(game.key).removeValue()
                     return
                 }
             }
-            self.ref.child("Users").child(self.userID!).child("Wishlist").childByAutoId().child("ID").setValue(id)
+            self.ref.child("Users").child(self.userID!).child(Constantes.gameType[1]).childByAutoId().child("ID").setValue(id)
         })
         
     }
@@ -98,9 +97,8 @@ final class AuthRepository: ObservableObject {
     
     func logOut() {
         do { try auth.signOut()
-            print(isSignedIn)
         }
-        catch { print("already logged out") }
+        catch { print(error.localizedDescription) }
     }
     
     func fetchUserInfo(user: String,completed: @escaping (UserData) -> Void) {

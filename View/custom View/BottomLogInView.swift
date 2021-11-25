@@ -13,9 +13,9 @@ struct BottomLogInView: View {
     
     var body: some View {
         VStack {
-            Text("Doesn't have an account yet ? ")
+            Text(Constantes.noAccount)
                 .foregroundColor(.white)
-            Button("Sign Up") {
+            Button(Constantes.signUp) {
                 self.showSignUp.toggle()
             }.fullScreenCover(isPresented: $showSignUp, content: {
                 SignUpView()

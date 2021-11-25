@@ -28,7 +28,7 @@ struct Top50View: View {
                     }
                 }
                 .padding(.horizontal)
-                .background(Image("background")
+                .background(Image(Constantes.background)
                                 .resizable()
                                 .ignoresSafeArea()
                                 .scaledToFill()

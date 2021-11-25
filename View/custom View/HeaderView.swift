@@ -10,9 +10,9 @@ import SwiftUI
 struct HeaderView: View {
     var body: some View {
         VStack {
-            Text("M.G.L")
+            Text(Constantes.mgl)
                 .font(.largeTitle)
-            Text("My GameBoard Library")
+            Text(Constantes.myGameBoard)
                 .font(.title2)
         }
         .padding(40)

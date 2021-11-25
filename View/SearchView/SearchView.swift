@@ -14,14 +14,14 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search", text: $viewModel.gameName, prompt: Text("enter your game name here"))
+                TextField(Constantes.search, text: $viewModel.gameName, prompt: Text(Constantes.searchGame))
                     .padding()
                     .border(.secondary, width: 2)
                     .padding()
                 Button {
                     viewModel.searchGame()
                 } label: {
-                    Text("Search")
+                    Text(Constantes.search)
                 }
                 .foregroundColor(.black)
                 ScrollView {
@@ -39,7 +39,7 @@ struct SearchView: View {
                 .padding()
             }
             .alert(viewModel.error, isPresented: $viewModel.showError) {
-                Button("OK", role: .cancel) { }
+                Button(Constantes.ok, role: .cancel) { }
             }
             .navigationBarHidden(true)
         }

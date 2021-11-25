@@ -18,29 +18,29 @@ struct CustomTabView: View {
         TabView(selection: $selection) {
             Top50View()
                 .tabItem {
-                Text("Top 50")
-                Image(systemName: "arrow.up.square.fill")
-            }.tag(1)
+                    Text(Constantes.tab1)
+                    Image(systemName: Constantes.tab1Logo)
+                }.tag(1)
             SearchView()
                 .tabItem {
-                Text("Search")
-                Image(systemName: "magnifyingglass")
-            }.tag(2)
+                    Text(Constantes.tab2)
+                    Image(systemName: Constantes.tab2Logo)
+                }.tag(2)
             MapView()
                 .tabItem {
-                Text("Map")
-                Image(systemName: "globe")
-            }.tag(3)
+                    Text(Constantes.tab3)
+                    Image(systemName: Constantes.tab3Logo)
+                }.tag(3)
             ChatView()
                 .tabItem {
-                Text("Chat")
-                Image(systemName: "message")
-            }.tag(4)
+                    Text(Constantes.tab4)
+                    Image(systemName: Constantes.tab4Logo)
+                }.tag(4)
             ProfilView()
                 .tabItem {
-                Text("Profil")
-                Image(systemName: "person")
-            }.tag(5)
+                    Text(Constantes.tab5)
+                    Image(systemName: Constantes.tab5Logo)
+                }.tag(5)
         }.tint(.gray)
     }
 }

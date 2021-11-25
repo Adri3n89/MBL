@@ -22,7 +22,7 @@ struct MapPinView: View {
                 Button {
                     showLibrary.toggle()
                 } label: {
-                    Text("Library")
+                    Text(Constantes.gameType[0])
                 }.sheet(isPresented: $showLibrary) {
                     PublicProfilView(userID: user.userID)
                 }
@@ -32,11 +32,11 @@ struct MapPinView: View {
             .background(Color(.white))
             .cornerRadius(10)
             .opacity(showTitle ? 0 : 1)
-            Image(systemName: "mappin.circle.fill")
+            Image(systemName: Constantes.mappPin)
             .font(.title)
             .foregroundColor(.red)
           
-            Image(systemName: "arrowtriangle.down.fill")
+            Image(systemName: Constantes.arrow)
             .font(.caption)
             .foregroundColor(.red)
             .offset(x: 0, y: -5)

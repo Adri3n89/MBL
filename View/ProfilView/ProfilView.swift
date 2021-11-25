@@ -28,16 +28,16 @@ struct ProfilView: View {
                                 .background(Color.red)
                                 .clipShape(Circle())
                                 .padding([.leading, .trailing], 30)
-                        }.alert("Change profil Picture ?", isPresented: $viewModel.showAlert) {
-                            Button("Camera") {
+                        }.alert(Constantes.changePicture, isPresented: $viewModel.showAlert) {
+                            Button(Constantes.camera) {
                                 viewModel.sourcePicker = .camera
                                 viewModel.showPicker = true
                             }
-                            Button("Gallery") {
+                            Button(Constantes.gallery) {
                                 viewModel.sourcePicker = .photoLibrary
                                 viewModel.showPicker = true
                             }
-                            Button("Cancel", role: .cancel) { }
+                            Button(Constantes.cancel, role: .cancel) { }
                         }
                         VStack(alignment: .leading) {
                             Text(viewModel.userInfo.name)
@@ -49,8 +49,8 @@ struct ProfilView: View {
                             presentationMode.wrappedValue.dismiss()
                             viewModel.logOut()
                         } label: {
-                            Text("logout")
-                            Image(systemName: "power.circle.fill")
+                            Text(Constantes.logOut)
+                            Image(systemName: Constantes.power)
                         }
                         .foregroundColor(Color.red)
 
@@ -60,11 +60,11 @@ struct ProfilView: View {
                     }
                     Divider()
                     HStack {
-                        Text("Adress :")
+                        Text(Constantes.city)
                         Text(viewModel.userInfo.city)
                             .multilineTextAlignment(.leading)
                     }.padding()
-                    Picker("type", selection: $viewModel.type) {
+                    Picker("", selection: $viewModel.type) {
                         ForEach(viewModel.allType, id: \.self) {
                             Text($0)
                         }
@@ -73,7 +73,7 @@ struct ProfilView: View {
                     Spacer()
                     ScrollView {
                         LazyVGrid(columns: viewModel.columns, spacing: 15) {
-                            ForEach(viewModel.type == "library" ? viewModel.libraryGames : viewModel.wishGames) { game in
+                            ForEach(viewModel.type == viewModel.allType[0] ? viewModel.libraryGames : viewModel.wishGames) { game in
                                 NavigationLink {
                                     DetailsView(id: game.id)
                                 } label: {

@@ -10,7 +10,6 @@ import SwiftUI
 
 final class PublicProfilViewModel: ObservableObject {
     
-    @Published var type = "library"
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
@@ -32,7 +31,7 @@ final class PublicProfilViewModel: ObservableObject {
     }
     
     func fetchLibraryID(user: String) {
-        AuthRepository.shared.fetchUserGame(type: "Library", user: user) { libraryID in
+        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: user) { libraryID in
             self.libraryID = libraryID
             self.getLibraryGame()
         }

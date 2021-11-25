@@ -43,11 +43,11 @@ final class SignUpViewModel: ObservableObject {
                         }
                     }
                 } else {
-                    self.error = "Name and LastName must be complete"
+                    self.error = Constantes.errorName
                     self.showError = true
                 }
             } else {
-                self.error = "Adress not determined, try with only your city"
+                self.error = Constantes.errorAdress
                 self.showError = true
             }
         }
