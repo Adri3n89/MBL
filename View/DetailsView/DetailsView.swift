@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailsView: View {
     
     @State var id: String
-    @StateObject var viewModel = DetailsViewModel()
+    @ObservedObject var viewModel = DetailsViewModel()
     
     var body: some View {
         GeometryReader { geo in
@@ -24,6 +24,7 @@ struct DetailsView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .clipped()
+                                .cornerRadius(20)
                         } placeholder: {
                             Color.purple.opacity(0.1)
                         } .frame(width: width/2, height: width/2)
@@ -33,29 +34,47 @@ struct DetailsView: View {
                         Text(Constantes.year + (viewModel.gameInfo?.yearpublished.value ?? "?"))
                         Text(Constantes.player + (viewModel.gameInfo?.minplayers.value ?? "") + "-" + (viewModel.gameInfo?.maxplayers.value ?? ""))
                         Text(Constantes.time + (viewModel.gameInfo?.minplaytime.value ?? "") + "-" + (viewModel.gameInfo?.maxplaytime.value ?? ""))
-                    }.padding()
+                    }
+                    .padding()
+                    .background(Color.secondary)
+                    .cornerRadius(10)
+                    .padding()
                     HStack {
                         Spacer()
                         Button {
-                            // modifier par "delete from library" si déja dedans
                             viewModel.addToLibrary(id: id)
                         } label: {
                             Text(viewModel.libraryButtonText)
                         }
+                        .padding(3)
+                        .background(Color.secondary)
+                        .cornerRadius(10)
                         Spacer()
                         Button {
-                            // modifier par "delete from wishlist" si déja dedans
                             viewModel.addToWishlist(id: id)
                         } label: {
                             Text(viewModel.wishListButtonText)
                         }
+                        .padding(3)
+                        .background(Color.secondary)
+                        .cornerRadius(10)
                         Spacer()
                     }
                     Divider()
                     Text(viewModel.gameInfo?.itemDescription.decodingUnicodeCharacters ?? Constantes.noDescription)
-                        .padding()
+                        .padding(3)
+                        .background(Color.secondary)
+                        .cornerRadius(10)
+                        .padding(10)
                 }
             }
+            .foregroundColor(.white)
+            .background(Image(Constantes.background)
+                            .resizable()
+                            .ignoresSafeArea()
+                            .scaledToFill()
+                            .opacity(0.90)
+            )
             .onAppear {
                 viewModel.id = id
                 viewModel.getWishID()

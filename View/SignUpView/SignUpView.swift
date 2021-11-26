@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel = SignUpViewModel()
+    @ObservedObject var viewModel = SignUpViewModel()
     
     var body: some View {
         VStack {
@@ -46,6 +46,7 @@ struct SignUpView: View {
                         .resizable()
                         .ignoresSafeArea()
                         .scaledToFill()
+                        .opacity(0.90)
         )
     }
 }

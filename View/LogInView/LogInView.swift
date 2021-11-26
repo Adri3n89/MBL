@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct LogInView: View {
     
-    @StateObject var viewModel = LogInViewModel()
+    @ObservedObject var viewModel = LogInViewModel()
     
     var body: some View {
         VStack {
@@ -38,6 +38,7 @@ struct LogInView: View {
                         .resizable()
                         .ignoresSafeArea()
                         .scaledToFill()
+                        .opacity(0.90)
         )
     }
 }

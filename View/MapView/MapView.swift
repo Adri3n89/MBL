@@ -11,13 +11,14 @@ import CoreLocation
 
 struct MapView: View {
     
-    @StateObject var viewModel = MapViewModel()
+    @ObservedObject var viewModel = MapViewModel()
 
         var body: some View {
             Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { user in
                 MapAnnotation(coordinate: user.coordinates) {
                     MapPinView(user: user)
                         .foregroundColor(.blue)
+                        .offset(x: 0, y: -5)
                 }
             })
             .onAppear {

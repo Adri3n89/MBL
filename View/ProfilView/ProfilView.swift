@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfilView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel = ProfilViewModel()
+    @ObservedObject var viewModel = ProfilViewModel()
     @State var image = UIImage()
     
     var body: some View {
@@ -44,6 +44,7 @@ struct ProfilView: View {
                                 .padding([.bottom], 20)
                             Text(viewModel.userInfo.lastName)
                         }
+                            .foregroundColor(.white)
                         Spacer()
                         Button {
                             presentationMode.wrappedValue.dismiss()
@@ -52,7 +53,7 @@ struct ProfilView: View {
                             Text(Constantes.logOut)
                             Image(systemName: Constantes.power)
                         }
-                        .foregroundColor(Color.red)
+                            .foregroundColor(Color.red)
 
                         Spacer()
                     }.sheet(isPresented: $viewModel.showPicker) {
@@ -63,13 +64,19 @@ struct ProfilView: View {
                         Text(Constantes.city)
                         Text(viewModel.userInfo.city)
                             .multilineTextAlignment(.leading)
-                    }.padding()
+                    }
+                        .padding()
+                        .foregroundColor(.white)
                     Picker("", selection: $viewModel.type) {
                         ForEach(viewModel.allType, id: \.self) {
                             Text($0)
                         }
                     }
-                    .pickerStyle(.segmented)
+                        .pickerStyle(.segmented)
+                        .foregroundColor(.black)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding()
                     Spacer()
                     ScrollView {
                         LazyVGrid(columns: viewModel.columns, spacing: 15) {
@@ -85,6 +92,12 @@ struct ProfilView: View {
                         .padding()
                     }
                 }
+                .background(Image(Constantes.background)
+                            .resizable()
+                            .ignoresSafeArea()
+                            .scaledToFill()
+                            .opacity(0.90)
+                )
                 .onAppear {
                     viewModel.fetchWishlistID()
                     viewModel.fetchLibraryID()

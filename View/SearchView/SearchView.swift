@@ -9,21 +9,25 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @StateObject var viewModel = SearchViewModel()
+    @ObservedObject var viewModel = SearchViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField(Constantes.search, text: $viewModel.gameName, prompt: Text(Constantes.searchGame))
+                TextField("", text: $viewModel.gameName)
+                    .placeholder(when: viewModel.gameName.isEmpty) {
+                        Text(Constantes.searchGame).foregroundColor(.white)
+                }
                     .padding()
-                    .border(.secondary, width: 2)
+                    .border(.white, width: 2)
                     .padding()
+                    .foregroundColor(.white)
                 Button {
                     viewModel.searchGame()
                 } label: {
                     Text(Constantes.search)
                 }
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 ScrollView {
                     ForEach(viewModel.searchResult) { game in
                         NavigationLink {
@@ -33,7 +37,7 @@ struct SearchView: View {
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.white)
                     }
                 }
                 .padding()
@@ -41,6 +45,12 @@ struct SearchView: View {
             .alert(viewModel.error, isPresented: $viewModel.showError) {
                 Button(Constantes.ok, role: .cancel) { }
             }
+            .background(Image(Constantes.background)
+                            .resizable()
+                            .ignoresSafeArea()
+                            .scaledToFill()
+                            .opacity(0.90)
+            )
             .navigationBarHidden(true)
         }
     }

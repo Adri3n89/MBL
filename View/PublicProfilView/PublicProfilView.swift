@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PublicProfilView: View {
     
-    @StateObject var viewModel = PublicProfilViewModel()
+    @ObservedObject var viewModel = PublicProfilViewModel()
     @State var image = UIImage()
     var userID: String
     
@@ -36,7 +36,6 @@ struct PublicProfilView: View {
                         Text(Constantes.contact)
                         Image(systemName: Constantes.envelope)
                     }
-                    .foregroundColor(Color.blue)
                     Spacer()
                 }
                 .padding()
@@ -61,6 +60,13 @@ struct PublicProfilView: View {
                         .padding()
                     }
                 }
+            .foregroundColor(.white)
+                .background(Image(Constantes.background)
+                        .resizable()
+                        .ignoresSafeArea()
+                        .scaledToFill()
+                        .opacity(0.90)
+                )
                 .onAppear {
                     viewModel.fetchLibraryID(user: userID)
                     viewModel.fetchUserInfo(user: userID)

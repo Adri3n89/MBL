@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Top50View: View {
     
-    @StateObject private var viewModel = Top50ViewModel()
+    @ObservedObject private var viewModel = Top50ViewModel()
     
     var body: some View {
         GeometryReader { geo in
@@ -32,6 +32,7 @@ struct Top50View: View {
                                 .resizable()
                                 .ignoresSafeArea()
                                 .scaledToFill()
+                                .opacity(0.90)
                 )
                 .onAppear {
                     viewModel.getTop50()
