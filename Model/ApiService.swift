@@ -63,7 +63,9 @@ final class ApiService: ObservableObject {
                     if response.statusCode == 200 {
                         if let data = data {
                             let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                            completed(.success(apiResponse.items.item))
+                            var game = apiResponse.items.item
+                            game.itemDescription = apiResponse.items.item.itemDescription.decodingHTMLEntities()
+                            completed(.success(game))
                         } else {
                             completed(.failure(.noData))
                         }

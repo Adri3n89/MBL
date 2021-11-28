@@ -22,8 +22,7 @@ struct ItemsInfo: Codable {
 struct ItemInfo: Codable, Identifiable {
     let type, id: String
     let thumbnail, image: String
-//    let name: [GameName]
-    let itemDescription: String
+    var itemDescription: String
     let yearpublished, minplayers, maxplayers: Maxplayers
     let playingtime, minplaytime, maxplaytime, minage: Maxplayers
 

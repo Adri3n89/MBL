@@ -61,7 +61,7 @@ struct DetailsView: View {
                         Spacer()
                     }
                     Divider()
-                    Text(viewModel.gameInfo?.itemDescription.decodingUnicodeCharacters ?? Constantes.noDescription)
+                    Text(viewModel.gameInfo?.itemDescription ?? Constantes.noDescription)
                         .padding(3)
                         .background(Color.secondary)
                         .cornerRadius(10)
