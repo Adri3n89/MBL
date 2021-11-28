@@ -12,14 +12,13 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     var sourceType: UIImagePickerController.SourceType
     
-    @Binding var selectedImage: UIImage
     @Environment(\.presentationMode) private var presentationMode
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = sourceType
+        imagePicker.sourceType = sourceType == .camera ? .camera : .photoLibrary
         imagePicker.delegate = context.coordinator
         
         return imagePicker
@@ -33,6 +32,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
+    
     final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
         var parent: ImagePicker
@@ -44,8 +44,12 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
-                // uploader l'image sur storage
+                var randomString: String {
+                    let letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+                    return String((0 ..< 24).map { _ in letters.randomElement()! })
+                }
+                let childRef = randomString + ".png"
+                PictureRepository.shared.uploadPicture(image: image, childRef: childRef)
             }
             
             parent.presentationMode.wrappedValue.dismiss()

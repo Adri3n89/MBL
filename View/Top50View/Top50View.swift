@@ -32,6 +32,7 @@ struct Top50View: View {
                                 .resizable()
                                 .ignoresSafeArea()
                                 .scaledToFill()
+                                .blur(radius: 3, opaque: true)
                                 .opacity(0.90)
                 )
                 .onAppear {

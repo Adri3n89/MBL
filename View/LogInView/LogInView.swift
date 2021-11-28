@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct LogInView: View {
     
@@ -34,11 +33,13 @@ struct LogInView: View {
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
             Button(Constantes.ok, role: .cancel) { }
         }
-        .background(Image(Constantes.background)
-                        .resizable()
-                        .ignoresSafeArea()
-                        .scaledToFill()
-                        .opacity(0.90)
+        .background(
+            Image(Constantes.background)
+                .resizable()
+                .ignoresSafeArea()
+                .scaledToFill()
+                .blur(radius: 3, opaque: true)
+                .opacity(0.90)
         )
     }
 }

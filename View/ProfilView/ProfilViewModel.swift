@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 final class ProfilViewModel: ObservableObject {
     
@@ -20,9 +21,9 @@ final class ProfilViewModel: ObservableObject {
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
     @Published var showAlert = false
     @Published var showPicker = false
+    @Published var profilURL = "https://i.imgur.com/42ZTgTc.png"
+    @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary
     var allType = Constantes.gameType
-    @State var sourcePicker: UIImagePickerController.SourceType = .photoLibrary
-    let picker = UIImagePickerController()
     
     var columns: [GridItem] = [
         GridItem(.flexible()),

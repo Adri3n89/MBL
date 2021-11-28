@@ -319,6 +319,8 @@
 			dependencies = (
 			);
 			name = "MGL (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "MGL (iOS)";
 			productReference = 7A4C29FD272FEF1200C4AC30 /* MGL.app */;
 			productType = "com.apple.product-type.application";
@@ -348,6 +350,8 @@
 				fr,
 			);
 			mainGroup = 7A4C29F0272FEF1000C4AC30;
+			packageReferences = (
+			);
 			productRefGroup = 7A4C29FE272FEF1200C4AC30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

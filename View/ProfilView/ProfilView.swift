@@ -11,30 +11,35 @@ struct ProfilView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = ProfilViewModel()
-    @State var image = UIImage()
     
     var body: some View {
         GeometryReader { geo in
             NavigationView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Button {
-                            // changer la photo de profil
-                            viewModel.updatePicture()
-                        } label: {
-                            Image(uiImage: image)
+                        AsyncImage(url: URL(string: viewModel.profilURL), content: { image in
+                            image
                                 .resizable()
-                                .frame(width: 80, height: 80)
-                                .background(Color.red)
-                                .clipShape(Circle())
-                                .padding([.leading, .trailing], 30)
-                        }.alert(Constantes.changePicture, isPresented: $viewModel.showAlert) {
+                        }, placeholder: {
+                            Color.purple.opacity(0.1)
+                        })
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
+                            .overlay(
+                               Circle()
+                                   .stroke(.white, lineWidth: 3)
+                           )
+                           .padding([.leading, .trailing], 30)
+                            .onTapGesture {
+                                viewModel.updatePicture()
+                            }
+                        .alert(Constantes.changePicture, isPresented: $viewModel.showAlert) {
                             Button(Constantes.camera) {
-                                viewModel.sourcePicker = .camera
+                                viewModel.sourceType = .camera
                                 viewModel.showPicker = true
                             }
                             Button(Constantes.gallery) {
-                                viewModel.sourcePicker = .photoLibrary
+                                viewModel.sourceType = .photoLibrary
                                 viewModel.showPicker = true
                             }
                             Button(Constantes.cancel, role: .cancel) { }
@@ -57,7 +62,7 @@ struct ProfilView: View {
 
                         Spacer()
                     }.sheet(isPresented: $viewModel.showPicker) {
-                        ImagePicker(sourceType: viewModel.sourcePicker, selectedImage: $image)
+                        ImagePicker(sourceType: viewModel.sourceType)
                     }
                     Divider()
                     HStack {
@@ -96,6 +101,7 @@ struct ProfilView: View {
                             .resizable()
                             .ignoresSafeArea()
                             .scaledToFill()
+                            .blur(radius: 3, opaque: true)
                             .opacity(0.90)
                 )
                 .onAppear {

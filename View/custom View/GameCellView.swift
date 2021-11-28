@@ -35,7 +35,7 @@ struct GameCellView: View {
                 .minimumScaleFactor(0.01)
                 .glowBorder(color: .black, lineWidth: 4)
         }.frame(width: (width / 2.3) , height: (width / 2.3) , alignment: .center)
-            .cornerRadius(10)
+            .cornerRadius(20)
             .foregroundColor(.white)
     }
 }
