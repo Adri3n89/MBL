@@ -18,10 +18,9 @@ final class ProfilViewModel: ObservableObject {
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var wishID: [String] = []
-    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
+    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "")
     @Published var showAlert = false
     @Published var showPicker = false
-    @Published var profilURL = "https://i.imgur.com/42ZTgTc.png"
     @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary
     var allType = Constantes.gameType
     
@@ -75,6 +74,7 @@ final class ProfilViewModel: ObservableObject {
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
+            self.userInfo.picture = userInfo.picture
         }
     }
     

@@ -18,4 +18,5 @@ struct UserData: Identifiable {
     var wish: [String] = []
     var library: [String] = []
     var coordinates = CLLocationCoordinate2D()
+    var picture: String
 }

@@ -17,7 +17,7 @@ struct ProfilView: View {
             NavigationView {
                 VStack(alignment: .leading) {
                     HStack {
-                        AsyncImage(url: URL(string: viewModel.profilURL), content: { image in
+                        AsyncImage(url: URL(string: viewModel.userInfo.picture), content: { image in
                             image
                                 .resizable()
                         }, placeholder: {

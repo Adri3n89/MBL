@@ -12,7 +12,7 @@ final class PublicProfilViewModel: ObservableObject {
     
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
-    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "")
+    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "")
     
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -42,6 +42,7 @@ final class PublicProfilViewModel: ObservableObject {
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
+            self.userInfo.picture = userInfo.picture
         }
     }
     

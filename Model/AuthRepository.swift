@@ -30,6 +30,12 @@ final class AuthRepository: ObservableObject {
         }
     }
     
+    func forgotPassword(email: String) {
+        auth.sendPasswordReset(withEmail: email) { error in
+            // afficher une alerte
+        }
+    }
+    
     func signUp(email: String, password: String, name: String, lastName: String, city: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
@@ -108,7 +114,8 @@ final class AuthRepository: ObservableObject {
             let lastName = value?["LastName"] as! String
             let city = value?["City"] as! String
             let userID = value?["Userid"] as! String
-            completed(UserData(name: name, lastName: lastName,userID: userID, city: city))
+            let picture = value?["Picture"] as! String?
+            completed(UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? "https://i.imgur.com/42ZTgTc.png"))
         })
     }
     
@@ -121,7 +128,8 @@ final class AuthRepository: ObservableObject {
                 let lastName = value?["LastName"] as! String
                 let city = value?["City"] as! String
                 let userID = value?["Userid"] as! String
-                usersInfo.append(UserData(name: name, lastName: lastName, userID: userID, city: city))
+                let picture = value?["Picture"] as! String?
+                usersInfo.append(UserData(name: name, lastName: lastName, userID: userID, city: city, picture: picture ?? "https://i.imgur.com/42ZTgTc.png"))
                 if users.children.allObjects.count == usersInfo.count {
                     completed(usersInfo)
                 }

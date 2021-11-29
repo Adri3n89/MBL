@@ -18,12 +18,19 @@ struct PublicProfilView: View {
             NavigationView {
             VStack(alignment: .leading) {
                 HStack {
-                    Image(uiImage: image)
+                    AsyncImage(url: URL(string: viewModel.userInfo.picture), content: { image in
+                        image
                             .resizable()
-                            .frame(width: 80, height: 80)
-                            .background(Color.red)
-                            .clipShape(Circle())
-                            .padding([.leading, .trailing], 30)
+                    }, placeholder: {
+                        Color.purple.opacity(0.1)
+                    })
+                        .frame(width: 80, height: 80)
+                        .clipShape(Circle())
+                        .overlay(
+                           Circle()
+                               .stroke(.white, lineWidth: 3)
+                       )
+                       .padding([.leading, .trailing], 30)
                     VStack(alignment: .leading) {
                         Text(viewModel.userInfo.name)
                             .padding([.bottom], 20)

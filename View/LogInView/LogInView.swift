@@ -28,6 +28,10 @@ struct LogInView: View {
                 .cornerRadius(10)
                 .padding(.top, 30)
                 .tint(.black)
+            Button("Forgot Password ?") {
+                viewModel.showAlert.toggle()
+            }
+            Spacer()
             Spacer()
             BottomLogInView()
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
