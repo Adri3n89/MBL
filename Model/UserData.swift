@@ -19,4 +19,5 @@ struct UserData: Identifiable {
     var library: [String] = []
     var coordinates = CLLocationCoordinate2D()
     var picture: String
+    var refPic: String
 }

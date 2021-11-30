@@ -28,8 +28,11 @@ struct LogInView: View {
                 .cornerRadius(10)
                 .padding(.top, 30)
                 .tint(.black)
-            Button("Forgot Password ?") {
-                viewModel.showAlert.toggle()
+            Button(Constantes.forgotPassword) {
+                viewModel.showReset.toggle()
+            }.sheet(isPresented: $viewModel.showReset) { 
+                ResetView()
+                    .background(BackgroundClearView())
             }
             Spacer()
             Spacer()

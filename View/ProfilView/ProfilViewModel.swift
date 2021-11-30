@@ -18,7 +18,7 @@ final class ProfilViewModel: ObservableObject {
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var wishID: [String] = []
-    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "")
+    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "", refPic: "")
     @Published var showAlert = false
     @Published var showPicker = false
     @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary

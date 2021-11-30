@@ -62,7 +62,7 @@ struct ProfilView: View {
 
                         Spacer()
                     }.sheet(isPresented: $viewModel.showPicker) {
-                        ImagePicker(sourceType: viewModel.sourceType)
+                        ImagePicker(sourceType: viewModel.sourceType, refPic: viewModel.userInfo.refPic)
                     }
                     Divider()
                     HStack {

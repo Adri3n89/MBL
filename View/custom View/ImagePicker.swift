@@ -11,6 +11,7 @@ import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     
     var sourceType: UIImagePickerController.SourceType
+    var refPic: String
     
     @Environment(\.presentationMode) private var presentationMode
 
@@ -29,7 +30,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(self, refPic: refPic)
     }
     
     
@@ -37,8 +38,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         var parent: ImagePicker
         
-        init(_ parent: ImagePicker) {
+        init(_ parent: ImagePicker, refPic: String) {
             self.parent = parent
+            self.parent.refPic = refPic
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -48,10 +50,9 @@ struct ImagePicker: UIViewControllerRepresentable {
                     let letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
                     return String((0 ..< 24).map { _ in letters.randomElement()! })
                 }
-                let childRef = randomString + ".png"
+                let childRef = parent.refPic == "" ? randomString + ".png" : parent.refPic
                 PictureRepository.shared.uploadPicture(image: image, childRef: childRef)
             }
-            
             parent.presentationMode.wrappedValue.dismiss()
         }
     }

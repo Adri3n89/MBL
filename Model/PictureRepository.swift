@@ -27,6 +27,7 @@ final class PictureRepository: ObservableObject {
                     storageRef.downloadURL(completion: { url, _ in
                         print(url!.absoluteString)
                         self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("Picture").setValue("\(url!.absoluteString)")
+                        self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("RefPic").setValue("\(childRef)")
                     })
                 }
             }

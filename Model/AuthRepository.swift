@@ -30,9 +30,13 @@ final class AuthRepository: ObservableObject {
         }
     }
     
-    func forgotPassword(email: String) {
+    func forgotPassword(email: String, completed: @escaping (String) -> Void) {
         auth.sendPasswordReset(withEmail: email) { error in
-            // afficher une alerte
+            guard let error = error else {
+                completed("reset e-mail send")
+                return
+            }
+            completed(error.localizedDescription)
         }
     }
     
@@ -115,7 +119,8 @@ final class AuthRepository: ObservableObject {
             let city = value?["City"] as! String
             let userID = value?["Userid"] as! String
             let picture = value?["Picture"] as! String?
-            completed(UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? "https://i.imgur.com/42ZTgTc.png"))
+            let refPic = value?["RefPic"] as! String?
+            completed(UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? "https://i.imgur.com/42ZTgTc.png", refPic: refPic ?? ""))
         })
     }
     
@@ -129,7 +134,8 @@ final class AuthRepository: ObservableObject {
                 let city = value?["City"] as! String
                 let userID = value?["Userid"] as! String
                 let picture = value?["Picture"] as! String?
-                usersInfo.append(UserData(name: name, lastName: lastName, userID: userID, city: city, picture: picture ?? "https://i.imgur.com/42ZTgTc.png"))
+                let refPic = value?["RefPic"] as! String?
+                usersInfo.append(UserData(name: name, lastName: lastName, userID: userID, city: city, picture: picture ?? "https://i.imgur.com/42ZTgTc.png", refPic: refPic ?? ""))
                 if users.children.allObjects.count == usersInfo.count {
                     completed(usersInfo)
                 }

@@ -15,7 +15,7 @@ final class LogInViewModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var error: String = ""
     @Published var showError = false
-    @Published var showAlert = false
+    @Published var showReset = false
     @Published var resetEmail = ""
     
     func signIn() {
@@ -30,8 +30,5 @@ final class LogInViewModel: ObservableObject {
             }
         }
     }
-    
-    func getNewPassword() {
-        AuthRepository.shared.forgotPassword(email: resetEmail)
-    }
+
 }
