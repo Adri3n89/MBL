@@ -13,7 +13,7 @@ struct SignUpView: View {
     @ObservedObject var viewModel = SignUpViewModel()
     
     var body: some View {
-        VStack {
+        ScrollView {
             HeaderView().foregroundColor(.white)
             Spacer()
             TFSignUpView(email: $viewModel.email, password: $viewModel.password, name: $viewModel.name, lastName: $viewModel.lastName, city: $viewModel.city)
