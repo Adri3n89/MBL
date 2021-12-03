@@ -30,7 +30,7 @@ final class ApiService: ObservableObject {
                         if let data = data {
                             let apiResponse = try JSONDecoder().decode(Game.self, from: data)
                             for item in apiResponse.items.item {
-                                let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: item.thumbnail.value)
+                                let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: (item.thumbnail.value == "") ? Constantes.defaultGamePicture : item.thumbnail.value)
                                 top.append(game)
                                 if top.count == 50 {
                                     completed(.success(top))
@@ -97,7 +97,7 @@ final class ApiService: ObservableObject {
                             if let data = data {
                                 let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
                                 let item = apiResponse.items.item
-                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
+                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
                                 favoriteGames.append(game)
                                 if libraryID.count == favoriteGames.count {
                                     completed(.success(favoriteGames))
@@ -134,7 +134,7 @@ final class ApiService: ObservableObject {
                             if let data = data {
                                 let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
                                 let item = apiResponse.items.item
-                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image)
+                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
                                 wishGames.append(game)
                                 if wishID.count == wishGames.count {
                                     completed(.success(wishGames))
@@ -152,7 +152,7 @@ final class ApiService: ObservableObject {
     }
 
     func searchGameName(name: String, _ session: URLSession = .shared, completed: @escaping (Result<[ItemResult], NetworkError>) -> Void) {
-        //retourne la liste de jeu correspondant a la reherche faite par l'utilisateur
+        //retourne la liste de jeu correspondant à la reherche faite par l'utilisateur
         let urlString = Constantes.urlByName(name: name)
         guard let url = URL(string: urlString)?.absoluteURL else {
             completed(.failure(.badURL))

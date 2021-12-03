@@ -75,6 +75,7 @@ final class ProfilViewModel: ObservableObject {
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
             self.userInfo.picture = userInfo.picture
+            self.userInfo.refPic = userInfo.refPic
         }
     }
     

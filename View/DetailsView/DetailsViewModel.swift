@@ -70,4 +70,24 @@ final class DetailsViewModel: ObservableObject {
         wishListButtonText = index == 0 ? Constantes.addWish : Constantes.removeWish
     }
     
+    func gameYear() -> String {
+        return Constantes.year + (gameInfo?.yearpublished.value ?? "?")
+    }
+    
+    func players() -> String {
+        return Constantes.player + (gameInfo?.minplayers.value ?? "") + "-" + (gameInfo?.maxplayers.value ?? "")
+    }
+    
+    func playTime() -> String {
+        return Constantes.time + (gameInfo?.minplaytime.value ?? "") + "-" + (gameInfo?.maxplaytime.value ?? "")
+    }
+    
+    func gamePicture() -> String {
+        return gameInfo?.image ?? Constantes.defaultGamePicture
+    }
+    
+    func description() -> String {
+        return gameInfo?.itemDescription ?? Constantes.noDescription
+    }
+    
 }

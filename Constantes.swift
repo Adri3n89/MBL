@@ -71,4 +71,12 @@ struct Constantes {
     static let mappPin = "mappin.circle.fill"
     static let arrow = "arrowtriangle.down.fill"
     static let refURL = "https://myboardgamelibrary-default-rtdb.europe-west1.firebasedatabase.app"
+    static let createConversation = "Conversation create successfull\nGo on the Chat tab to see it"
+    static let alreadyConversation = "You already have a conversation with this user\nGo on Chat tab to converse"
+    static let paperplane = "paperplane.circle.fill"
+    static let arrowShape = "arrowshape.turn.up.backward.fill"
+    static let defaultGamePicture = "https://i.imgur.com/C6IrGHI.jpg"
+    static let defaultProfilPicture = "https://i.imgur.com/42ZTgTc.png"
+    static let noConversation = "Oups no conversations"
+    static let resetMail = "reset e-mail send"
 }

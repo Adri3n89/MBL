@@ -38,10 +38,12 @@ struct PublicProfilView: View {
                     }
                     Spacer()
                     Button {
-                      
+                        viewModel.createConversation()
                     } label: {
                         Text(Constantes.contact)
                         Image(systemName: Constantes.envelope)
+                    }.alert(viewModel.message, isPresented: $viewModel.showMessage) {
+                        Button(Constantes.cancel, role: .cancel) { }
                     }
                     Spacer()
                 }

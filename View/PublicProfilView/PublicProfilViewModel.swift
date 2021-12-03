@@ -13,6 +13,8 @@ final class PublicProfilViewModel: ObservableObject {
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "", refPic: "")
+    @Published var showMessage = false
+    @Published var message = ""
     
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -43,6 +45,14 @@ final class PublicProfilViewModel: ObservableObject {
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
             self.userInfo.picture = userInfo.picture
+            self.userInfo.userID = userInfo.userID
+        }
+    }
+    
+    func createConversation() {
+        ConversationRepository.shared.searchIfConversationAlreadyExist(user: userInfo.userID) { message in
+            self.message = message
+            self.showMessage.toggle()
         }
     }
     

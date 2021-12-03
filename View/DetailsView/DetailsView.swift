@@ -19,7 +19,7 @@ struct DetailsView: View {
                 VStack(alignment: .center) {
                     HStack {
                         Spacer()
-                        AsyncImage(url: URL(string: viewModel.gameInfo?.image ?? "")) { image in
+                        AsyncImage(url: URL(string: viewModel.gamePicture())) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -31,9 +31,9 @@ struct DetailsView: View {
                         Spacer()
                     }
                     VStack {
-                        Text(Constantes.year + (viewModel.gameInfo?.yearpublished.value ?? "?"))
-                        Text(Constantes.player + (viewModel.gameInfo?.minplayers.value ?? "") + "-" + (viewModel.gameInfo?.maxplayers.value ?? ""))
-                        Text(Constantes.time + (viewModel.gameInfo?.minplaytime.value ?? "") + "-" + (viewModel.gameInfo?.maxplaytime.value ?? ""))
+                        Text(viewModel.gameYear())
+                        Text(viewModel.players())
+                        Text(viewModel.playTime())
                     }
                     .padding()
                     .background(Color.secondary)
@@ -61,7 +61,7 @@ struct DetailsView: View {
                         Spacer()
                     }
                     Divider()
-                    Text(viewModel.gameInfo?.itemDescription ?? Constantes.noDescription)
+                    Text(viewModel.description())
                         .padding(3)
                         .background(Color.secondary)
                         .cornerRadius(10)

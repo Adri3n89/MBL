@@ -21,11 +21,9 @@ final class PictureRepository: ObservableObject {
         if let uploadData = image.pngData() {
             storageRef.putData(uploadData, metadata: nil) { _, error in
                 if error != nil {
-                    print("error")
                     return
                 } else {
                     storageRef.downloadURL(completion: { url, _ in
-                        print(url!.absoluteString)
                         self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("Picture").setValue("\(url!.absoluteString)")
                         self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("RefPic").setValue("\(childRef)")
                     })

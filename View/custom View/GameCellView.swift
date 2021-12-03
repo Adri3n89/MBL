@@ -13,7 +13,7 @@ struct GameCellView: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: game!.image)) { image in
+            AsyncImage(url: URL(string: game?.image ?? Constantes.defaultGamePicture)) { image in
                 image
                     .resizable()
                     .scaledToFill()
