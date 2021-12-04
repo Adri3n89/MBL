@@ -19,7 +19,7 @@ struct ChatView: View {
                 } else {
                     ForEach(viewModel.allConversations, content: { conversation in
                         NavigationLink {
-                            ConversationView(viewModel: ConversationViewModel(messages: conversation.messages ?? [] , userInfo: viewModel.returnGoodUser(user1: conversation.user1!, user2: conversation.user2!), conversationID: conversation.conversationID))
+                            ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(user1: conversation.user1!, user2: conversation.user2!), conversationID: conversation.conversationID))
                         } label: {
                             ConversationCellView(name: viewModel.returnGoodName(user1: conversation.user1!, user2: conversation.user2!), imageURL: viewModel.returnGoodPicture(user1: conversation.user1!, user2: conversation.user2!))
                         }

@@ -18,6 +18,8 @@
 		08706A802756B3D9007C77B9 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7F2756B3D9007C77B9 /* ConversationViewModel.swift */; };
 		089A0E302755348100E23044 /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A0E2F2755348100E23044 /* ResetView.swift */; };
 		089A0E322755348900E23044 /* ResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A0E312755348900E23044 /* ResetViewModel.swift */; };
+		08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */; };
+		08C6F407275B6B800028D5E4 /* RightBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F406275B6B800028D5E4 /* RightBubbleView.swift */; };
 		4BA6E765D0022F15F79521CA /* Pods_MGL__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7969FE3C4A47832D05E4193E /* Pods_MGL__iOS_.framework */; };
 		7A10A3A227446BBD006B09DD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A10A3A127446BBD006B09DD /* NetworkError.swift */; };
 		7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40E44D27450E95002D0FD8 /* Constantes.swift */; };
@@ -75,6 +77,8 @@
 		08706A7F2756B3D9007C77B9 /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		089A0E2F2755348100E23044 /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
 		089A0E312755348900E23044 /* ResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewModel.swift; sourceTree = "<group>"; };
+		08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBubbleView.swift; sourceTree = "<group>"; };
+		08C6F406275B6B800028D5E4 /* RightBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBubbleView.swift; sourceTree = "<group>"; };
 		6E0BCC8F969021B2F4161E78 /* Pods-MGL (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (iOS).release.xcconfig"; path = "Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS).release.xcconfig"; sourceTree = "<group>"; };
 		7969FE3C4A47832D05E4193E /* Pods_MGL__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MGL__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A10A3A127446BBD006B09DD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 				7ACB1738274A6E4C00C88CE8 /* ImagePicker.swift */,
 				08706A7027561DD2007C77B9 /* BackgroundClearView.swift */,
 				08706A7A275697ED007C77B9 /* ConversationCellView.swift */,
+				08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */,
+				08C6F406275B6B800028D5E4 /* RightBubbleView.swift */,
 			);
 			path = "custom View";
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */,
 				08706A802756B3D9007C77B9 /* ConversationViewModel.swift in Sources */,
 				7A4C2A21272FEF7C00C4AC30 /* ProfilView.swift in Sources */,
+				08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */,
 				08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */,
 				7A4C2A33272FF96400C4AC30 /* TFView.swift in Sources */,
 				08706A7727568788007C77B9 /* ConversationData.swift in Sources */,
@@ -486,6 +493,7 @@
 				7A4C2A2A272FF6D800C4AC30 /* CustomTabView.swift in Sources */,
 				7AAC6D672747A9FD00E19556 /* PinInfo.swift in Sources */,
 				7ACB1735274A6B1D00C88CE8 /* PictureRepository.swift in Sources */,
+				08C6F407275B6B800028D5E4 /* RightBubbleView.swift in Sources */,
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */,
 				08706A7E2756B3CC007C77B9 /* ConversationView.swift in Sources */,

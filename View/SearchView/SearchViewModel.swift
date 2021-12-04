@@ -15,8 +15,10 @@ final class SearchViewModel: ObservableObject {
     @Published var showError = false
     
     func searchGame() {
-        // TODO - encoder le text pour ne pas avoir d'erreur avec les ' et - 
-        ApiService.shared.searchGameName(name: gameName.replacingOccurrences(of: " ", with: "_")) { result in
+        // TODO - encoder le text pour ne pas avoir d'erreur avec les ' et -
+        let name = gameName.replacingOccurrences(of: " ", with: "_")
+        let name2 = name.replacingOccurrences(of: "'", with: "", options: .literal)
+        ApiService.shared.searchGameName(name: name2) { result in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let games):

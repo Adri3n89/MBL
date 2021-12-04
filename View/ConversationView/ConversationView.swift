@@ -42,14 +42,24 @@ struct ConversationView: View {
                     .foregroundColor(.white)
                 Spacer()
             }
-            ScrollView {
-                ForEach(viewModel.messages) { message in
-                    VStack {
-                        Text(message.text)
-                            .foregroundColor(.white)
+            ScrollViewReader { value in
+                ScrollView {
+                    ForEach(viewModel.messages) { message in
+                        if message.userID == ConversationRepository.shared.currentUserID {
+                            RightBubbleView(text: message.text)
+                                .id(message.id)
+                        } else {
+                            LeftBubbleView(text: message.text)
+                                .id(message.id)
+                        }
                     }
+                }.onAppear {
+                    value.scrollTo(viewModel.messages.last?.id)
                 }
-            }.id(UUID())
+                .onChange(of: viewModel.messages.count) { _ in
+                    value.scrollTo(viewModel.messages.last?.id)
+                }
+            }
             HStack {
                 TextEditor(text: $viewModel.newMessage)
                     .background(Color.gray)
@@ -105,6 +115,6 @@ struct ConversationView_Previews: PreviewProvider {
                                    Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO")
         ]
         
-        ConversationView(viewModel: ConversationViewModel(messages: messages, userInfo: UserData(name: "Jean", lastName: "Dupont", userID: "DFJDK", city: "89340 VILLENEUVE LA GUYARD", picture: "https://i.imgur.com/42ZTgTc.png", refPic: ""), conversationID: "DJDONOUNOZUD"))
+        ConversationView(viewModel: ConversationViewModel(userInfo: UserData(name: "Jean", lastName: "Dupont", userID: "DFJDK", city: "89340 VILLENEUVE LA GUYARD", picture: "https://i.imgur.com/42ZTgTc.png", refPic: ""), conversationID: "DJDONOUNOZUD"))
     }
 }

@@ -9,13 +9,12 @@ import Foundation
 
 final class ConversationViewModel: ObservableObject {
     
-    @Published var messages: [Message] = []
+    @Published var messages: [MessageDate] = []
     @Published var userInfo: UserData
     @Published var newMessage: String = ""
     @Published var conversationID: String
     
-    init(messages: [Message], userInfo: UserData, conversationID: String) {
-        self.messages = messages
+    init(userInfo: UserData, conversationID: String) {
         self.userInfo = userInfo
         self.conversationID = conversationID
     }
@@ -31,8 +30,22 @@ final class ConversationViewModel: ObservableObject {
     }
     
     func fetchConversation() {
+        messages = []
         ConversationRepository.shared.fetchConversation(conversationID: conversationID) { conversation in
-            self.messages = conversation.messages ?? []
+            if conversation.messages != nil {
+                for message in conversation.messages! {
+                    self.messages.append(MessageDate(text: message.text, date: self.stringToDate(stringDate: message.date), userID: message.userID ))
+                }
+                self.messages = self.messages.sorted(by: {
+                    $0.date.compare($1.date) == .orderedAscending
+                })
+            }
         }
+    }
+    
+    func stringToDate(stringDate: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.date(from: stringDate)!
     }
 }

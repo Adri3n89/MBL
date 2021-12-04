@@ -23,3 +23,10 @@ struct Message: Identifiable {
     var date: String
     var userID: String
 }
+
+struct MessageDate: Identifiable {
+    var id = UUID()
+    var text: String
+    var date: Date
+    var userID: String
+}

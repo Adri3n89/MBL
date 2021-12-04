@@ -29,7 +29,7 @@ final class ConversationRepository {
     }
     
     func searchIfConversationAlreadyExist(user: String, completed: @escaping (String) -> Void) {
-        ref.child("Conversations").observe(.value, with: { conversations in
+        ref.child("Conversations").observeSingleEvent(of: .value, with: { conversations in
             for conversation in conversations.children.allObjects as! [DataSnapshot] {
                 let value = conversation.value as? NSDictionary
                 let user1 = value?["user1"] as! String
@@ -87,8 +87,9 @@ final class ConversationRepository {
     }
     
     func fetchConversation(conversationID: String, completed: @escaping (ConversationData) -> Void) {
-        Database.database().reference().child("Conversations").child(conversationID).observeSingleEvent(of: .value, with: { conversation in
+        ref.child("Conversations").child(conversationID).observeSingleEvent(of: .value, with: { conversation in
             completed(self.fetchConversationData(conversation: conversation)!)
+            
          })
     }
     

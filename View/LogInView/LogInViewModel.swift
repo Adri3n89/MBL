@@ -12,7 +12,6 @@ final class LogInViewModel: ObservableObject {
     @Published var isPresented = false
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var isSignedIn = false
     @Published var error: String = ""
     @Published var showError = false
     @Published var showReset = false
@@ -23,7 +22,6 @@ final class LogInViewModel: ObservableObject {
             switch result {
                 case .success(_):
                     self.isPresented = true
-                    self.isSignedIn = true
                 case .failure(let error):
                     self.error = error.localizedDescription
                     self.showError = true

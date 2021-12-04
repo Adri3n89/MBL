@@ -20,6 +20,14 @@ final class AuthRepository: ObservableObject {
     }
     private let ref = Database.database(url: Constantes.refURL).reference()
     
+    func isSignIn() -> Bool {
+        if userID != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func signIn(email: String, password: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
