@@ -22,12 +22,24 @@ struct SearchView: View {
                     .border(.white, width: 2)
                     .padding()
                     .foregroundColor(.white)
-                Button {
-                    viewModel.searchGame()
-                } label: {
-                    Text(Constantes.search)
+                if viewModel.isLoading == false {
+                    Button {
+                        viewModel.isLoading.toggle()
+                        viewModel.searchGame()
+                    } label: {
+                        Text(Constantes.search)
+                    }
+                    .frame(height: 50)
+                    .padding([.leading, .trailing], 10)
+                    .background(.gray)
+                    .cornerRadius(15)
+                    .foregroundColor(.white)
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                        .scaleEffect(1.5)
+                        .padding()
                 }
-                .foregroundColor(.white)
                 ScrollView {
                     ForEach(viewModel.searchResult) { game in
                         NavigationLink {

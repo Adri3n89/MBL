@@ -24,9 +24,11 @@ struct LogInView: View {
                 CustomTabView()
             }
                 .padding(10)
+                .frame(height: 50)
+                .padding([.leading, .trailing], 40)
                 .background(.gray)
-                .cornerRadius(10)
-                .padding(.top, 30)
+                .cornerRadius(15)
+                .padding([.top, .bottom], 30)
                 .tint(.black)
             Button(Constantes.forgotPassword) {
                 viewModel.showReset.toggle()
@@ -34,6 +36,11 @@ struct LogInView: View {
                 ResetView()
                     .background(BackgroundClearView())
             }
+            .padding(10)
+            .frame(height: 50)
+            .background(.gray)
+            .cornerRadius(15)
+            .tint(.black)
             Spacer()
             Spacer()
             BottomLogInView()

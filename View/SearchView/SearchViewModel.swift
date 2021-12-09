@@ -13,17 +13,22 @@ final class SearchViewModel: ObservableObject {
     @Published var searchResult: [ItemResult] = []
     @Published var error = ""
     @Published var showError = false
+    @Published var isLoading = false
     
     func searchGame() {
-        // TODO - encoder le text pour ne pas avoir d'erreur avec les ' et -
+        searchResult = []
+        let okayChars : Set<Character> =
+                Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")
         let name = gameName.replacingOccurrences(of: " ", with: "_")
-        let name2 = name.replacingOccurrences(of: "'", with: "", options: .literal)
+        let name2 = String(name.filter {okayChars.contains($0) })
         ApiService.shared.searchGameName(name: name2) { result in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let games):
+                        self.isLoading.toggle()
                         self.searchResult = games
                     case .failure(let error):
+                        self.isLoading.toggle()
                         self.error = error.localizedDescription
                         self.showError = true
                 }

@@ -31,16 +31,22 @@ struct ResetView: View {
                 .background(.gray)
                 .opacity(0.8)
                 .cornerRadius(15)
-                .padding([.trailing, .leading, .bottom], 30)
+                .padding([.trailing, .leading, .bottom], 20)
             Button(Constantes.resetPassword) {
                 viewModel.getNewPassword()
             }.alert(viewModel.message, isPresented: $viewModel.showMessage) {
                 Button(Constantes.ok, role: .cancel) { }
             }
+            .frame(height: 50)
+            .padding([.leading, .trailing], 10)
+            .background(.gray)
+            .cornerRadius(15)
+            .tint(.black)
         }
         .padding()
-        .background(.white)
+        .background(.thinMaterial)
         .cornerRadius(30)
+        .padding(50)
     }
 }
 
