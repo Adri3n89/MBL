@@ -19,12 +19,13 @@ struct MapView: View {
                         .foregroundColor(.blue)
                         .onTapGesture {
                             viewModel.showLibrary.toggle()
-                        }
-                        .sheet(isPresented: $viewModel.showLibrary) {
-                            PublicProfilView(userID: user.userID)
+                            viewModel.userToShow = user.userID
                         }
                 }
             })
+            .sheet(isPresented: $viewModel.showLibrary) {
+                PublicProfilView(userID: viewModel.userToShow)
+            }
             .onAppear {
                 viewModel.getAllUsers()
             }
