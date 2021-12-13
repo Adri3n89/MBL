@@ -68,6 +68,14 @@ final class AuthRepository: ObservableObject {
         newChild.setValue(data)
     }
     
+    func updateProfil(key: String, value: String) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let newChild = ref.child("Users").child(user.uid).child(key)
+        newChild.setValue(value)
+    }
+    
     func addToLibrary(id: String) {
         // ajoute l'id d'un jeu dans la library de l'utilisateur et si le jeu y est déja il le retire
         ref.child("Users").child(userID!).child(Constantes.gameType[0]).observeSingleEvent(of: .value, with: { games in

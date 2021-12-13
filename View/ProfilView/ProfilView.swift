@@ -51,6 +51,13 @@ struct ProfilView: View {
                         Text(Constantes.city)
                         Text(viewModel.userInfo.city)
                             .multilineTextAlignment(.leading)
+                            .onTapGesture(perform: {
+                                viewModel.showCity.toggle()
+                            })
+                            .sheet(isPresented: $viewModel.showCity, content: {
+                                AlertTFView(placeholder: "City", buttonText: "Update your city")
+                                    .background(BackgroundClearView())
+                            })
                     }
                         .padding()
                         .foregroundColor(.white)

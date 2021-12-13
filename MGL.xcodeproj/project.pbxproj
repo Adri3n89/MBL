@@ -11,6 +11,8 @@
 		083C45EA276732E10058918F /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */; };
 		083C45EC27673A470058918F /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45EB27673A470058918F /* CustomTF.swift */; };
 		083C45EE27673BE70058918F /* CustomSecureTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45ED27673BE70058918F /* CustomSecureTF.swift */; };
+		083C45F0276743360058918F /* AlertTFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45EF276743360058918F /* AlertTFView.swift */; };
+		083C45F2276743660058918F /* AlertTFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45F1276743660058918F /* AlertTFViewModel.swift */; };
 		08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7027561DD2007C77B9 /* BackgroundClearView.swift */; };
 		08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7227565C3E007C77B9 /* ConversationRepository.swift */; };
 		08706A7527567D8E007C77B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7427567D8E007C77B9 /* DateExtension.swift */; };
@@ -73,6 +75,8 @@
 		083C3C83274E5FE300864AF5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		083C45EB27673A470058918F /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
 		083C45ED27673BE70058918F /* CustomSecureTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureTF.swift; sourceTree = "<group>"; };
+		083C45EF276743360058918F /* AlertTFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTFView.swift; sourceTree = "<group>"; };
+		083C45F1276743660058918F /* AlertTFViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTFViewModel.swift; sourceTree = "<group>"; };
 		08706A7027561DD2007C77B9 /* BackgroundClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClearView.swift; sourceTree = "<group>"; };
 		08706A7227565C3E007C77B9 /* ConversationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepository.swift; sourceTree = "<group>"; };
 		08706A7427567D8E007C77B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -326,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */,
+				083C45EF276743360058918F /* AlertTFView.swift */,
+				083C45F1276743660058918F /* AlertTFViewModel.swift */,
 				0882136727624D1D008D04B4 /* ProfilInfoView.swift */,
 				7A4C2A32272FF96400C4AC30 /* TFView.swift */,
 				083C45ED27673BE70058918F /* CustomSecureTF.swift */,
@@ -495,6 +501,7 @@
 				7A4C2A21272FEF7C00C4AC30 /* ProfilView.swift in Sources */,
 				08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */,
 				08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */,
+				083C45F2276743660058918F /* AlertTFViewModel.swift in Sources */,
 				7A4C2A33272FF96400C4AC30 /* TFView.swift in Sources */,
 				08706A7727568788007C77B9 /* ConversationData.swift in Sources */,
 				7A40E4502745344D002D0FD8 /* SearchViewModel.swift in Sources */,
@@ -510,6 +517,7 @@
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */,
 				08706A7E2756B3CC007C77B9 /* ConversationView.swift in Sources */,
+				083C45F0276743360058918F /* AlertTFView.swift in Sources */,
 				7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */,
 				7A9766982743E35200E82079 /* LogInViewModel.swift in Sources */,
 				089A0E322755348900E23044 /* ResetViewModel.swift in Sources */,

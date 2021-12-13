@@ -21,6 +21,7 @@ final class ProfilViewModel: ObservableObject {
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "", refPic: "")
     @Published var showAlert = false
     @Published var showPicker = false
+    @Published var showCity = false
     @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary
     var allType = Constantes.gameType
     
