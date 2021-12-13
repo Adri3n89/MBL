@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		083C3C84274E5FE300864AF5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C3C83274E5FE300864AF5 /* StringExtension.swift */; };
+		083C45EA276732E10058918F /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */; };
+		083C45EC27673A470058918F /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45EB27673A470058918F /* CustomTF.swift */; };
+		083C45EE27673BE70058918F /* CustomSecureTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45ED27673BE70058918F /* CustomSecureTF.swift */; };
 		08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7027561DD2007C77B9 /* BackgroundClearView.swift */; };
 		08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7227565C3E007C77B9 /* ConversationRepository.swift */; };
 		08706A7527567D8E007C77B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7427567D8E007C77B9 /* DateExtension.swift */; };
@@ -16,6 +19,9 @@
 		08706A7B275697ED007C77B9 /* ConversationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7A275697ED007C77B9 /* ConversationCellView.swift */; };
 		08706A7E2756B3CC007C77B9 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7D2756B3CC007C77B9 /* ConversationView.swift */; };
 		08706A802756B3D9007C77B9 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7F2756B3D9007C77B9 /* ConversationViewModel.swift */; };
+		0882136427624ADA008D04B4 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0882136327624ADA008D04B4 /* PinInfo.swift */; };
+		0882136627624C34008D04B4 /* ProfilImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0882136527624C34008D04B4 /* ProfilImageView.swift */; };
+		0882136827624D1D008D04B4 /* ProfilInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0882136727624D1D008D04B4 /* ProfilInfoView.swift */; };
 		089A0E302755348100E23044 /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A0E2F2755348100E23044 /* ResetView.swift */; };
 		089A0E322755348900E23044 /* ResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A0E312755348900E23044 /* ResetViewModel.swift */; };
 		08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */; };
@@ -53,8 +59,6 @@
 		7A9766952743B3B600E82079 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9766942743B3B600E82079 /* DetailsViewModel.swift */; };
 		7A9766982743E35200E82079 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9766972743E35200E82079 /* LogInViewModel.swift */; };
 		7AA64399274129F80051EC70 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA64398274129F80051EC70 /* GameCellView.swift */; };
-		7AAC6D672747A9FD00E19556 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC6D662747A9FD00E19556 /* PinInfo.swift */; };
-		7AAC6D6B2747ADE500E19556 /* MapPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC6D6A2747ADE500E19556 /* MapPinView.swift */; };
 		7AB6EB852731574500E60A49 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB842731574500E60A49 /* SearchResult.swift */; };
 		7AB6EB882731577500E60A49 /* ItemInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB872731577500E60A49 /* ItemInfos.swift */; };
 		7AB6EB8B2731579E00E60A49 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6EB8A2731579E00E60A49 /* Game.swift */; };
@@ -67,6 +71,8 @@
 /* Begin PBXFileReference section */
 		07DF25CF6AF9907E70DECCF5 /* Pods_MGL__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MGL__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		083C3C83274E5FE300864AF5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		083C45EB27673A470058918F /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
+		083C45ED27673BE70058918F /* CustomSecureTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureTF.swift; sourceTree = "<group>"; };
 		08706A7027561DD2007C77B9 /* BackgroundClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClearView.swift; sourceTree = "<group>"; };
 		08706A7227565C3E007C77B9 /* ConversationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepository.swift; sourceTree = "<group>"; };
 		08706A7427567D8E007C77B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -75,6 +81,9 @@
 		08706A7A275697ED007C77B9 /* ConversationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellView.swift; sourceTree = "<group>"; };
 		08706A7D2756B3CC007C77B9 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		08706A7F2756B3D9007C77B9 /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		0882136327624ADA008D04B4 /* PinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
+		0882136527624C34008D04B4 /* ProfilImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilImageView.swift; sourceTree = "<group>"; };
+		0882136727624D1D008D04B4 /* ProfilInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilInfoView.swift; sourceTree = "<group>"; };
 		089A0E2F2755348100E23044 /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
 		089A0E312755348900E23044 /* ResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewModel.swift; sourceTree = "<group>"; };
 		08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBubbleView.swift; sourceTree = "<group>"; };
@@ -115,8 +124,6 @@
 		7A9766942743B3B600E82079 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		7A9766972743E35200E82079 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		7AA64398274129F80051EC70 /* GameCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCellView.swift; sourceTree = "<group>"; };
-		7AAC6D662747A9FD00E19556 /* PinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
-		7AAC6D6A2747ADE500E19556 /* MapPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinView.swift; sourceTree = "<group>"; };
 		7AB6EB842731574500E60A49 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		7AB6EB872731577500E60A49 /* ItemInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfos.swift; sourceTree = "<group>"; };
 		7AB6EB8A2731579E00E60A49 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -134,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083C45EA276732E10058918F /* FloatingLabelTextFieldSwiftUI in Frameworks */,
 				4BA6E765D0022F15F79521CA /* Pods_MGL__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,11 +290,11 @@
 				7ACB1734274A6B1D00C88CE8 /* PictureRepository.swift */,
 				08706A7227565C3E007C77B9 /* ConversationRepository.swift */,
 				08706A7427567D8E007C77B9 /* DateExtension.swift */,
+				0882136327624ADA008D04B4 /* PinInfo.swift */,
 				7AB6EB8F2731580200E60A49 /* ApiService.swift */,
 				7A10A3A127446BBD006B09DD /* NetworkError.swift */,
 				7A46557527468FA3002BE831 /* UserData.swift */,
 				08706A7627568788007C77B9 /* ConversationData.swift */,
-				7AAC6D662747A9FD00E19556 /* PinInfo.swift */,
 				7A436EB5274C3D9B00D8D28F /* ViewExtension.swift */,
 				083C3C83274E5FE300864AF5 /* StringExtension.swift */,
 				7A87477B274CE87C00FB46A8 /* GlowBorder.swift */,
@@ -318,17 +326,20 @@
 			isa = PBXGroup;
 			children = (
 				7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */,
+				0882136727624D1D008D04B4 /* ProfilInfoView.swift */,
 				7A4C2A32272FF96400C4AC30 /* TFView.swift */,
+				083C45ED27673BE70058918F /* CustomSecureTF.swift */,
 				7A6FA25D27302184001EE307 /* TFSignUpView.swift */,
+				083C45EB27673A470058918F /* CustomTF.swift */,
 				7A4C2A35272FFA1C00C4AC30 /* BottomLogInView.swift */,
 				7A4C2A29272FF6D800C4AC30 /* CustomTabView.swift */,
 				7AA64398274129F80051EC70 /* GameCellView.swift */,
-				7AAC6D6A2747ADE500E19556 /* MapPinView.swift */,
 				7ACB1738274A6E4C00C88CE8 /* ImagePicker.swift */,
 				08706A7027561DD2007C77B9 /* BackgroundClearView.swift */,
 				08706A7A275697ED007C77B9 /* ConversationCellView.swift */,
 				08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */,
 				08C6F406275B6B800028D5E4 /* RightBubbleView.swift */,
+				0882136527624C34008D04B4 /* ProfilImageView.swift */,
 			);
 			path = "custom View";
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 			);
 			name = "MGL (iOS)";
 			packageProductDependencies = (
+				083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */,
 			);
 			productName = "MGL (iOS)";
 			productReference = 7A4C29FD272FEF1200C4AC30 /* MGL.app */;
@@ -403,6 +415,7 @@
 			);
 			mainGroup = 7A4C29F0272FEF1000C4AC30;
 			packageReferences = (
+				083C45E8276732E10058918F /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */,
 			);
 			productRefGroup = 7A4C29FE272FEF1200C4AC30 /* Products */;
 			projectDirPath = "";
@@ -474,6 +487,7 @@
 			files = (
 				7AB6EB8B2731579E00E60A49 /* Game.swift in Sources */,
 				7A565E9D274AE679005FD475 /* PublicProfilView.swift in Sources */,
+				083C45EE27673BE70058918F /* CustomSecureTF.swift in Sources */,
 				7A10A3A227446BBD006B09DD /* NetworkError.swift in Sources */,
 				7A4C2A1B272FEF6C00C4AC30 /* SearchView.swift in Sources */,
 				7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */,
@@ -491,7 +505,6 @@
 				083C3C84274E5FE300864AF5 /* StringExtension.swift in Sources */,
 				7A4C2A39272FFAC900C4AC30 /* HeaderView.swift in Sources */,
 				7A4C2A2A272FF6D800C4AC30 /* CustomTabView.swift in Sources */,
-				7AAC6D672747A9FD00E19556 /* PinInfo.swift in Sources */,
 				7ACB1735274A6B1D00C88CE8 /* PictureRepository.swift in Sources */,
 				08C6F407275B6B800028D5E4 /* RightBubbleView.swift in Sources */,
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
@@ -499,15 +512,17 @@
 				08706A7E2756B3CC007C77B9 /* ConversationView.swift in Sources */,
 				7A62A3E4274019BC00686E3D /* AuthRepository.swift in Sources */,
 				7A9766982743E35200E82079 /* LogInViewModel.swift in Sources */,
-				7AAC6D6B2747ADE500E19556 /* MapPinView.swift in Sources */,
 				089A0E322755348900E23044 /* ResetViewModel.swift in Sources */,
 				08706A79275687FC007C77B9 /* ChatViewModel.swift in Sources */,
 				7ACB1739274A6E4C00C88CE8 /* ImagePicker.swift in Sources */,
 				08706A7B275697ED007C77B9 /* ConversationCellView.swift in Sources */,
+				0882136627624C34008D04B4 /* ProfilImageView.swift in Sources */,
 				7A97668E2743A46500E82079 /* Top50ViewModel.swift in Sources */,
+				0882136427624ADA008D04B4 /* PinInfo.swift in Sources */,
 				7A46557627468FA3002BE831 /* UserData.swift in Sources */,
 				7AB6EB882731577500E60A49 /* ItemInfos.swift in Sources */,
 				7AB6EB852731574500E60A49 /* SearchResult.swift in Sources */,
+				0882136827624D1D008D04B4 /* ProfilInfoView.swift in Sources */,
 				7A9766952743B3B600E82079 /* DetailsViewModel.swift in Sources */,
 				7A465578274692E3002BE831 /* MapViewModel.swift in Sources */,
 				08706A7527567D8E007C77B9 /* DateExtension.swift in Sources */,
@@ -515,6 +530,7 @@
 				7A4C2A24272FEF8400C4AC30 /* ChatView.swift in Sources */,
 				089A0E302755348100E23044 /* ResetView.swift in Sources */,
 				08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */,
+				083C45EC27673A470058918F /* CustomTF.swift in Sources */,
 				7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */,
 				7A4C2A2D272FF74500C4AC30 /* LogInView.swift in Sources */,
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
@@ -742,6 +758,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		083C45E8276732E10058918F /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishanraja/FloatingLabelTextFieldSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 083C45E8276732E10058918F /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */;
+			productName = FloatingLabelTextFieldSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7A4C29F1272FEF1000C4AC30 /* Project object */;
 }

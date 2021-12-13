@@ -29,7 +29,7 @@ struct LogInView: View {
                 .background(.gray)
                 .cornerRadius(15)
                 .padding([.top, .bottom], 30)
-                .tint(.black)
+                .tint(.white)
             Button(Constantes.forgotPassword) {
                 viewModel.showReset.toggle()
             }.sheet(isPresented: $viewModel.showReset) { 
@@ -40,7 +40,7 @@ struct LogInView: View {
             .frame(height: 50)
             .background(.gray)
             .cornerRadius(15)
-            .tint(.black)
+            .tint(.white)
             Spacer()
             Spacer()
             BottomLogInView()

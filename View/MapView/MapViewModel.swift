@@ -19,6 +19,7 @@ final class MapViewModel: ObservableObject {
     @Published var allUsers: [UserData] = []
     @Published var allCoordinates: [PinInfo] = []
     @Published var allAdresses: [String] = []
+    @Published var showLibrary = false
     
     func getAllUsers() {
         // Réccupération de tout les utilisateurs de Firebase

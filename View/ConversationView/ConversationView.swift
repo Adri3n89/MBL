@@ -95,26 +95,6 @@ struct ConversationView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        let messages: [Message] = [Message(text: "Salut ca va ?", date: "2021-12-01 17:16", userID: "TOTO"),
-                                   Message(text: "Bonjour", date: "2021-12-01 17:19", userID: "NONO"),
-                                   Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO"),
-                                   Message(text: "Salut ca va ?", date: "2021-12-01 17:16", userID: "TOTO"),
-                                   Message(text: "Bonjour", date: "2021-12-01 17:19", userID: "NONO"),
-                                   Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO"),
-                                   Message(text: "Salut ca va ?", date: "2021-12-01 17:16", userID: "TOTO"),
-                                   Message(text: "Bonjour", date: "2021-12-01 17:19", userID: "NONO"),
-                                   Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO"),
-                                   Message(text: "Salut ca va ?", date: "2021-12-01 17:16", userID: "TOTO"),
-                                   Message(text: "Bonjour", date: "2021-12-01 17:19", userID: "NONO"),
-                                   Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO"),
-                                   Message(text: "Salut ca va ?", date: "2021-12-01 17:16", userID: "TOTO"),
-                                   Message(text: "Bonjour", date: "2021-12-01 17:19", userID: "NONO"),
-                                   Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO"),
-                                   Message(text: "Salut ca va ?", date: "2021-12-01 17:16", userID: "TOTO"),
-                                   Message(text: "Bonjour", date: "2021-12-01 17:19", userID: "NONO"),
-                                   Message(text: "tu pourrais me preter 7 wonders s'il te plait il est trop bien apparement bla bla bla il faut une grande phrase et bah la voila", date: "2021-12-01 17:23", userID: "TOTO")
-        ]
-        
         ConversationView(viewModel: ConversationViewModel(userInfo: UserData(name: "Jean", lastName: "Dupont", userID: "DFJDK", city: "89340 VILLENEUVE LA GUYARD", picture: "https://i.imgur.com/42ZTgTc.png", refPic: ""), conversationID: "DJDONOUNOZUD"))
     }
 }

@@ -14,14 +14,10 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("", text: $viewModel.gameName)
-                    .placeholder(when: viewModel.gameName.isEmpty) {
-                        Text(Constantes.searchGame).foregroundColor(.white)
-                }
+                TextField(Constantes.searchGame, text: $viewModel.gameName)
+                    .textFieldStyle(.roundedBorder)
                     .padding()
-                    .border(.white, width: 2)
-                    .padding()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 if viewModel.isLoading == false {
                     Button {
                         viewModel.isLoading.toggle()

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FloatingLabelTextFieldSwiftUI
 
 struct TFSignUpView: View {
     @Binding var email: String
@@ -17,46 +18,10 @@ struct TFSignUpView: View {
         var body: some View {
             VStack {
                 TFView(email: $email, password: $password)
-                HStack {
-                    Text(Constantes.name)
-                    Spacer()
-                }
-                .padding([.trailing, .leading], 30)
-                TextField("", text: $name)
-                    .placeholder(when: name.isEmpty) {
-                        Text(Constantes.nameTF).foregroundColor(.black)
-                }
-                    .frame(height: 50)
-                    .background(.secondary)
-                    .cornerRadius(15)
-                    .padding([.trailing, .leading], 30)
-                HStack {
-                    Text(Constantes.lastName)
-                    Spacer()
-                }
-                .padding([.trailing, .leading], 30)
-                TextField("", text: $lastName)
-                    .placeholder(when: lastName.isEmpty) {
-                        Text(Constantes.lastNameTF).foregroundColor(.black)
-                }
-                    .frame(height: 50)
-                    .background(.secondary)
-                    .cornerRadius(15)
-                    .padding([.trailing, .leading], 30)
-                HStack {
-                    Text(Constantes.city)
-                    Spacer()
-                }
-                .padding([.trailing, .leading], 30)
-                TextField("", text: $city)
-                    .placeholder(when: city.isEmpty) {
-                        Text(Constantes.cityTF).foregroundColor(.black)
-                }
-                    .frame(height: 50)
-                    .background(.secondary)
-                    .cornerRadius(15)
-                    .padding([.trailing, .leading], 30)
-            }
+                CustomTF(text: $name, placeholder: Constantes.nameTF)
+                CustomTF(text: $lastName, placeholder: Constantes.lastNameTF)
+                CustomTF(text: $city, placeholder: Constantes.cityTF)
+            }.disableAutocorrection(true)
         }
 }
 

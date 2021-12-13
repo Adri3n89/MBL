@@ -23,12 +23,9 @@ struct ResetView: View {
                     Image(systemName: Constantes.xmark)
                 }.padding()
             }
-            TextField("", text: $viewModel.email)
-                .placeholder(when: viewModel.email.isEmpty) {
-                    Text(Constantes.emailTF).foregroundColor(.white)
-            }
+            TextField(Constantes.emailTF, text: $viewModel.email)
+                .textFieldStyle(.roundedBorder)
                 .frame(height: 50)
-                .background(.gray)
                 .opacity(0.8)
                 .cornerRadius(15)
                 .padding([.trailing, .leading, .bottom], 20)

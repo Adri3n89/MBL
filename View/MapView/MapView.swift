@@ -15,9 +15,14 @@ struct MapView: View {
         var body: some View {
             Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { user in
                 MapAnnotation(coordinate: user.coordinates) {
-                    MapPinView(user: user)
+                    Image(systemName: "pin.fill")
                         .foregroundColor(.blue)
-                        .offset(x: 0, y: -5)
+                        .onTapGesture {
+                            viewModel.showLibrary.toggle()
+                        }
+                        .sheet(isPresented: $viewModel.showLibrary) {
+                            PublicProfilView(userID: user.userID)
+                        }
                 }
             })
             .onAppear {

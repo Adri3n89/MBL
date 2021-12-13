@@ -18,25 +18,8 @@ struct PublicProfilView: View {
             NavigationView {
             VStack(alignment: .leading) {
                 HStack {
-                    AsyncImage(url: URL(string: viewModel.userInfo.picture), content: { image in
-                        image
-                            .resizable()
-                    }, placeholder: {
-                        Color.purple.opacity(0.1)
-                    })
-                        .frame(width: 80, height: 80)
-                        .clipShape(Circle())
-                        .overlay(
-                           Circle()
-                               .stroke(.white, lineWidth: 3)
-                       )
-                       .padding([.leading, .trailing], 30)
-                    VStack(alignment: .leading) {
-                        Text(viewModel.userInfo.name)
-                            .padding([.bottom], 20)
-                        Text(viewModel.userInfo.lastName)
-                    }
-                    Spacer()
+                    ProfilImageView(imageURL: viewModel.userInfo.picture)
+                    ProfilInfoView(name: viewModel.userInfo.name, lastName: viewModel.userInfo.lastName)
                     Button {
                         viewModel.createConversation()
                     } label: {

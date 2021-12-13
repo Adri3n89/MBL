@@ -24,7 +24,7 @@ struct SignUpView: View {
             .fullScreenCover(isPresented: $viewModel.isCreated) {
                 CustomTabView()
             }
-                .tint(.black)
+                .tint(.white)
                 .padding(10)
                 .background(.gray)
                 .cornerRadius(10)
