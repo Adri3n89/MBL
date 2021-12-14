@@ -1,0 +1,285 @@
+
+{
+    "items": {
+        "termsofuse": "https://boardgamegeek.com/xmlapi/termsofuse",
+        "item": {
+            "type": "boardgame",
+            "id": "99999",
+            "thumbnail": "https://cf.geekdo-images.com/duLDGUHbGYrXtvFJsMqq0Q__thumb/img/XDCzhG-UrBX2SOr1MwjbuP8ngI4=/fit-in/200x150/filters:strip_icc()/pic1017515.jpg",
+            "image": "https://cf.geekdo-images.com/duLDGUHbGYrXtvFJsMqq0Q__original/img/TwzyLzeF2w3z21oKNtsFDOwGSoI=/0x0/filters:format(jpeg)/pic1017515.jpg",
+            "name": {
+                "type": "primary",
+                "sortindex": "1",
+                "value": "Caught in a Trap"
+            },
+            "description": "A set collecting game. The four cards to a set tell a story. The first is the Victim, the 2nd is the Trap, the 3rd is Caught!, and the 4th is the Escape!&#10;&#10;Players are given an agreed number of counters, some of which are added to the Pool. When you take certain actions, you may have to put more counters into the Pool or you might be lucky enough to take counters from the Pool. The one with the most counters after all sets have been collected, wins.&#10;&#10;The game must be Victorian (for example, one card makes mention of crinolene, an essential part of a Victorian lady's fashionable attire.&#10;&#10;No artist mentioned, which is a shame because the illustrations are of a very high quality.&#10;&#10;Any number of persons may play. If five play. Ten sets only are used. If seven, the dealer has one card short.&#10;The cards (which are termed the &ldquo;Victim&rdquo; &ldquo;Trap&rdquo; &ldquo;Caught&rdquo; &ldquo;Escaped&rdquo;) are dealt round face downwards, and a game may be won by a player or side.&#10;All cards are played face upwards, and laid on the table, but when a set (either of three or four) is made up, it is turned face downwards.&#10;A player having more than one card of a set, may only use one at a time, in his turn. Only the player of a &ldquo;Victim&rdquo; may play the &ldquo;Escaped&rdquo; (Except in Rule 5), and he is allowed only one chance to claim a set with it (Rule 4). If he claim a wrong set, he cannot try with the same card again.&#10;&#10;",
+            "yearpublished": {
+                "value": "1890"
+            },
+            "minplayers": {
+                "value": "3"
+            },
+            "maxplayers": {
+                "value": "8"
+            },
+            "poll": [
+                {
+                    "name": "suggested_numplayers",
+                    "title": "User Suggested Number of Players",
+                    "totalvotes": "0",
+                    "results": [
+                        {
+                            "numplayers": "1",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "2",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "3",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "4",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "5",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "6",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "7",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "8",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "numplayers": "8+",
+                            "result": [
+                                {
+                                    "value": "Best",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Recommended",
+                                    "numvotes": "0"
+                                },
+                                {
+                                    "value": "Not Recommended",
+                                    "numvotes": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "suggested_playerage",
+                    "title": "User Suggested Player Age",
+                    "totalvotes": "0",
+                    "results": {
+                        "result": [
+                            {
+                                "value": "2",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "3",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "4",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "5",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "6",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "8",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "10",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "12",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "14",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "16",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "18",
+                                "numvotes": "0"
+                            },
+                            {
+                                "value": "21 and up",
+                                "numvotes": "0"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "language_dependence",
+                    "title": "Language Dependence",
+                    "totalvotes": "0"
+                }
+            ],
+            "playingtime": {
+                "value": "45"
+            },
+            "minplaytime": {
+                "value": "45"
+            },
+            "maxplaytime": {
+                "value": "45"
+            },
+            "minage": {
+                "value": "8"
+            },
+            "link": [
+                {
+                    "type": "boardgamecategory",
+                    "id": "1002",
+                    "value": "Card Game"
+                },
+                {
+                    "type": "boardgamecategory",
+                    "id": "1079",
+                    "value": "Humor"
+                },
+                {
+                    "type": "boardgamemechanic",
+                    "id": "2004",
+                    "value": "Set Collection"
+                },
+                {
+                    "type": "boardgamepublisher",
+                    "id": "17651",
+                    "value": "A J Galpin"
+                }
+            ]
+        }
+    }
+}

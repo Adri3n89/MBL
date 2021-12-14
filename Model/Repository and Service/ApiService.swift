@@ -21,23 +21,21 @@ final class ApiService: ObservableObject {
         }
         session.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
-                guard let response = response as? HTTPURLResponse else {
+                guard let data = data, error == nil else {
+                    completed(.failure(.noData))
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     completed(.failure(.badResponse))
                     return
                 }
                 do {
-                    if response.statusCode == 200 {
-                        if let data = data {
-                            let apiResponse = try JSONDecoder().decode(Game.self, from: data)
-                            for item in apiResponse.items.item {
-                                let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: (item.thumbnail.value == "") ? Constantes.defaultGamePicture : item.thumbnail.value)
-                                top.append(game)
-                                if top.count == 50 {
-                                    completed(.success(top))
-                                }
-                            }
-                        } else {
-                            completed(.failure(.noData))
+                    let apiResponse = try JSONDecoder().decode(Game.self, from: data)
+                    for item in apiResponse.items.item {
+                        let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: (item.thumbnail.value == "") ? Constantes.defaultGamePicture : item.thumbnail.value)
+                        top.append(game)
+                        if top.count == 50 {
+                            completed(.success(top))
                         }
                     }
                 } catch {
@@ -55,21 +53,19 @@ final class ApiService: ObservableObject {
         }
         session.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
-                guard let response = response as? HTTPURLResponse else {
+                guard let data = data, error == nil else {
+                    completed(.failure(.noData))
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     completed(.failure(.badResponse))
                     return
                 }
                 do {
-                    if response.statusCode == 200 {
-                        if let data = data {
-                            let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                            var game = apiResponse.items.item
-                            game.itemDescription = apiResponse.items.item.itemDescription.decodingHTMLEntities()
-                            completed(.success(game))
-                        } else {
-                            completed(.failure(.noData))
-                        }
-                    }
+                    let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
+                    var game = apiResponse.items.item
+                    game.itemDescription = apiResponse.items.item.itemDescription.decodingHTMLEntities()
+                    completed(.success(game))
                 } catch {
                     completed(.failure(.undecodableData))
                 }
@@ -88,23 +84,21 @@ final class ApiService: ObservableObject {
             }
             session.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
-                    guard let response = response as? HTTPURLResponse else {
+                    guard let data = data, error == nil else {
+                        completed(.failure(.noData))
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                         completed(.failure(.badResponse))
                         return
                     }
                     do {
-                        if response.statusCode == 200 {
-                            if let data = data {
-                                let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                                let item = apiResponse.items.item
-                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
-                                favoriteGames.append(game)
-                                if libraryID.count == favoriteGames.count {
-                                    completed(.success(favoriteGames))
-                                }
-                            } else {
-                                completed(.failure(.noData))
-                            }
+                        let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
+                        let item = apiResponse.items.item
+                        let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
+                        favoriteGames.append(game)
+                        if libraryID.count == favoriteGames.count {
+                            completed(.success(favoriteGames))
                         }
                     } catch {
                         completed(.failure(.undecodableData))
@@ -125,23 +119,21 @@ final class ApiService: ObservableObject {
             }
             session.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
-                    guard let response = response as? HTTPURLResponse else {
+                    guard let data = data, error == nil else {
+                        completed(.failure(.noData))
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                         completed(.failure(.badResponse))
                         return
                     }
                     do {
-                        if response.statusCode == 200 {
-                            if let data = data {
-                                let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                                let item = apiResponse.items.item
-                                let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
-                                wishGames.append(game)
-                                if wishID.count == wishGames.count {
-                                    completed(.success(wishGames))
-                                }
-                            } else {
-                                completed(.failure(.noData))
-                            }
+                        let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
+                        let item = apiResponse.items.item
+                        let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
+                        wishGames.append(game)
+                        if wishID.count == wishGames.count {
+                            completed(.success(wishGames))
                         }
                     } catch {
                         completed(.failure(.undecodableData))
@@ -159,23 +151,21 @@ final class ApiService: ObservableObject {
             return
         }
         session.dataTask(with: url) { data, response, error in
-            guard let response = response as? HTTPURLResponse else {
+            guard let data = data, error == nil else {
+                completed(.failure(.noData))
+                return
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.badResponse))
                 return
             }
             do {
-                if response.statusCode == 200 {
-                    if let data = data {
-                        let apiResponse = try JSONDecoder().decode(SearchResult.self, from: data)
-                        guard let items = apiResponse.items.item else {
-                            completed(.failure(.noResult))
-                            return
-                        }
-                        completed(.success(items))
-                    } else {
-                        completed(.failure(.noData))
-                    }
+                let apiResponse = try JSONDecoder().decode(SearchResult.self, from: data)
+                guard let items = apiResponse.items.item else {
+                    completed(.failure(.noResult))
+                    return
                 }
+                completed(.success(items))
             } catch {
                 completed(.failure(.undecodableData))
             }
