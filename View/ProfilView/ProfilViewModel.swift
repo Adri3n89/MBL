@@ -30,22 +30,15 @@ final class ProfilViewModel: ObservableObject {
         GridItem(.flexible())
     ]
     
-    private func getWishGame() {
-        ApiService.shared.getWish(wishID: wishID) { result in
+    private func getGames(type: String) {
+        ApiService.shared.getGames(arrayID: ((type == "Library") ? libraryID : wishID)) { result in
             switch result {
                 case .success(let game):
-                    self.wishGames = game
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func getLibraryGame() {
-        ApiService.shared.getLibrary(libraryID: libraryID) { result in
-            switch result {
-                case .success(let game):
+                if type == "Library" {
                     self.libraryGames = game
+                } else {
+                    self.wishGames = game
+                }
                 case .failure(let error):
                     print(error.localizedDescription)
             }
@@ -55,14 +48,14 @@ final class ProfilViewModel: ObservableObject {
     func fetchLibraryID() {
         AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
             self.libraryID = libraryID
-            self.getLibraryGame()
+            self.getGames(type: "Library")
         }
     }
     
     func fetchWishlistID() {
         AuthRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
             self.wishID = wishID
-            self.getWishGame()
+            self.getGames(type: "Wishlist")
         }
     }
     

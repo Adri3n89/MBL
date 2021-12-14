@@ -22,7 +22,7 @@ final class PublicProfilViewModel: ObservableObject {
     ]
     
     private func getLibraryGame() {
-        ApiService.shared.getLibrary(libraryID: libraryID) { result in
+        ApiService.shared.getGames(arrayID: libraryID) { result in
             switch result {
                 case .success(let game):
                     self.libraryGames = game

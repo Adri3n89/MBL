@@ -23,7 +23,8 @@ struct ItemInfo: Codable, Identifiable {
     let type, id: String
     let thumbnail, image: String?
     var itemDescription: String
-    let yearpublished, minplayers, maxplayers: Maxplayers
+    let yearpublished : Maxplayers?
+    let minplayers, maxplayers: Maxplayers
     let playingtime, minplaytime, maxplaytime, minage: Maxplayers
 
    enum CodingKeys: String, CodingKey {

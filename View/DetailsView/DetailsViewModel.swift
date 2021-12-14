@@ -71,7 +71,7 @@ final class DetailsViewModel: ObservableObject {
     }
     
     func gameYear() -> String {
-        return Constantes.year + (gameInfo?.yearpublished.value ?? "?")
+        return Constantes.year + (gameInfo?.yearpublished?.value ?? "?")
     }
     
     func players() -> String {

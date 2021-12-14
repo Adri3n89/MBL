@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082A633327691C1D00BD5921 /* searchIDwithNilValue.json in Resources */ = {isa = PBXBuildFile; fileRef = 082A633227691C1D00BD5921 /* searchIDwithNilValue.json */; };
+		082A63352769222600BD5921 /* searchNameNoResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 082A63342769222600BD5921 /* searchNameNoResult.json */; };
 		083C3C84274E5FE300864AF5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C3C83274E5FE300864AF5 /* StringExtension.swift */; };
 		083C45EA276732E10058918F /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */; };
 		083C45EC27673A470058918F /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45EB27673A470058918F /* CustomTF.swift */; };
@@ -87,6 +89,8 @@
 
 /* Begin PBXFileReference section */
 		07DF25CF6AF9907E70DECCF5 /* Pods_MGL__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MGL__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		082A633227691C1D00BD5921 /* searchIDwithNilValue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchIDwithNilValue.json; sourceTree = "<group>"; };
+		082A63342769222600BD5921 /* searchNameNoResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchNameNoResult.json; sourceTree = "<group>"; };
 		083C3C83274E5FE300864AF5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		083C45EB27673A470058918F /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
 		083C45ED27673BE70058918F /* CustomSecureTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureTF.swift; sourceTree = "<group>"; };
@@ -211,7 +215,9 @@
 				083C46452768A7130058918F /* ApiServiceTest.swift */,
 				083C464C2768A7300058918F /* FakeResponseData.swift */,
 				083C46502768A8E90058918F /* searchName.json */,
+				082A63342769222600BD5921 /* searchNameNoResult.json */,
 				083C46522768A8EF0058918F /* searchID.json */,
+				082A633227691C1D00BD5921 /* searchIDwithNilValue.json */,
 				083C464E2768A8D60058918F /* top50.json */,
 			);
 			path = ApiServiceTest;
@@ -525,6 +531,8 @@
 				083C46512768A8E90058918F /* searchName.json in Resources */,
 				083C46532768A8EF0058918F /* searchID.json in Resources */,
 				083C464F2768A8D60058918F /* top50.json in Resources */,
+				082A63352769222600BD5921 /* searchNameNoResult.json in Resources */,
+				082A633327691C1D00BD5921 /* searchIDwithNilValue.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

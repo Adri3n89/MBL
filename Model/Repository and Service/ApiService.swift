@@ -73,11 +73,11 @@ final class ApiService: ObservableObject {
         }.resume()
     }
 
-    func getLibrary(libraryID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+    func getGames(arrayID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
         //reccupération des informations pour l'ensemble des ID de jeu de la library de l'utilisateur
-        var favoriteGames: [GameData] = []
-        for favorite in libraryID {
-            let urlString = Constantes.urlByID + favorite
+        var games: [GameData] = []
+        for id in arrayID {
+            let urlString = Constantes.urlByID + id
             guard let url = URL(string: urlString)?.absoluteURL else {
                 completed(.failure(.badURL))
                 return
@@ -95,45 +95,10 @@ final class ApiService: ObservableObject {
                     do {
                         let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
                         let item = apiResponse.items.item
-                        let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
-                        favoriteGames.append(game)
-                        if libraryID.count == favoriteGames.count {
-                            completed(.success(favoriteGames))
-                        }
-                    } catch {
-                        completed(.failure(.undecodableData))
-                    }
-                }
-            }.resume()
-        }
-    }
-
-    func getWish(wishID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
-        //reccupération des informations pour l'ensemble des ID de jeu de la wishList de l'utilisateur
-        var wishGames: [GameData] = []
-        for wish in wishID {
-            let urlString = Constantes.urlByID + wish
-            guard let url = URL(string: urlString)?.absoluteURL else {
-                completed(.failure(.badURL))
-                return
-            }
-            session.dataTask(with: url) { data, response, error in
-                DispatchQueue.main.async {
-                    guard let data = data, error == nil else {
-                        completed(.failure(.noData))
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                        completed(.failure(.badResponse))
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                        let item = apiResponse.items.item
-                        let game = GameData(name: "", year: item.yearpublished.value, id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
-                        wishGames.append(game)
-                        if wishID.count == wishGames.count {
-                            completed(.success(wishGames))
+                        let game = GameData(name: "", year: item.yearpublished?.value ?? "?", id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
+                        games.append(game)
+                        if arrayID.count == games.count {
+                            completed(.success(games))
                         }
                     } catch {
                         completed(.failure(.undecodableData))
