@@ -22,33 +22,33 @@ final class SignUpViewModel: ObservableObject {
     func signUp() {
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(city) { placemarks, error in
-            if (placemarks?.first) != nil {
-                if self.name.count >= 1 && self.lastName.count >= 1 {
-                    AuthRepository.shared.signUp(email: self.email, password: self.password, name: self.name, lastName: self.lastName, city: self.city) { result in
-                        switch result {
-                            case .success(_):
-                                self.isCreated = true
-                                AuthRepository.shared.signIn(email: self.email, password: self.password) { result in
-                                    switch result {
-                                        case .success(_):
-                                            AuthRepository.shared.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
-                                        case .failure(let error):
-                                            self.error = error.localizedDescription
-                                            self.showError = true
-                                    }
-                                }
-                            case .failure(let error):
-                                self.error = error.localizedDescription
-                                self.showError = true
-                        }
-                    }
-                } else {
-                    self.error = Constantes.errorName
-                    self.showError = true
-                }
-            } else {
+            guard (placemarks?.first) != nil else {
                 self.error = Constantes.errorAdress
                 self.showError = true
+                return
+            }
+            guard self.name.count >= 1 && self.lastName.count >= 1 else {
+                self.error = Constantes.errorName
+                self.showError = true
+                return
+            }
+            AuthRepository.shared.signUp(email: self.email, password: self.password, name: self.name, lastName: self.lastName, city: self.city) { result in
+                switch result {
+                    case .success(_):
+                        self.isCreated = true
+                        AuthRepository.shared.signIn(email: self.email, password: self.password) { result in
+                            switch result {
+                                case .success(_):
+                                    UserRepository.shared.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
+                                case .failure(let error):
+                                    self.error = error.localizedDescription
+                                    self.showError = true
+                            }
+                        }
+                    case .failure(let error):
+                        self.error = error.localizedDescription
+                        self.showError = true
+                }
             }
         }
     }

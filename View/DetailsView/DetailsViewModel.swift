@@ -28,29 +28,23 @@ final class DetailsViewModel: ObservableObject {
         }
     }
     
-    func addToLibrary(id: String) {
-        AuthRepository.shared.addToLibrary(id: id)
+    func addOrRemove(id: String, type: String) {
+        UserRepository.shared.addOrRemove(id: id, type: type)
     }
     
-    func addToWishlist(id: String) {
-        AuthRepository.shared.addToWishlist(id: id)
-    }
-    
-    func getLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
-            self.libraryID = libraryID
-            self.checkLibrary()
+    func getIDs(type: String) {
+        UserRepository.shared.fetchUserGame(type: type, user: AuthRepository.shared.userID!) { iDs in
+            if type == Constantes.gameType[0] {
+                self.checkLibrary(idArray: iDs)
+            } else {
+                self.checkWishlist(idArray: iDs)
+            }
         }
     }
     
-    func getWishID() {
-        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
-            self.wishID = wishID
-            self.checkWishlist()
-        }
-    }
-    
-    private func checkLibrary() {
+    // check if game is already in library or not to change Button Label
+    private func checkLibrary(idArray: [String]) {
+        libraryID = idArray
         var index = 0
         for game in libraryID {
             if game == id {
@@ -60,7 +54,9 @@ final class DetailsViewModel: ObservableObject {
         libraryButtonText = index == 0 ? Constantes.addLibrary : Constantes.removeLibrary
     }
     
-    private func checkWishlist() {
+    // check if game is already in wishList or not to change Button Label
+    private func checkWishlist(idArray: [String]) {
+        wishID = idArray
         var index = 0
         for game in wishID {
             if game == id {

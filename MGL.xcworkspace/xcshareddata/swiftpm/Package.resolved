@@ -5,9 +5,9 @@
         "package": "FloatingLabelTextFieldSwiftUI",
         "repositoryURL": "https://github.com/kishanraja/FloatingLabelTextFieldSwiftUI.git",
         "state": {
-          "branch": null,
+          "branch": "master",
           "revision": "b9aab8fa5f13474180274cfb7022357e8461b838",
-          "version": "4.2.1"
+          "version": null
         }
       }
     ]

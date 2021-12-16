@@ -24,7 +24,7 @@ final class MapViewModel: ObservableObject {
     
     func getAllUsers() {
         // Réccupération de tout les utilisateurs de Firebase
-        AuthRepository.shared.fetchAllUsers { usersInfo in
+        UserRepository.shared.fetchAllUsers { usersInfo in
             self.allUsers = usersInfo
             self.getAllAdresses()
         }

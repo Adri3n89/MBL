@@ -19,7 +19,7 @@ struct ProfilView: View {
                     HStack {
                         ProfilImageView(imageURL: viewModel.userInfo.picture)
                             .onTapGesture {
-                                viewModel.updatePicture()
+                                viewModel.showAlert.toggle()
                             }
                         .alert(Constantes.changePicture, isPresented: $viewModel.showAlert) {
                             Button(Constantes.camera) {
@@ -74,7 +74,7 @@ struct ProfilView: View {
                     Spacer()
                     ScrollView {
                         LazyVGrid(columns: viewModel.columns, spacing: 15) {
-                            ForEach(viewModel.type == viewModel.allType[0] ? viewModel.libraryGames : viewModel.wishGames) { game in
+                            ForEach(viewModel.gameToShow()) { game in
                                 NavigationLink {
                                     DetailsView(id: game.id)
                                 } label: {
@@ -86,13 +86,7 @@ struct ProfilView: View {
                         .padding()
                     }
                 }
-                .background(Image(Constantes.background)
-                            .resizable()
-                            .ignoresSafeArea()
-                            .scaledToFill()
-                            .blur(radius: 3, opaque: true)
-                            .opacity(0.90)
-                )
+                .background(BackgroundView())
                 .onAppear {
                     viewModel.fetchWishlistID()
                     viewModel.fetchLibraryID()

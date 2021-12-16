@@ -16,6 +16,7 @@ final class Top50ViewModel: ObservableObject {
         GridItem(.flexible())
     ]
     
+    // fetch the TOP 50 games from the api in array
     func getTop50() {
         ApiService.shared.getHotGame { result in
             switch result {

@@ -11,8 +11,7 @@ import UIKit
 
 final class ProfilViewModel: ObservableObject {
     
-    // trier les ID library et wishlist par numero pour ne pas qu'ils changent d'ordre
-    
+    // TODO: trier les ID library et wishlist par numero pour ne pas qu'ils changent d'ordre
     @Published var type = Constantes.gameType[0]
     @Published var wishGames: [GameData] = []
     @Published var libraryGames: [GameData] = []
@@ -30,11 +29,12 @@ final class ProfilViewModel: ObservableObject {
         GridItem(.flexible())
     ]
     
+    // get games info from the array ID choose
     private func getGames(type: String) {
-        ApiService.shared.getGames(arrayID: ((type == "Library") ? libraryID : wishID)) { result in
+        ApiService.shared.getGames(arrayID: ((type == Constantes.gameType[0]) ? libraryID : wishID)) { result in
             switch result {
                 case .success(let game):
-                if type == "Library" {
+                if type == Constantes.gameType[0] {
                     self.libraryGames = game
                 } else {
                     self.wishGames = game
@@ -45,26 +45,30 @@ final class ProfilViewModel: ObservableObject {
         }
     }
     
+    // fetch game ID from library in array
     func fetchLibraryID() {
-        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
+        UserRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
             self.libraryID = libraryID
-            self.getGames(type: "Library")
+            self.getGames(type: Constantes.gameType[0])
         }
     }
     
+    // fetch game ID from wishlist in array
     func fetchWishlistID() {
-        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
+        UserRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
             self.wishID = wishID
-            self.getGames(type: "Wishlist")
+            self.getGames(type: Constantes.gameType[1])
         }
     }
     
+    // sign out the Firebase session and go to logIn screen
     func logOut() {
         AuthRepository.shared.logOut()
     }
     
+    // fetch currentuser info from Firebase
     func fetchUserInfo() {
-        AuthRepository.shared.fetchUserInfo(user: AuthRepository.shared.userID!) { userInfo in
+        UserRepository.shared.fetchUserInfo(user: AuthRepository.shared.userID!) { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
@@ -73,8 +77,9 @@ final class ProfilViewModel: ObservableObject {
         }
     }
     
-    func updatePicture() {
-        showAlert = true
+    // return the good type game to show
+    func gameToShow() -> [GameData] {
+        return type == allType[0] ? libraryGames : wishGames
     }
     
 }

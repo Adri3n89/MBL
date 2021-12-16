@@ -42,7 +42,7 @@ struct DetailsView: View {
                     HStack {
                         Spacer()
                         Button {
-                            viewModel.addToLibrary(id: id)
+                            viewModel.addOrRemove(id: id, type: Constantes.gameType[0])
                         } label: {
                             Text(viewModel.libraryButtonText)
                         }
@@ -51,7 +51,7 @@ struct DetailsView: View {
                         .cornerRadius(10)
                         Spacer()
                         Button {
-                            viewModel.addToWishlist(id: id)
+                            viewModel.addOrRemove(id: id, type: Constantes.gameType[1])
                         } label: {
                             Text(viewModel.wishListButtonText)
                         }
@@ -69,17 +69,11 @@ struct DetailsView: View {
                 }
             }
             .foregroundColor(.white)
-            .background(Image(Constantes.background)
-                            .resizable()
-                            .ignoresSafeArea()
-                            .scaledToFill()
-                            .blur(radius: 3, opaque: true)
-                            .opacity(0.90)
-            )
+            .background(BackgroundView())
             .onAppear {
                 viewModel.id = id
-                viewModel.getWishID()
-                viewModel.getLibraryID()
+                viewModel.getIDs(type: Constantes.gameType[0])
+                viewModel.getIDs(type: Constantes.gameType[1])
                 viewModel.getDetail()
             }
         }

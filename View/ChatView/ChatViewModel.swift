@@ -19,27 +19,27 @@ final class ChatViewModel: ObservableObject {
         }
     }
     
-    func returnGoodName(user1: UserData, user2: UserData) -> String {
-        if user1.userID == ConversationRepository.shared.currentUserID {
-            return user2.name + " " + user2.lastName
+    func returnGoodName(_ conversation: ConversationData) -> String {
+        if conversation.user1!.userID == ConversationRepository.shared.currentUserID {
+            return conversation.user2!.name + " " + conversation.user2!.lastName
         } else {
-            return user1.name + " " + user1.lastName
+            return conversation.user1!.name + " " + conversation.user1!.lastName
         }
     }
     
-    func returnGoodPicture(user1: UserData, user2: UserData) -> String {
-        if user1.userID == ConversationRepository.shared.currentUserID {
-            return user2.picture
+    func returnGoodPicture(_ conversation: ConversationData) -> String {
+        if conversation.user1!.userID == ConversationRepository.shared.currentUserID {
+            return conversation.user2!.picture
         } else {
-            return user1.picture
+            return conversation.user1!.picture
         }
     }
     
-    func returnGoodUser(user1: UserData, user2: UserData) -> UserData {
-        if user1.userID == ConversationRepository.shared.currentUserID {
-            return user2
+    func returnGoodUser(_ conversation: ConversationData) -> UserData {
+        if conversation.user1!.userID == ConversationRepository.shared.currentUserID {
+            return conversation.user2!
         } else {
-            return user1
+            return conversation.user1!
         }
     }
 }

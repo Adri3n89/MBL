@@ -53,13 +53,7 @@ struct SearchView: View {
             .alert(viewModel.error, isPresented: $viewModel.showError) {
                 Button(Constantes.ok, role: .cancel) { }
             }
-            .background(Image(Constantes.background)
-                            .resizable()
-                            .ignoresSafeArea()
-                            .scaledToFill()
-                            .blur(radius: 3, opaque: true)
-                            .opacity(0.90)
-            )
+            .background(BackgroundView())
             .navigationBarHidden(true)
         }
     }

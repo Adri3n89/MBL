@@ -79,13 +79,7 @@ struct ConversationView: View {
         }.onAppear(perform: {
             viewModel.fetchConversation()
         })
-        .background(Image(Constantes.background)
-                .resizable()
-                .ignoresSafeArea()
-                .scaledToFill()
-                .blur(radius: 3, opaque: true)
-                .opacity(0.90)
-        )
+        .background(BackgroundView())
         .navigationBarHidden(true)
     }
 }

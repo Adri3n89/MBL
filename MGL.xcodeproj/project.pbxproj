@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081BC7C2276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 081BC7C1276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI */; };
+		081BC7C4276A433E000AE740 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081BC7C3276A433E000AE740 /* UserRepository.swift */; };
+		081BC7C6276A4F8C000AE740 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081BC7C5276A4F8C000AE740 /* BackgroundView.swift */; };
 		082A633327691C1D00BD5921 /* searchIDwithNilValue.json in Resources */ = {isa = PBXBuildFile; fileRef = 082A633227691C1D00BD5921 /* searchIDwithNilValue.json */; };
 		082A63352769222600BD5921 /* searchNameNoResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 082A63342769222600BD5921 /* searchNameNoResult.json */; };
 		083C3C84274E5FE300864AF5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C3C83274E5FE300864AF5 /* StringExtension.swift */; };
-		083C45EA276732E10058918F /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */; };
 		083C45EC27673A470058918F /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45EB27673A470058918F /* CustomTF.swift */; };
 		083C45EE27673BE70058918F /* CustomSecureTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45ED27673BE70058918F /* CustomSecureTF.swift */; };
 		083C45F0276743360058918F /* AlertTFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C45EF276743360058918F /* AlertTFView.swift */; };
@@ -89,6 +91,8 @@
 
 /* Begin PBXFileReference section */
 		07DF25CF6AF9907E70DECCF5 /* Pods_MGL__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MGL__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		081BC7C3276A433E000AE740 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		081BC7C5276A4F8C000AE740 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		082A633227691C1D00BD5921 /* searchIDwithNilValue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchIDwithNilValue.json; sourceTree = "<group>"; };
 		082A63342769222600BD5921 /* searchNameNoResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchNameNoResult.json; sourceTree = "<group>"; };
 		083C3C83274E5FE300864AF5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -179,8 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				083C45EA276732E10058918F /* FloatingLabelTextFieldSwiftUI in Frameworks */,
 				4BA6E765D0022F15F79521CA /* Pods_MGL__iOS_.framework in Frameworks */,
+				081BC7C2276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				7A62A3E3274019BC00686E3D /* AuthRepository.swift */,
+				081BC7C3276A433E000AE740 /* UserRepository.swift */,
 				7ACB1734274A6B1D00C88CE8 /* PictureRepository.swift */,
 				08706A7227565C3E007C77B9 /* ConversationRepository.swift */,
 				7AB6EB8F2731580200E60A49 /* ApiService.swift */,
@@ -396,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */,
+				081BC7C5276A4F8C000AE740 /* BackgroundView.swift */,
 				083C45EF276743360058918F /* AlertTFView.swift */,
 				083C45F1276743660058918F /* AlertTFViewModel.swift */,
 				0882136727624D1D008D04B4 /* ProfilInfoView.swift */,
@@ -475,7 +481,7 @@
 			);
 			name = "MGL (iOS)";
 			packageProductDependencies = (
-				083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */,
+				081BC7C1276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI */,
 			);
 			productName = "MGL (iOS)";
 			productReference = 7A4C29FD272FEF1200C4AC30 /* MGL.app */;
@@ -511,7 +517,7 @@
 			);
 			mainGroup = 7A4C29F0272FEF1000C4AC30;
 			packageReferences = (
-				083C45E8276732E10058918F /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */,
+				081BC7C0276A42AB000AE740 /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */,
 			);
 			productRefGroup = 7A4C29FE272FEF1200C4AC30 /* Products */;
 			projectDirPath = "";
@@ -608,6 +614,7 @@
 				083C45EE27673BE70058918F /* CustomSecureTF.swift in Sources */,
 				7A10A3A227446BBD006B09DD /* NetworkError.swift in Sources */,
 				7A4C2A1B272FEF6C00C4AC30 /* SearchView.swift in Sources */,
+				081BC7C6276A4F8C000AE740 /* BackgroundView.swift in Sources */,
 				7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */,
 				08706A802756B3D9007C77B9 /* ConversationViewModel.swift in Sources */,
 				7A4C2A21272FEF7C00C4AC30 /* ProfilView.swift in Sources */,
@@ -651,6 +658,7 @@
 				089A0E302755348100E23044 /* ResetView.swift in Sources */,
 				08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */,
 				083C45EC27673A470058918F /* CustomTF.swift in Sources */,
+				081BC7C4276A433E000AE740 /* UserRepository.swift in Sources */,
 				7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */,
 				7A4C2A2D272FF74500C4AC30 /* LogInView.swift in Sources */,
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
@@ -950,20 +958,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		083C45E8276732E10058918F /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */ = {
+		081BC7C0276A42AB000AE740 /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishanraja/FloatingLabelTextFieldSwiftUI.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		083C45E9276732E10058918F /* FloatingLabelTextFieldSwiftUI */ = {
+		081BC7C1276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 083C45E8276732E10058918F /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */;
+			package = 081BC7C0276A42AB000AE740 /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */;
 			productName = FloatingLabelTextFieldSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */

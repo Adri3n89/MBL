@@ -28,13 +28,7 @@ struct Top50View: View {
                     }
                 }
                 .padding(.horizontal)
-                .background(Image(Constantes.background)
-                                .resizable()
-                                .ignoresSafeArea()
-                                .scaledToFill()
-                                .blur(radius: 3, opaque: true)
-                                .opacity(0.90)
-                )
+                .background(BackgroundView())
                 .onAppear {
                     viewModel.getTop50()
                 }

@@ -21,6 +21,7 @@ final class PublicProfilViewModel: ObservableObject {
         GridItem(.flexible())
     ]
     
+    // get all user games with the arrayID
     private func getLibraryGame() {
         ApiService.shared.getGames(arrayID: libraryID) { result in
             switch result {
@@ -32,15 +33,17 @@ final class PublicProfilViewModel: ObservableObject {
         }
     }
     
+    // fetch all the gameID from the wishList
     func fetchLibraryID(user: String) {
-        AuthRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: user) { libraryID in
+        UserRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: user) { libraryID in
             self.libraryID = libraryID
             self.getLibraryGame()
         }
     }
     
+    // fetch user profil from Firebase
     func fetchUserInfo(user: String) {
-        AuthRepository.shared.fetchUserInfo(user: user) { userInfo in
+        UserRepository.shared.fetchUserInfo(user: user) { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
@@ -49,6 +52,7 @@ final class PublicProfilViewModel: ObservableObject {
         }
     }
     
+    // create conversation beetween currentUser and selected user
     func createConversation() {
         ConversationRepository.shared.searchIfConversationAlreadyExist(user: userInfo.userID) { message in
             self.message = message

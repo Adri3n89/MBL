@@ -47,12 +47,7 @@ struct LogInView: View {
         }.alert(viewModel.error, isPresented: $viewModel.showError) {
             Button(Constantes.ok, role: .cancel) { }
         }
-        .background(
-            Image(Constantes.background)
-                .resizable()
-                .ignoresSafeArea()
-                .scaledToFill()
-        )
+        .background(BackgroundView())
         .onAppear {
             viewModel.isPresented = AuthRepository.shared.isSignIn()
         }

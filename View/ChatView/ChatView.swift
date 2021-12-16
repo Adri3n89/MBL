@@ -12,31 +12,37 @@ struct ChatView: View {
     @ObservedObject var viewModel = ChatViewModel()
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                if viewModel.allConversations.count == 0 {
-                    Text(Constantes.noConversation)
-                } else {
-                    ForEach(viewModel.allConversations, content: { conversation in
-                        NavigationLink {
-                            ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(user1: conversation.user1!, user2: conversation.user2!), conversationID: conversation.conversationID))
-                        } label: {
-                            ConversationCellView(name: viewModel.returnGoodName(user1: conversation.user1!, user2: conversation.user2!), imageURL: viewModel.returnGoodPicture(user1: conversation.user1!, user2: conversation.user2!))
+        GeometryReader { geo in
+            NavigationView {
+                ScrollView {
+                    if viewModel.allConversations.count == 0 {
+                        VStack {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                Text(Constantes.noConversation)
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .frame(height: geo.size.height)
+                                Spacer()
+                            }
                         }
-                    })
+                    } else {
+                        ForEach(viewModel.allConversations, content: { conversation in
+                            NavigationLink {
+                                ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(conversation), conversationID: conversation.conversationID))
+                            } label: {
+                                ConversationCellView(name: viewModel.returnGoodName(conversation), imageURL: viewModel.returnGoodPicture(conversation))
+                            }
+                        })
+                    }
                 }
-            }.background(Image(Constantes.background)
-                            .resizable()
-                            .ignoresSafeArea()
-                            .scaledToFill()
-                            .blur(radius: 3, opaque: true)
-                            .opacity(0.90)
-            )
-            .onAppear {
-                viewModel.fetchAllUserConversations()
+                .background(BackgroundView())
+                .onAppear {
+                    viewModel.fetchAllUserConversations()
+                }
+                .navigationBarHidden(true)
+                .navigationBarTitle(Text(""))
             }
-            .navigationBarHidden(true)
-            .navigationBarTitle(Text(""))
         }
     }
 }

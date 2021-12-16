@@ -22,10 +22,10 @@ final class AlertTFViewModel: ObservableObject {
                     self.showAlert.toggle()
                     return
                 }
-                AuthRepository.shared.updateProfil(key: key, value: value)
+                UserRepository.shared.updateProfil(key: key, value: value)
             }
         } else {
-            AuthRepository.shared.updateProfil(key: key, value: value)
+            UserRepository.shared.updateProfil(key: key, value: value)
         }
     }
 }
