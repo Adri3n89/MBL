@@ -62,7 +62,7 @@ struct ProfilView: View {
                         .padding()
                         .foregroundColor(.white)
                     Picker("", selection: $viewModel.type) {
-                        ForEach(viewModel.allType, id: \.self) {
+                        ForEach(Constantes.gameType, id: \.self) {
                             Text($0)
                         }
                     }
@@ -86,13 +86,15 @@ struct ProfilView: View {
                         .padding()
                     }
                 }
-                .background(BackgroundView())
                 .onAppear {
-                    viewModel.fetchWishlistID()
-                    viewModel.fetchLibraryID()
-                    viewModel.fetchUserInfo()
-                }
-                .navigationBarHidden(true)
+                   viewModel.libraryGames = []
+                   viewModel.wishGames = []
+                   viewModel.fetchWishlistID()
+                   viewModel.fetchLibraryID()
+                   viewModel.fetchUserInfo()
+               }
+               .background(BackgroundView())
+               .navigationBarHidden(true)
             }
         }
     }

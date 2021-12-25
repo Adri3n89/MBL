@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 final class Top50ViewModel: ObservableObject {
     
     @Published var top50: [GameData] = []
+    var cancellable = Set<AnyCancellable>()
     var columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -18,13 +20,14 @@ final class Top50ViewModel: ObservableObject {
     
     // fetch the TOP 50 games from the api in array
     func getTop50() {
-        ApiService.shared.getHotGame { result in
-            switch result {
-                case .success(let top):
-                    self.top50 = top
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
+        ApiService.shared.getHotGame()
+           .receive(on: DispatchQueue.main)
+           .sink { error in
+               print(error)
+           } receiveValue: { top50 in
+               self.top50 = top50
+           }
+           .store(in: &cancellable)
     }
+    
 }

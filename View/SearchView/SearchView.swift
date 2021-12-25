@@ -20,7 +20,7 @@ struct SearchView: View {
                     .foregroundColor(.black)
                 if viewModel.isLoading == false {
                     Button {
-                        viewModel.isLoading.toggle()
+                        viewModel.isLoading = true
                         viewModel.searchGame()
                     } label: {
                         Text(Constantes.search)

@@ -6,136 +6,133 @@
 //
 
 import Foundation
+import Combine
 
 final class ApiService: ObservableObject {
     
     static let shared = ApiService()
 
     // MARK: - Methods
-    func getHotGame(_ urlString: String = Constantes.urlTop50, _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+    func getHotGame(_ urlString: String = Constantes.urlTop50, _ session: URLSession = .shared) -> AnyPublisher<[GameData],NetworkError> {
         //reccupération du top50 des jeux du moment
-        var top: [GameData] = []
         guard let url = URL(string: urlString)?.absoluteURL else {
-            completed(.failure(.badURL))
-            return
+            return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
-        session.dataTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    completed(.failure(.noData))
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    completed(.failure(.badResponse))
-                    return
-                }
-                do {
-                    let apiResponse = try JSONDecoder().decode(Game.self, from: data)
-                    for item in apiResponse.items.item {
-                        let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: (item.thumbnail.value == "") ? Constantes.defaultGamePicture : item.thumbnail.value)
-                        top.append(game)
-                        if top.count == 50 {
-                            completed(.success(top))
-                        }
-                    }
-                } catch {
-                    completed(.failure(.undecodableData))
-                }
+        return session.dataTaskPublisher(for: url)
+            .tryMap{ data, response in
+                return data
             }
-        }.resume()
+            .mapError{ error in
+                NetworkError.noData
+            }
+            .decode(type: Game.self, decoder: JSONDecoder())
+            .mapError{ error in
+                NetworkError.undecodableData
+            }
+            .tryMap{ top50 in
+                self.transformTop50ToGameData(top50: top50)
+            }
+            .mapError{ error in
+                NetworkError.noResult
+            }
+            .eraseToAnyPublisher()
     }
 
-    func getGameByID(id: String, _ session: URLSession = .shared, completed: @escaping (Result<ItemInfo, NetworkError>) -> Void) {
+    func getGameByID(id: String, _ session: URLSession = .shared) -> AnyPublisher<ItemInfo,NetworkError> {
         let urlString = Constantes.urlByID + id
         guard let url = URL(string: urlString)?.absoluteURL else {
-            completed(.failure(.badURL))
-            return
+            return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
-        session.dataTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    completed(.failure(.noData))
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    completed(.failure(.badResponse))
-                    return
-                }
-                do {
-                    let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                    var game = apiResponse.items.item
-                    game.itemDescription = apiResponse.items.item.itemDescription.decodingHTMLEntities()
-                    completed(.success(game))
-                } catch {
-                    completed(.failure(.undecodableData))
-                }
+        return session.dataTaskPublisher(for: url)
+            .tryMap { data, response in
+                return data
             }
-        }.resume()
+            .mapError{ error in
+                NetworkError.noData
+            }
+            .decode(type: ItemInfos.self, decoder: JSONDecoder())
+            .mapError { error in
+                NetworkError.undecodableData
+            }
+            .tryMap { item in
+                self.transformItemInfosToItemInfoAndDecodeString(item: item)
+            }
+            .mapError { error in
+                NetworkError.noResult
+            }
+            .eraseToAnyPublisher()
     }
 
-    func getGames(arrayID: [String], _ session: URLSession = .shared, completed: @escaping (Result<[GameData], NetworkError>) -> Void) {
+    func getGames(gameID: String, _ session: URLSession = .shared) -> AnyPublisher<GameData, NetworkError> {
         //reccupération des informations pour l'ensemble des ID de jeu de la library de l'utilisateur
-        var games: [GameData] = []
-        for id in arrayID {
-            let urlString = Constantes.urlByID + id
-            guard let url = URL(string: urlString)?.absoluteURL else {
-                completed(.failure(.badURL))
-                return
-            }
-            session.dataTask(with: url) { data, response, error in
-                DispatchQueue.main.async {
-                    guard let data = data, error == nil else {
-                        completed(.failure(.noData))
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                        completed(.failure(.badResponse))
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(ItemInfos.self, from: data)
-                        let item = apiResponse.items.item
-                        let game = GameData(name: "", year: item.yearpublished?.value ?? "?", id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
-                        games.append(game)
-                        if arrayID.count == games.count {
-                            completed(.success(games))
-                        }
-                    } catch {
-                        completed(.failure(.undecodableData))
-                    }
-                }
-            }.resume()
+        let urlString = Constantes.urlByID + gameID
+        guard let url = URL(string: urlString)?.absoluteURL else {
+            return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
-    }
+        return session.dataTaskPublisher(for: url)
+            .tryMap { data, response in
+                return data
+            }
+            .mapError{ error in
+                NetworkError.noData
+            }
+            .decode(type: ItemInfos.self, decoder: JSONDecoder())
+            .mapError { error in
+                NetworkError.undecodableData
+            }
+            .tryMap { itemInfos in
+                self.transformItemInfosToGameData(itemInfos: itemInfos)
+            }
+            .mapError { error in
+                NetworkError.noResult
+            }
+            .eraseToAnyPublisher()
+        }
 
-    func searchGameName(name: String, _ session: URLSession = .shared, completed: @escaping (Result<[ItemResult], NetworkError>) -> Void) {
+    func searchGameName(name: String, _ session: URLSession = .shared) -> AnyPublisher<[ItemResult], NetworkError> {
         //retourne la liste de jeu correspondant à la reherche faite par l'utilisateur
         let urlString = Constantes.urlByName(name: name)
         guard let url = URL(string: urlString)?.absoluteURL else {
-            completed(.failure(.badURL))
-            return
+            return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
-        session.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                completed(.failure(.noData))
-                return
+        return session.dataTaskPublisher(for: url)
+            .tryMap { data, response in
+                return data
             }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.badResponse))
-                return
+            .mapError { error in
+                NetworkError.noData
             }
-            do {
-                let apiResponse = try JSONDecoder().decode(SearchResult.self, from: data)
-                guard let items = apiResponse.items.item else {
-                    completed(.failure(.noResult))
-                    return
-                }
-                completed(.success(items))
-            } catch {
-                completed(.failure(.undecodableData))
+            .decode(type: SearchResult.self, decoder: JSONDecoder())
+            .mapError { error in
+                NetworkError.undecodableData
             }
-        }.resume()
+            .tryMap { result in
+                 return result.items.item ?? []
+            }
+            .mapError { error in
+                NetworkError.noResult
+            }
+            .eraseToAnyPublisher()
     }
-
+    
+    private func transformTop50ToGameData(top50: Game) -> [GameData] {
+        var games : [GameData] = []
+        for item in top50.items.item {
+            let game = GameData(name: item.name.value, year: item.yearpublished?.value ?? "?", id: item.id, rank: item.rank, image: (item.thumbnail.value == "") ? Constantes.defaultGamePicture : item.thumbnail.value)
+            games.append(game)
+        }
+        return games
+    }
+    
+    private func transformItemInfosToItemInfoAndDecodeString(item: ItemInfos) -> ItemInfo {
+        var finalItem = item.items.item
+        finalItem.itemDescription = item.items.item.itemDescription.decodingHTMLEntities()
+        return finalItem
+    }
+    
+    private func transformItemInfosToGameData(itemInfos: ItemInfos) -> GameData {
+        let item = itemInfos.items.item
+        return GameData(name: "", year: item.yearpublished?.value ?? "?", id: item.id, rank: "", image: item.image ?? Constantes.defaultGamePicture)
+    }
 
 }

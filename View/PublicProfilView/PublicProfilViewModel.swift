@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 final class PublicProfilViewModel: ObservableObject {
     
@@ -15,6 +16,7 @@ final class PublicProfilViewModel: ObservableObject {
     @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "", refPic: "")
     @Published var showMessage = false
     @Published var message = ""
+    var cancellable = Set<AnyCancellable>()
     
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -23,14 +25,16 @@ final class PublicProfilViewModel: ObservableObject {
     
     // get all user games with the arrayID
     private func getLibraryGame() {
-        ApiService.shared.getGames(arrayID: libraryID) { result in
-            switch result {
-                case .success(let game):
-                    self.libraryGames = game
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
+       for gameID in libraryID {
+           ApiService.shared.getGames(gameID: gameID)
+               .receive(on: DispatchQueue.main)
+               .sink { error in
+                   print(error)
+               } receiveValue: { game in
+                   self.libraryGames.append(game)
+               }
+               .store(in: &cancellable)
+       }
     }
     
     // fetch all the gameID from the wishList

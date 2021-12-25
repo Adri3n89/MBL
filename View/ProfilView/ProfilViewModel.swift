@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import UIKit
+import Combine
 
 final class ProfilViewModel: ObservableObject {
     
@@ -22,7 +22,7 @@ final class ProfilViewModel: ObservableObject {
     @Published var showPicker = false
     @Published var showCity = false
     @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    var allType = Constantes.gameType
+    var cancellable = Set<AnyCancellable>()
     
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -31,16 +31,27 @@ final class ProfilViewModel: ObservableObject {
     
     // get games info from the array ID choose
     private func getGames(type: String) {
-        ApiService.shared.getGames(arrayID: ((type == Constantes.gameType[0]) ? libraryID : wishID)) { result in
-            switch result {
-                case .success(let game):
-                if type == Constantes.gameType[0] {
-                    self.libraryGames = game
-                } else {
-                    self.wishGames = game
-                }
-                case .failure(let error):
-                    print(error.localizedDescription)
+        if type == Constantes.gameType[0] {
+           for gameID in libraryID {
+               ApiService.shared.getGames(gameID: gameID)
+                   .receive(on: DispatchQueue.main)
+                   .sink { error in
+                       print(error)
+                   } receiveValue: { game in
+                       self.libraryGames.append(game)
+                   }
+                   .store(in: &cancellable)
+           }
+        } else {
+           for gameID in wishID {
+               ApiService.shared.getGames(gameID: gameID)
+                   .receive(on: DispatchQueue.main)
+                   .sink { error in
+                       print(error)
+                   } receiveValue: { game in
+                       self.wishGames.append(game)
+                   }
+                   .store(in: &cancellable)
             }
         }
     }
@@ -79,7 +90,7 @@ final class ProfilViewModel: ObservableObject {
     
     // return the good type game to show
     func gameToShow() -> [GameData] {
-        return type == allType[0] ? libraryGames : wishGames
+        return type == Constantes.gameType[0] ? libraryGames : wishGames
     }
     
 }

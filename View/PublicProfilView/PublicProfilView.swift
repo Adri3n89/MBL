@@ -55,6 +55,7 @@ struct PublicProfilView: View {
             .foregroundColor(.white)
                 .background(BackgroundView())
                 .onAppear {
+                    viewModel.libraryGames = []
                     viewModel.fetchLibraryID(user: userID)
                     viewModel.fetchUserInfo(user: userID)
                 }

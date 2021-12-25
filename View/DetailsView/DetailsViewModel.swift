@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class DetailsViewModel: ObservableObject {
     
@@ -15,17 +16,18 @@ final class DetailsViewModel: ObservableObject {
     @Published var wishListButtonText = Constantes.addWish
     @Published var wishID = [String]()
     @Published var libraryID = [String]()
+    var cancellable = Set<AnyCancellable>()
     
     func getDetail() {
         gameInfo = nil
-        ApiService.shared.getGameByID(id: id) { result in
-            switch result {
-                case .success(let info):
-                    self.gameInfo = info
-                case .failure(let error):
-                    print(error.localizedDescription)
+        ApiService.shared.getGameByID(id: id)
+            .receive(on: DispatchQueue.main)
+            .sink { error in
+                print(error)
+            } receiveValue: { game in
+                self.gameInfo = game
             }
-        }
+            .store(in: &cancellable)
     }
     
     func addOrRemove(id: String, type: String) {
