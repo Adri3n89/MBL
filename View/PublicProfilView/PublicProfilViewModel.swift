@@ -37,6 +37,7 @@ final class PublicProfilViewModel: ObservableObject {
     func fetchLibraryID(user: String) {
         UserRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: user) { libraryID in
             self.libraryID = libraryID
+            // after receive the gamesID, fetch the games infos
             self.getLibraryGame()
         }
     }

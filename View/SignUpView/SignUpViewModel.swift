@@ -20,6 +20,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var error: String = ""
     
     func signUp() {
+        // check if the adress if found with the geocoder to be sure the user can be find on the mapTab
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(city) { placemarks, error in
             guard (placemarks?.first) != nil else {

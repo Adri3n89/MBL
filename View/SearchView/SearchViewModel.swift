@@ -16,6 +16,7 @@ final class SearchViewModel: ObservableObject {
     @Published var isLoading = false
     
     func searchGame() {
+        // convert the caractere to the good format for the api request
         searchResult = []
         let okayChars : Set<Character> =
                 Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")

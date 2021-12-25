@@ -48,6 +48,12 @@ extension String {
     result += self[position ..< endIndex]
     return result
   }
+    
+    func stringToDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.date(from: self)!
+    }
 }
 
 private extension String {

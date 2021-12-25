@@ -32,6 +32,7 @@ final class DetailsViewModel: ObservableObject {
         UserRepository.shared.addOrRemove(id: id, type: type)
     }
     
+    // get the user games and check if the game is already in wishlist or library
     func getIDs(type: String) {
         UserRepository.shared.fetchUserGame(type: type, user: AuthRepository.shared.userID!) { iDs in
             if type == Constantes.gameType[0] {

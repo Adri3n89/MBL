@@ -5,7 +5,7 @@
 //  Created by Adrien PEREA on 14/12/2021.
 //
 
-@testable import MGL
+@testable import MBL
 import XCTest
 
 class ApiServiceTest: XCTestCase {

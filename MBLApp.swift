@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 @main
-struct MGLApp: App {
+struct MBLApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     

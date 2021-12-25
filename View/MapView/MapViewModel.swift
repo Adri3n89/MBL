@@ -11,7 +11,6 @@ import CoreLocation
 
 final class MapViewModel: ObservableObject {
     
-    // zone d'ouverture de la map/ à changer en fonction de l'utilisateur
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(),
         span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
@@ -23,7 +22,7 @@ final class MapViewModel: ObservableObject {
     @Published var userToShow = ""
     
     func getAllUsers() {
-        // Réccupération de tout les utilisateurs de Firebase
+        // fetch all users from Firebase
         UserRepository.shared.fetchAllUsers { usersInfo in
             self.allUsers = usersInfo
             self.getAllAdresses()
@@ -31,13 +30,13 @@ final class MapViewModel: ObservableObject {
     }
     
     func getAllAdresses() {
-        // création d'un tableau avec les adresses de tout les utilisateurs
+        // create an array of all users adresses
         var all = [String]()
         for user in allUsers {
             all.append(user.city)
         }
         allAdresses = all
-        // geoCode de chaque adresse pour avoir les coordonnées et les ajouter au tableau AllCoordinates
+        // geocode all adresses and append coordinates into allCoordinates
         geoCode(addresses: allAdresses) { placemarks in
             for index in 0...placemarks.count-1 {
                 if self.allUsers[index].userID != AuthRepository.shared.userID {
@@ -50,7 +49,7 @@ final class MapViewModel: ObservableObject {
     }
     
     func geoCode(addresses: [String], results: [CLPlacemark] = [], completion: @escaping ([CLPlacemark]) -> Void ) {
-        // fonction pour Geocoder un tableau de string car une boucle for ne marche pas à cause de l'asynchrone du geocode
+        // geocode all the adresses in an array, a for loop doesn't work because of the async
         guard let address = addresses.first else {
             completion(results)
             return

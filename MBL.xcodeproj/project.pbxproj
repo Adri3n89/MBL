@@ -37,7 +37,7 @@
 		089A0E322755348900E23044 /* ResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A0E312755348900E23044 /* ResetViewModel.swift */; };
 		08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */; };
 		08C6F407275B6B800028D5E4 /* RightBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F406275B6B800028D5E4 /* RightBubbleView.swift */; };
-		4BA6E765D0022F15F79521CA /* Pods_MGL__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7969FE3C4A47832D05E4193E /* Pods_MGL__iOS_.framework */; };
+		096AB4C9DBA7F900EDF3CAA0 /* Pods_MBL__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0F38E5C2C020B412C5235 /* Pods_MBL__iOS_.framework */; };
 		7A10A3A227446BBD006B09DD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A10A3A127446BBD006B09DD /* NetworkError.swift */; };
 		7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40E44D27450E95002D0FD8 /* Constantes.swift */; };
 		7A40E4502745344D002D0FD8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40E44F2745344D002D0FD8 /* SearchViewModel.swift */; };
@@ -45,7 +45,7 @@
 		7A436EB6274C3D9B00D8D28F /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A436EB5274C3D9B00D8D28F /* ViewExtension.swift */; };
 		7A46557627468FA3002BE831 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46557527468FA3002BE831 /* UserData.swift */; };
 		7A465578274692E3002BE831 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A465577274692E3002BE831 /* MapViewModel.swift */; };
-		7A4C2A06272FEF1200C4AC30 /* MGLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */; };
+		7A4C2A06272FEF1200C4AC30 /* MBLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F6272FEF1100C4AC30 /* MBLApp.swift */; };
 		7A4C2A08272FEF1200C4AC30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C29F7272FEF1100C4AC30 /* ContentView.swift */; };
 		7A4C2A0A272FEF1200C4AC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */; };
 		7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4C2A17272FEF6500C4AC30 /* Top50View.swift */; };
@@ -90,7 +90,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07DF25CF6AF9907E70DECCF5 /* Pods_MGL__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MGL__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		081BC7C3276A433E000AE740 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		081BC7C5276A4F8C000AE740 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		082A633227691C1D00BD5921 /* searchIDwithNilValue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchIDwithNilValue.json; sourceTree = "<group>"; };
@@ -121,20 +120,21 @@
 		089A0E312755348900E23044 /* ResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewModel.swift; sourceTree = "<group>"; };
 		08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBubbleView.swift; sourceTree = "<group>"; };
 		08C6F406275B6B800028D5E4 /* RightBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBubbleView.swift; sourceTree = "<group>"; };
-		6E0BCC8F969021B2F4161E78 /* Pods-MGL (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (iOS).release.xcconfig"; path = "Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS).release.xcconfig"; sourceTree = "<group>"; };
-		7969FE3C4A47832D05E4193E /* Pods_MGL__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MGL__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AA040C4A4CE52B6FF44A565 /* Pods-MBL (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBL (iOS).release.xcconfig"; path = "Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS).release.xcconfig"; sourceTree = "<group>"; };
+		1BE8EF24C3F105BBA84C63DC /* Pods-MBL (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBL (iOS).debug.xcconfig"; path = "Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		5EC0F38E5C2C020B412C5235 /* Pods_MBL__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBL__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A10A3A127446BBD006B09DD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7A40E44D27450E95002D0FD8 /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
 		7A40E44F2745344D002D0FD8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		7A40E45127453ACB002D0FD8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		7A436EB5274C3D9B00D8D28F /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		7A436EB7274C3F6900D8D28F /* MGL--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MGL--iOS--Info.plist"; sourceTree = "<group>"; };
+		7A436EB7274C3F6900D8D28F /* MBL--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MBL--iOS--Info.plist"; sourceTree = "<group>"; };
 		7A46557527468FA3002BE831 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7A465577274692E3002BE831 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGLApp.swift; sourceTree = "<group>"; };
+		7A4C29F6272FEF1100C4AC30 /* MBLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLApp.swift; sourceTree = "<group>"; };
 		7A4C29F7272FEF1100C4AC30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7A4C29FD272FEF1200C4AC30 /* MGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4C29FD272FEF1200C4AC30 /* MBL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4C2A17272FEF6500C4AC30 /* Top50View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50View.swift; sourceTree = "<group>"; };
 		7A4C2A1A272FEF6C00C4AC30 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		7A4C2A1D272FEF7300C4AC30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -164,11 +164,6 @@
 		7ACB1734274A6B1D00C88CE8 /* PictureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRepository.swift; sourceTree = "<group>"; };
 		7ACB1738274A6E4C00C88CE8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7AD0526A2741564200EADB7F /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		A3386060E7F7948FD54F54F4 /* Pods-MGL (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (macOS).debug.xcconfig"; path = "Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS).debug.xcconfig"; sourceTree = "<group>"; };
-		AFCBF89B99954A9D981E0293 /* Pods-MGL (iOS)-ApiServiceTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (iOS)-ApiServiceTest.release.xcconfig"; path = "Target Support Files/Pods-MGL (iOS)-ApiServiceTest/Pods-MGL (iOS)-ApiServiceTest.release.xcconfig"; sourceTree = "<group>"; };
-		D316C03E65F1E347A1240CA9 /* Pods-MGL (iOS)-ApiServiceTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (iOS)-ApiServiceTest.debug.xcconfig"; path = "Target Support Files/Pods-MGL (iOS)-ApiServiceTest/Pods-MGL (iOS)-ApiServiceTest.debug.xcconfig"; sourceTree = "<group>"; };
-		EB2A453099065CE4EDEF7AA5 /* Pods-MGL (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (macOS).release.xcconfig"; path = "Target Support Files/Pods-MGL (macOS)/Pods-MGL (macOS).release.xcconfig"; sourceTree = "<group>"; };
-		FD0CD6FCC118B5B7934C6928 /* Pods-MGL (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGL (iOS).debug.xcconfig"; path = "Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,8 +178,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA6E765D0022F15F79521CA /* Pods_MGL__iOS_.framework in Frameworks */,
 				081BC7C2276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI in Frameworks */,
+				096AB4C9DBA7F900EDF3CAA0 /* Pods_MBL__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,27 +241,35 @@
 			path = ResetView;
 			sourceTree = "<group>";
 		};
+		5EE94A9BEE5EEB29A4EE874D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EC0F38E5C2C020B412C5235 /* Pods_MBL__iOS_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A4C29F0272FEF1000C4AC30 = {
 			isa = PBXGroup;
 			children = (
-				7A436EB7274C3F6900D8D28F /* MGL--iOS--Info.plist */,
+				7A436EB7274C3F6900D8D28F /* MBL--iOS--Info.plist */,
 				7A40E44D27450E95002D0FD8 /* Constantes.swift */,
 				7A93A8B4273E770600F920A5 /* GoogleService-Info.plist */,
 				7AB6EB8E273157C500E60A49 /* View */,
 				7AB6EB8D273157A700E60A49 /* Model */,
-				7A4C29F6272FEF1100C4AC30 /* MGLApp.swift */,
+				7A4C29F6272FEF1100C4AC30 /* MBLApp.swift */,
 				7A4C29F8272FEF1200C4AC30 /* Assets.xcassets */,
 				083C46442768A7130058918F /* ApiServiceTest */,
 				7A4C29FE272FEF1200C4AC30 /* Products */,
 				F1081B297E6B9B9E69708FAB /* Pods */,
-				7C6642B5C49A600AC56B07B8 /* Frameworks */,
+				5EE94A9BEE5EEB29A4EE874D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		7A4C29FE272FEF1200C4AC30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A4C29FD272FEF1200C4AC30 /* MGL.app */,
+				7A4C29FD272FEF1200C4AC30 /* MBL.app */,
 				083C46432768A7130058918F /* ApiServiceTest.xctest */,
 			);
 			name = Products;
@@ -422,24 +425,11 @@
 			path = "custom View";
 			sourceTree = "<group>";
 		};
-		7C6642B5C49A600AC56B07B8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7969FE3C4A47832D05E4193E /* Pods_MGL__iOS_.framework */,
-				07DF25CF6AF9907E70DECCF5 /* Pods_MGL__macOS_.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F1081B297E6B9B9E69708FAB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FD0CD6FCC118B5B7934C6928 /* Pods-MGL (iOS).debug.xcconfig */,
-				6E0BCC8F969021B2F4161E78 /* Pods-MGL (iOS).release.xcconfig */,
-				A3386060E7F7948FD54F54F4 /* Pods-MGL (macOS).debug.xcconfig */,
-				EB2A453099065CE4EDEF7AA5 /* Pods-MGL (macOS).release.xcconfig */,
-				D316C03E65F1E347A1240CA9 /* Pods-MGL (iOS)-ApiServiceTest.debug.xcconfig */,
-				AFCBF89B99954A9D981E0293 /* Pods-MGL (iOS)-ApiServiceTest.release.xcconfig */,
+				1BE8EF24C3F105BBA84C63DC /* Pods-MBL (iOS).debug.xcconfig */,
+				0AA040C4A4CE52B6FF44A565 /* Pods-MBL (iOS).release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -465,26 +455,26 @@
 			productReference = 083C46432768A7130058918F /* ApiServiceTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7A4C29FC272FEF1200C4AC30 /* MGL (iOS) */ = {
+		7A4C29FC272FEF1200C4AC30 /* MBL (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A4C2A0E272FEF1200C4AC30 /* Build configuration list for PBXNativeTarget "MGL (iOS)" */;
+			buildConfigurationList = 7A4C2A0E272FEF1200C4AC30 /* Build configuration list for PBXNativeTarget "MBL (iOS)" */;
 			buildPhases = (
-				BCB6F775161AD7AF0F2F7DE2 /* [CP] Check Pods Manifest.lock */,
+				0927D83693E8FCDE5761E534 /* [CP] Check Pods Manifest.lock */,
 				7A4C29F9272FEF1200C4AC30 /* Sources */,
 				7A4C29FA272FEF1200C4AC30 /* Frameworks */,
 				7A4C29FB272FEF1200C4AC30 /* Resources */,
-				EBF31269FA036E96C31EE39B /* [CP] Embed Pods Frameworks */,
+				DF9BC4BC3CECD2B791BC2305 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "MGL (iOS)";
+			name = "MBL (iOS)";
 			packageProductDependencies = (
 				081BC7C1276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI */,
 			);
 			productName = "MGL (iOS)";
-			productReference = 7A4C29FD272FEF1200C4AC30 /* MGL.app */;
+			productReference = 7A4C29FD272FEF1200C4AC30 /* MBL.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -494,7 +484,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					083C46422768A7130058918F = {
@@ -506,7 +496,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7A4C29F4272FEF1000C4AC30 /* Build configuration list for PBXProject "MGL" */;
+			buildConfigurationList = 7A4C29F4272FEF1000C4AC30 /* Build configuration list for PBXProject "MBL" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -523,7 +513,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A4C29FC272FEF1200C4AC30 /* MGL (iOS) */,
+				7A4C29FC272FEF1200C4AC30 /* MBL (iOS) */,
 				083C46422768A7130058918F /* ApiServiceTest */,
 			);
 		};
@@ -554,7 +544,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BCB6F775161AD7AF0F2F7DE2 /* [CP] Check Pods Manifest.lock */ = {
+		0927D83693E8FCDE5761E534 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -569,28 +559,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MGL (iOS)-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MBL (iOS)-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EBF31269FA036E96C31EE39B /* [CP] Embed Pods Frameworks */ = {
+		DF9BC4BC3CECD2B791BC2305 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MGL (iOS)/Pods-MGL (iOS)-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS)-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -665,7 +655,7 @@
 				7A87477C274CE87C00FB46A8 /* GlowBorder.swift in Sources */,
 				7A436EB6274C3D9B00D8D28F /* ViewExtension.swift in Sources */,
 				7AA64399274129F80051EC70 /* GameCellView.swift in Sources */,
-				7A4C2A06272FEF1200C4AC30 /* MGLApp.swift in Sources */,
+				7A4C2A06272FEF1200C4AC30 /* MBLApp.swift in Sources */,
 				7A9766922743AD5B00E82079 /* ProfilViewModel.swift in Sources */,
 				7A565E9F274AE685005FD475 /* PublicProfilViewModel.swift in Sources */,
 			);
@@ -676,7 +666,7 @@
 /* Begin PBXTargetDependency section */
 		083C46482768A7130058918F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7A4C29FC272FEF1200C4AC30 /* MGL (iOS) */;
+			target = 7A4C29FC272FEF1200C4AC30 /* MBL (iOS) */;
 			targetProxy = 083C46472768A7130058918F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -704,7 +694,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MGL.app/MGL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MBL.app/MBL";
 			};
 			name = Debug;
 		};
@@ -730,7 +720,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MGL.app/MGL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MBL.app/MBL";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -854,7 +844,7 @@
 		};
 		7A4C2A0F272FEF1200C4AC30 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD0CD6FCC118B5B7934C6928 /* Pods-MGL (iOS).debug.xcconfig */;
+			baseConfigurationReference = 1BE8EF24C3F105BBA84C63DC /* Pods-MBL (iOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -863,7 +853,7 @@
 				DEVELOPMENT_TEAM = 45CCMZA383;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MGL--iOS--Info.plist";
+				INFOPLIST_FILE = "MBL--iOS--Info.plist";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "we need the Library permission";
 				INFOPLIST_KEY_NSCameraUsageDescription = "we need the Camera permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -879,8 +869,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.MGL;
-				PRODUCT_NAME = MGL;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.MBL;
+				PRODUCT_NAME = MBL;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -890,7 +880,7 @@
 		};
 		7A4C2A10272FEF1200C4AC30 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E0BCC8F969021B2F4161E78 /* Pods-MGL (iOS).release.xcconfig */;
+			baseConfigurationReference = 0AA040C4A4CE52B6FF44A565 /* Pods-MBL (iOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -899,7 +889,7 @@
 				DEVELOPMENT_TEAM = 45CCMZA383;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MGL--iOS--Info.plist";
+				INFOPLIST_FILE = "MBL--iOS--Info.plist";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "we need the Library permission";
 				INFOPLIST_KEY_NSCameraUsageDescription = "we need the Camera permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -915,8 +905,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.MGL;
-				PRODUCT_NAME = MGL;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.MBL;
+				PRODUCT_NAME = MBL;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -937,7 +927,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A4C29F4272FEF1000C4AC30 /* Build configuration list for PBXProject "MGL" */ = {
+		7A4C29F4272FEF1000C4AC30 /* Build configuration list for PBXProject "MBL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A4C2A0C272FEF1200C4AC30 /* Debug */,
@@ -946,7 +936,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A4C2A0E272FEF1200C4AC30 /* Build configuration list for PBXNativeTarget "MGL (iOS)" */ = {
+		7A4C2A0E272FEF1200C4AC30 /* Build configuration list for PBXNativeTarget "MBL (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A4C2A0F272FEF1200C4AC30 /* Debug */,

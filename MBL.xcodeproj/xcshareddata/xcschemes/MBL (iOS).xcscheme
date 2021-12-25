@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1310"
+   LastUpgradeVersion = "1320"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7A4C29FC272FEF1200C4AC30"
-               BuildableName = "MGL.app"
-               BlueprintName = "MGL (iOS)"
-               ReferencedContainer = "container:MGL.xcodeproj">
+               BuildableName = "MBL.app"
+               BlueprintName = "MBL (iOS)"
+               ReferencedContainer = "container:MBL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,17 @@
                BlueprintIdentifier = "083C46422768A7130058918F"
                BuildableName = "ApiServiceTest.xctest"
                BlueprintName = "ApiServiceTest"
-               ReferencedContainer = "container:MGL.xcodeproj">
+               ReferencedContainer = "container:MBL.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0834DDC527747E6000C94A6A"
+               BuildableName = "ViewModelsTests.xctest"
+               BlueprintName = "ViewModelsTests"
+               ReferencedContainer = "container:MBL.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7A4C29FC272FEF1200C4AC30"
-            BuildableName = "MGL.app"
-            BlueprintName = "MGL (iOS)"
-            ReferencedContainer = "container:MGL.xcodeproj">
+            BuildableName = "MBL.app"
+            BlueprintName = "MBL (iOS)"
+            ReferencedContainer = "container:MBL.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -73,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7A4C29FC272FEF1200C4AC30"
-            BuildableName = "MGL.app"
-            BlueprintName = "MGL (iOS)"
-            ReferencedContainer = "container:MGL.xcodeproj">
+            BuildableName = "MBL.app"
+            BlueprintName = "MBL (iOS)"
+            ReferencedContainer = "container:MBL.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
