@@ -33,8 +33,13 @@ struct Name: Codable {
 struct GameData: Identifiable {
     let uid = UUID()
     let name: String
-    let year: String?
+    let year: String
     let id: String
     let rank: String
     let image: String
+    let description: String
+    let minPlayer: String
+    let maxPlayer: String
+    let minTime: String
+    let maxTime: String
 }

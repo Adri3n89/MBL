@@ -22,6 +22,9 @@
 		083C464F2768A8D60058918F /* top50.json in Resources */ = {isa = PBXBuildFile; fileRef = 083C464E2768A8D60058918F /* top50.json */; };
 		083C46512768A8E90058918F /* searchName.json in Resources */ = {isa = PBXBuildFile; fileRef = 083C46502768A8E90058918F /* searchName.json */; };
 		083C46532768A8EF0058918F /* searchID.json in Resources */ = {isa = PBXBuildFile; fileRef = 083C46522768A8EF0058918F /* searchID.json */; };
+		085DD2BF277A243A0081E255 /* APIResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DD2BE277A243A0081E255 /* APIResources.swift */; };
+		085DD2C1277A24540081E255 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DD2C0277A24540081E255 /* APIProvider.swift */; };
+		085DD2C3277A269B0081E255 /* APIMockResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DD2C2277A269B0081E255 /* APIMockResources.swift */; };
 		08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7027561DD2007C77B9 /* BackgroundClearView.swift */; };
 		08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7227565C3E007C77B9 /* ConversationRepository.swift */; };
 		08706A7527567D8E007C77B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7427567D8E007C77B9 /* DateExtension.swift */; };
@@ -105,6 +108,9 @@
 		083C464E2768A8D60058918F /* top50.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = top50.json; sourceTree = "<group>"; };
 		083C46502768A8E90058918F /* searchName.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchName.json; sourceTree = "<group>"; };
 		083C46522768A8EF0058918F /* searchID.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchID.json; sourceTree = "<group>"; };
+		085DD2BE277A243A0081E255 /* APIResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResources.swift; sourceTree = "<group>"; };
+		085DD2C0277A24540081E255 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		085DD2C2277A269B0081E255 /* APIMockResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMockResources.swift; sourceTree = "<group>"; };
 		08706A7027561DD2007C77B9 /* BackgroundClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClearView.swift; sourceTree = "<group>"; };
 		08706A7227565C3E007C77B9 /* ConversationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepository.swift; sourceTree = "<group>"; };
 		08706A7427567D8E007C77B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				083C46522768A8EF0058918F /* searchID.json */,
 				082A633227691C1D00BD5921 /* searchIDwithNilValue.json */,
 				083C464E2768A8D60058918F /* top50.json */,
+				085DD2C2277A269B0081E255 /* APIMockResources.swift */,
 			);
 			path = ApiServiceTest;
 			sourceTree = "<group>";
@@ -376,6 +383,8 @@
 				083C463D2768A6BA0058918F /* Repository and Service */,
 				7A9766992743E82200E82079 /* Decodable and Struct */,
 				7A10A3A127446BBD006B09DD /* NetworkError.swift */,
+				085DD2BE277A243A0081E255 /* APIResources.swift */,
+				085DD2C0277A24540081E255 /* APIProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				083C46462768A7130058918F /* ApiServiceTest.swift in Sources */,
+				085DD2C3277A269B0081E255 /* APIMockResources.swift in Sources */,
 				083C464D2768A7300058918F /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,11 +658,13 @@
 				089A0E302755348100E23044 /* ResetView.swift in Sources */,
 				08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */,
 				083C45EC27673A470058918F /* CustomTF.swift in Sources */,
+				085DD2C1277A24540081E255 /* APIProvider.swift in Sources */,
 				081BC7C4276A433E000AE740 /* UserRepository.swift in Sources */,
 				7A6FA25E27302184001EE307 /* TFSignUpView.swift in Sources */,
 				7A4C2A2D272FF74500C4AC30 /* LogInView.swift in Sources */,
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
 				7A87477C274CE87C00FB46A8 /* GlowBorder.swift in Sources */,
+				085DD2BF277A243A0081E255 /* APIResources.swift in Sources */,
 				7A436EB6274C3D9B00D8D28F /* ViewExtension.swift in Sources */,
 				7AA64399274129F80051EC70 /* GameCellView.swift in Sources */,
 				7A4C2A06272FEF1200C4AC30 /* MBLApp.swift in Sources */,

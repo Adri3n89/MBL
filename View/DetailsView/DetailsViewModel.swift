@@ -11,7 +11,7 @@ import Combine
 final class DetailsViewModel: ObservableObject {
     
     var id = ""
-    @Published var gameInfo: ItemInfo?
+    @Published var gameInfo: GameData?
     @Published var libraryButtonText = Constantes.addLibrary
     @Published var wishListButtonText = Constantes.addWish
     @Published var wishID = [String]()
@@ -20,7 +20,7 @@ final class DetailsViewModel: ObservableObject {
     
     func getDetail() {
         gameInfo = nil
-        ApiService.shared.getGameByID(id: id)
+        ApiService.shared.getGames(gameID: id)
             .receive(on: DispatchQueue.main)
             .sink { error in
                 print(error)
@@ -70,23 +70,28 @@ final class DetailsViewModel: ObservableObject {
     }
     
     func gameYear() -> String {
-        return Constantes.year + (gameInfo?.yearpublished?.value ?? "?")
+        guard let game = gameInfo else { return "" }
+        return Constantes.year + game.year
     }
     
     func players() -> String {
-        return Constantes.player + (gameInfo?.minplayers.value ?? "") + "-" + (gameInfo?.maxplayers.value ?? "")
+        guard let game = gameInfo else { return "" }
+        return Constantes.player + game.minPlayer + "-" + game.maxPlayer
     }
     
     func playTime() -> String {
-        return Constantes.time + (gameInfo?.minplaytime.value ?? "") + "-" + (gameInfo?.maxplaytime.value ?? "")
+        guard let game = gameInfo else { return "" }
+        return Constantes.time + game.minTime + "-" + game.maxTime
     }
     
     func gamePicture() -> String {
-        return gameInfo?.image ?? Constantes.defaultGamePicture
+        guard let game = gameInfo else { return "" }
+        return game.image
     }
     
     func description() -> String {
-        return gameInfo?.itemDescription ?? Constantes.noDescription
+        guard let game = gameInfo else { return "" }
+        return game.description
     }
     
 }

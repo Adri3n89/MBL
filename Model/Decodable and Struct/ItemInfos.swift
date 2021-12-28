@@ -20,6 +20,8 @@ struct ItemsInfo: Codable {
 
 // MARK: - ItemInfo
 struct ItemInfo: Codable, Identifiable {
+    var name = ""
+    var rank = ""
     let type, id: String
     let thumbnail, image: String?
     var itemDescription: String

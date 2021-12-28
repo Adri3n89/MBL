@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GameCellView: View {
-    var game: GameData?
+    var game: GameData
     var width: CGFloat
 
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: game?.image ?? Constantes.defaultGamePicture)) { image in
+            AsyncImage(url: URL(string: game.image)) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -22,13 +22,13 @@ struct GameCellView: View {
             }
                 .frame(width: (width / 2.3) , height: (width / 2.3))
                 .clipped()
-            Text(game!.year ?? "?")
+            Text(game.year)
                 .offset(x: -(width / 2.3)/3.1, y: -(width / 2.3)/2.5)
                 .glowBorder(color: .black, lineWidth: 4)
-            Text(game!.rank)
+            Text(game.rank)
                 .offset(x: (width / 2.3)/2.5, y: -(width / 2.3)/2.5)
                 .glowBorder(color: .black, lineWidth: 4)
-            Text(game!.name)
+            Text(game.name)
                 .offset(x: 0, y: (width / 2.3)/3)
                 .frame(width: width / 2.3, height: (width / 2.3)/3, alignment: .center)
                 .multilineTextAlignment(.center)
@@ -40,11 +40,11 @@ struct GameCellView: View {
     }
 }
 
-struct GameCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            GameCellView(width: 300)
-                .previewLayout(.sizeThatFits)
-        }
-    }
-}
+//struct GameCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            GameCellView(width: 300)
+//                .previewLayout(.sizeThatFits)
+//        }
+//    }
+//}

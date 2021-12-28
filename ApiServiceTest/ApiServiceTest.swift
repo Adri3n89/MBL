@@ -5,554 +5,329 @@
 //  Created by Adrien PEREA on 14/12/2021.
 //
 
+import Combine
 @testable import MBL
 import XCTest
 
 class ApiServiceTest: XCTestCase {
-
+    
+    var subscriptions = Set<AnyCancellable>()
+      
+      override func tearDown() {
+          subscriptions = []
+      }
+    
     // MARK: - TEST getHotGame
-
-    func testGetHotGameGivenDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().top50Data
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getHotGame(Constantes.urlTop50, URLSession(configuration: configuration)) { result in
-            if case .success(let top50) = result {
-                XCTAssertNotNil(top50)
-                XCTAssert((top50 as Any) is [GameData])
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetHotGameGivenBadReponseAndData() {
-        //given
-        let response = FakeResponseData().reponseKO
+    
+    func testGetHotGameGivenGoodData() {
         let data = FakeResponseData().top50Data
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (data, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getHotGame(Constantes.urlTop50, URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badResponse)
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.getHotGame()
+            .sink { completion in
+    
+            } receiveValue: { top50 in
+                XCTAssertEqual(top50.count , 50)
                 expectation.fulfill()
-            }
-        }
+            }.store(in: &subscriptions)
+        
         wait(for: [expectation], timeout: 1)
+        
     }
-
+    
     func testGetHotGameGivenBadURL() {
-        //given
-        let badURL = "ezifjef zioejf o"
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let ApiService = ApiService()
-
-        ApiService.getHotGame(badURL, URLSession.shared) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badURL)
+            //given
+            let badURL = "ezifjef zioejf o"
+            let expectation = XCTestExpectation(description: "changing queue")
+            let apiService = ApiService()
+    
+        apiService.getHotGame(badURL)
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Bad URL.")
+                case .finished:
+                    XCTFail()
+                }
                 expectation.fulfill()
-            }
+            } receiveValue: { top50 in
+                
+            }.store(in: &subscriptions)
+        
+            wait(for: [expectation], timeout: 1)
         }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetHotGameGivenBadDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().incorrectData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getHotGame(Constantes.urlTop50, URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .undecodableData)
+    
+    func testGetHotGameGivenBadData() {
+        let data = FakeResponseData().incorrectData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.getHotGame()
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Undecodable Datas, try again")
+                case .finished:
+                    XCTFail()
+                }
                 expectation.fulfill()
-            }
-        }
+            } receiveValue: { top50 in
+               XCTFail()
+            }.store(in: &subscriptions)
+        
         wait(for: [expectation], timeout: 1)
+        
     }
     
-    func testGetHotGameGivenNoDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let error = FakeResponseData().error
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (nil, response, error)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getHotGame(Constantes.urlTop50, URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .noData)
+    func testGetHotGameGivenBadResponse() {
+        let mock = APIMockResources(result: .failure(.badResponse))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving bad response")
+        
+        apiService.getHotGame()
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Bad response from API.")
+                case .finished:
+                    XCTFail()
+                }
                 expectation.fulfill()
-            }
-        }
+            } receiveValue: { top50 in
+               XCTFail()
+            }.store(in: &subscriptions)
+        
         wait(for: [expectation], timeout: 1)
-    }
-    
-    // MARK: - TEST getGameByID
-
-    func testGetGameByIDGivenDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().searchByIDData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGameByID(id: "99999", URLSession(configuration: configuration)) { result in
-            if case .success(let game) = result {
-                XCTAssertNotNil(game)
-                XCTAssert((game as Any) is ItemInfo)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
+        
     }
 
-    func testGetGameByIDGivenBadResponseAndGoodData() {
-        //given
-        let response = FakeResponseData().reponseKO
-        let data = FakeResponseData().searchByIDData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (data, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGameByID(id: "99999", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badResponse)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGameByIDGivenBadURL() {
-        //given
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let ApiService = ApiService()
-
-        ApiService.getGameByID(id: "99 999", URLSession.shared) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badURL)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGameByIDGivenBadDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().incorrectData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGameByID(id: "99999", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .undecodableData)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    func testGetGameByIDGivenNoDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let error = FakeResponseData().error
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (nil, response, error)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGameByID(id: "99999", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .noData)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    // MARK: - TEST getGameByName
-
-    func testGetGameByNameGivenDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().searchByNameData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.searchGameName(name: "Catan", URLSession(configuration: configuration)) { result in
-            if case .success(let games) = result {
-                XCTAssertNotNil(games)
-                XCTAssert((games as Any) is [ItemResult])
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    func testGetGameByNameGivenDataWithNoResultAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().searchByNameNoResultData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.searchGameName(name: "Catannanananana", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .noResult)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGameByNameGivenBadResponseAndGoodData() {
-        //given
-        let response = FakeResponseData().reponseKO
-        let data = FakeResponseData().searchByNameData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (data, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.searchGameName(name: "Catan", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badResponse)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGameByNameGivenBadURL() {
-        //given
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let ApiService = ApiService()
-
-        ApiService.searchGameName(name: "&àéç;da doa;", URLSession.shared) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badURL)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGameByNameGivenBadDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().incorrectData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.searchGameName(name: "Catan", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .undecodableData)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    func testGetGameByNameGivenNoDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let error = FakeResponseData().error
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (nil, response, error)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.searchGameName(name: "Catan", URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .noData)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    
     // MARK: - TEST getGames
-
-    func testGetGamesGivenDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().searchByIDData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGames(arrayID: ["99999"], URLSession(configuration: configuration)) { result in
-            if case .success(let game) = result {
-                XCTAssertNotNil(game)
-                XCTAssert((game as Any) is [GameData])
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
     
-    func testGetGamesGivenDataWithNilValueAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().searchByIDWithNilValueData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGames(arrayID: ["99999"], URLSession(configuration: configuration)) { result in
-            if case .success(let game) = result {
-                XCTAssertNotNil(game)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGamesGivenBadResponseAndGoodData() {
-        //given
-        let response = FakeResponseData().reponseKO
+    func testGetGamesGivenGoodData() {
         let data = FakeResponseData().searchByIDData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (data, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGames(arrayID: ["99999"], URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badResponse)
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.getGames(gameID: "99999")
+            .sink { completion in
+    
+            } receiveValue: { game in
+                XCTAssertEqual(game.id , "99999")
                 expectation.fulfill()
-            }
-        }
+            }.store(in: &subscriptions)
+        
         wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGamesGivenBadURL() {
-        //given
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let ApiService = ApiService()
-
-        ApiService.getGames(arrayID: ["99  999"], URLSession.shared) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .badURL)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
-    }
-
-    func testGetGamesGivenBadDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let jsonData = FakeResponseData().incorrectData
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (jsonData, response, nil)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGames(arrayID: ["99999"], URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .undecodableData)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 1)
+        
     }
     
-    func testGetGamesGivenNoDataAndGoodResponseAndNoError() {
-        //given
-        let response = FakeResponseData().reponseOK
-        let error = FakeResponseData().error
-
-        ApiURLProtocol.loadingHandler = { request in
-            return (nil, response, error)
-        }
-
-        let expectation = XCTestExpectation(description: "changing queue")
-
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [ApiURLProtocol.self]
-
-        let ApiService = ApiService()
-
-        ApiService.getGames(arrayID: ["99999"], URLSession(configuration: configuration)) { result in
-            if case .failure(let error) = result {
-                XCTAssertNotNil(error)
-                XCTAssertEqual(error, .noData)
+    func testGetGamesGivenGoodDatawithNilImage() {
+        let data = FakeResponseData().searchByIDWithNilValueData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.getGames(gameID: "99999")
+            .sink { completion in
+    
+            } receiveValue: { game in
+                XCTAssertEqual(game.id , "99999")
+                XCTAssertEqual(game.image, Constantes.defaultGamePicture)
                 expectation.fulfill()
-            }
-        }
+            }.store(in: &subscriptions)
+        
         wait(for: [expectation], timeout: 1)
+        
+    }
+    
+    func testGetGamesGivenBadURL() {
+            //given
+            let badURL = "ezifjef zioejf o"
+            let expectation = XCTestExpectation(description: "changing queue")
+            let apiService = ApiService()
+    
+        apiService.getGames(gameID: badURL)
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Bad URL.")
+                case .finished:
+                    XCTFail()
+                }
+                expectation.fulfill()
+            } receiveValue: { game in
+                
+            }.store(in: &subscriptions)
+        
+            wait(for: [expectation], timeout: 1)
+        }
+    
+    func testGetGamesGivenBadData() {
+        let data = FakeResponseData().incorrectData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.getGames(gameID: "99999")
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Undecodable Datas, try again")
+                case .finished:
+                    XCTFail()
+                }
+                expectation.fulfill()
+            } receiveValue: { game in
+               XCTFail()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
+    }
+    
+    func testGetGamesGivenBadResponse() {
+        let mock = APIMockResources(result: .failure(.badResponse))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving bad response")
+        
+        apiService.getGames(gameID: "9779")
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Bad response from API.")
+                case .finished:
+                    XCTFail()
+                }
+                expectation.fulfill()
+            } receiveValue: { game in
+               XCTFail()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
     }
 
-
+    // MARK: - TEST getGameByName
+    
+    func testGetGameByNameGivenGoodData() {
+        let data = FakeResponseData().searchByNameData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.searchGameName(name: "Catan")
+            .sink { completion in
+    
+            } receiveValue: { games in
+                XCTAssert(games[0].name.value.lowercased().contains("catan"))
+                expectation.fulfill()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
+    }
+    
+    func testGetGameByNameGivenGoodDatawithZeroResult() {
+        let data = FakeResponseData().searchByNameNoResultData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.searchGameName(name: "zdkzdakkdzak")
+            .sink { completion in
+               
+            } receiveValue: { games in
+                XCTAssertEqual(games.count , 0)
+                expectation.fulfill()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
+    }
+    
+    func testGetGameByNameGivenBadURL() {
+            //given
+            let badURL = "ezifjef zioejf o"
+            let expectation = XCTestExpectation(description: "changing queue")
+            let apiService = ApiService()
+    
+        apiService.searchGameName(name: badURL)
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Bad URL.")
+                case .finished:
+                    XCTFail()
+                }
+                expectation.fulfill()
+            } receiveValue: { game in
+                
+            }.store(in: &subscriptions)
+        
+            wait(for: [expectation], timeout: 1)
+        }
+    
+    func testGetGameByNameGivenBadData() {
+        let data = FakeResponseData().incorrectData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.searchGameName(name: "Catan")
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Undecodable Datas, try again")
+                case .finished:
+                    XCTFail()
+                }
+                expectation.fulfill()
+            } receiveValue: { game in
+               XCTFail()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
+    }
+    
+    func testGetGameByNameGivenBadResponse() {
+        let mock = APIMockResources(result: .failure(.badResponse))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving bad response")
+        
+        apiService.searchGameName(name: "Catan")
+            .sink { completion in
+                switch completion {
+                case .failure(let error) :
+                    XCTAssertEqual(error.localizedDescription, "Bad response from API.")
+                case .finished:
+                    XCTFail()
+                }
+                expectation.fulfill()
+            } receiveValue: { game in
+               XCTFail()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
+    }
+    
+    
+    
 }
 
 

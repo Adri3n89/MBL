@@ -13,6 +13,19 @@ enum NetworkError: Error {
     case undecodableData
     case badURL
     case noResult
+    
+    static func convert(error: Error) -> NetworkError {
+        switch error {
+        case is URLError:
+            return .badURL
+        case is NetworkError:
+            return error as! NetworkError
+        default:
+            return .undecodableData
+        }
+    }
+    
+    
 }
 
 extension NetworkError: LocalizedError {
