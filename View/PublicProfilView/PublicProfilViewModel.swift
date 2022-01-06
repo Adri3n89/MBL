@@ -17,6 +17,9 @@ final class PublicProfilViewModel: ObservableObject {
     @Published var showMessage = false
     @Published var message = ""
     var cancellable = Set<AnyCancellable>()
+    var userRepo: UserRepositoryProvider = UserRepository()
+    var apiService = ApiService()
+    var conversationRepo: ConversationRepositoryProvider = ConversationRepository()
     
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -26,7 +29,7 @@ final class PublicProfilViewModel: ObservableObject {
     // get all user games with the arrayID
     private func getLibraryGame() {
        for gameID in libraryID {
-           ApiService.shared.getGames(gameID: gameID)
+           apiService.getGames(gameID: gameID)
                .receive(on: DispatchQueue.main)
                .sink { error in
                    print(error)
@@ -39,7 +42,7 @@ final class PublicProfilViewModel: ObservableObject {
     
     // fetch all the gameID from the wishList
     func fetchLibraryID(user: String) {
-        UserRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: user) { libraryID in
+        userRepo.fetchUserGame(type: Constantes.gameType[0], user: user) { libraryID in
             self.libraryID = libraryID
             // after receive the gamesID, fetch the games infos
             self.getLibraryGame()
@@ -48,18 +51,19 @@ final class PublicProfilViewModel: ObservableObject {
     
     // fetch user profil from Firebase
     func fetchUserInfo(user: String) {
-        UserRepository.shared.fetchUserInfo(user: user) { userInfo in
+        userRepo.fetchUserInfo(user: user) { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
             self.userInfo.picture = userInfo.picture
             self.userInfo.userID = userInfo.userID
+            self.userInfo.refPic = userInfo.refPic
         }
     }
     
     // create conversation beetween currentUser and selected user
     func createConversation() {
-        ConversationRepository.shared.searchIfConversationAlreadyExist(user: userInfo.userID) { message in
+        conversationRepo.searchIfConversationAlreadyExist(user: userInfo.userID) { message in
             self.message = message
             self.showMessage.toggle()
         }

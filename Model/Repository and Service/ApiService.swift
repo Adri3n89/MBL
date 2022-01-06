@@ -8,10 +8,8 @@
 import Foundation
 import Combine
 
-final class ApiService: ObservableObject {
-   
-    static let shared = ApiService(apiResources: APIResources())
-    
+final class ApiService {
+       
     var apiResources : APIProvider
     
     init(apiResources: APIProvider = APIResources()) {

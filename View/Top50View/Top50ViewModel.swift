@@ -12,6 +12,9 @@ import Combine
 final class Top50ViewModel: ObservableObject {
     
     @Published var top50: [GameData] = []
+    @Published var showError = false
+    @Published var error: String = ""
+    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -20,10 +23,15 @@ final class Top50ViewModel: ObservableObject {
     
     // fetch the TOP 50 games from the api in array
     func getTop50() {
-        ApiService.shared.getHotGame()
+        apiService.getHotGame(Constantes.urlTop50)
            .receive(on: DispatchQueue.main)
-           .sink { error in
-               print(error)
+           .sink { completion in
+               switch completion {
+               case .failure(let error):
+                   self.error = error.localizedDescription
+                   self.showError = true
+               case .finished: print("success")
+               }
            } receiveValue: { top50 in
                self.top50 = top50
            }

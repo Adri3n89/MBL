@@ -13,20 +13,16 @@ final class ConversationViewModel: ObservableObject {
     @Published var userInfo: UserData
     @Published var newMessage: String = ""
     @Published var conversationID: String
+    var conversationRepo: ConversationRepositoryProvider = ConversationRepository()
     
     init(userInfo: UserData, conversationID: String) {
         self.userInfo = userInfo
         self.conversationID = conversationID
     }
     
-    // return user name and last name
-    func userName() -> String {
-        return userInfo.name + " " + userInfo.lastName
-    }
-    
     // send message , save it on firebase and refetch the new conversation
     func sendMessage() {
-        ConversationRepository.shared.addMessage(idConversation: conversationID, text: newMessage, date: Date().dateAndTimetoString())
+        conversationRepo.addMessage(idConversation: conversationID, text: newMessage, date: Date().dateAndTimetoString())
         newMessage = ""
         fetchConversation()
     }
@@ -34,16 +30,26 @@ final class ConversationViewModel: ObservableObject {
     // fetch the conversation and filter it to show the last on bottom
     func fetchConversation() {
         messages = []
-        ConversationRepository.shared.fetchConversation(conversationID: conversationID) { conversation in
-            if conversation.messages != nil {
-                for message in conversation.messages! {
-                    self.messages.append(MessageDate(text: message.text, date: message.date.stringToDate(), userID: message.userID ))
-                }
-                self.messages = self.messages.sorted(by: {
-                    $0.date.compare($1.date) == .orderedAscending
-                })
-            }
+        conversationRepo.fetchConversation(conversationID: conversationID) { conversation in
+            self.filterMessages(conversation: conversation)
         }
+    }
+    
+    // filter messages to put the last message at the end of the array
+    private func filterMessages(conversation: ConversationData) {
+        if conversation.messages != nil {
+            for message in conversation.messages! {
+                self.messages.append(MessageDate(text: message.text, date: message.date.stringToDate(), userID: message.userID ))
+            }
+            self.messages = self.messages.sorted(by: {
+                $0.date.compare($1.date) == .orderedAscending
+            })
+        }
+    }
+    
+    // return user name and last name
+    func userName() -> String {
+        return userInfo.name + " " + userInfo.lastName
     }
 
 }

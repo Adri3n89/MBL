@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
     
+    var pictureRepo = PictureRepository()
     var sourceType: UIImagePickerController.SourceType
     var refPic: String
     
@@ -51,9 +52,22 @@ struct ImagePicker: UIViewControllerRepresentable {
                     return String((0 ..< 24).map { _ in letters.randomElement()! })
                 }
                 let childRef = parent.refPic == "" ? randomString + ".png" : parent.refPic
-                PictureRepository.shared.uploadPicture(image: image, childRef: childRef)
+                parent.pictureRepo.uploadPicture(image: image.aspectFittedToHeight(100), childRef: childRef)
             }
             parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
+
+extension UIImage {
+    func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
+        let scale = newHeight / self.size.height
+        let newWidth = self.size.width * scale
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
         }
     }
 }

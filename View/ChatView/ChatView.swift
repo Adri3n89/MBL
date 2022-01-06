@@ -15,7 +15,7 @@ struct ChatView: View {
         GeometryReader { geo in
             NavigationView {
                 ScrollView {
-                    if viewModel.allConversations.count == 0 {
+                    if viewModel.allConversationsDate.count == 0 {
                         VStack {
                             HStack(alignment: .center) {
                                 Spacer()
@@ -27,11 +27,11 @@ struct ChatView: View {
                             }
                         }
                     } else {
-                        ForEach(viewModel.allConversations, content: { conversation in
+                        ForEach(viewModel.allConversationsDate, content: { conversation in
                             NavigationLink {
-                                ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(conversation), conversationID: conversation.conversationID))
+                                ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(conversation, userID: viewModel.conversationRepo.currentUserID!), conversationID: conversation.conversationID))
                             } label: {
-                                ConversationCellView(name: viewModel.returnGoodName(conversation), imageURL: viewModel.returnGoodPicture(conversation))
+                                ConversationCellView(name: viewModel.returnGoodName(conversation, userID: viewModel.conversationRepo.currentUserID!), imageURL: viewModel.returnGoodPicture(conversation, userID: viewModel.conversationRepo.currentUserID!), lastMessage: conversation.messages?.last?.text ?? "No Message")
                             }
                         })
                     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct LogInView: View {
     
     @ObservedObject var viewModel = LogInViewModel()
+    var authRepo: AuthRepositoryProvider = AuthRepository()
     
     var body: some View {
         VStack {
@@ -49,7 +50,7 @@ struct LogInView: View {
         }
         .background(BackgroundView())
         .onAppear {
-            viewModel.isPresented = AuthRepository.shared.isSignIn()
+            viewModel.isPresented = authRepo.isSignIn()
         }
     }
 }

@@ -15,9 +15,7 @@ struct MBLApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let auth = AuthRepository()
             ContentView()
-                .environmentObject(auth)
         }
     }
 }
@@ -31,7 +29,4 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
 
     }
-    
-    let userDefault = UserDefaults.standard
-    let launchedBefore = UserDefaults.standard.bool(forKey: "usersignedin")
 }

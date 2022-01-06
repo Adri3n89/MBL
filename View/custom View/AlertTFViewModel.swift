@@ -12,6 +12,7 @@ final class AlertTFViewModel: ObservableObject {
     
     @Published var text = ""
     @Published var showAlert = false
+    var userRepo: UserRepositoryProvider = UserRepository()
     let message = "Address not find, please try again"
     
     func changeValue(key: String, value: String) {
@@ -22,10 +23,10 @@ final class AlertTFViewModel: ObservableObject {
                     self.showAlert.toggle()
                     return
                 }
-                UserRepository.shared.updateProfil(key: key, value: value)
+                self.userRepo.updateProfil(key: key, value: value)
             }
         } else {
-            UserRepository.shared.updateProfil(key: key, value: value)
+            userRepo.updateProfil(key: key, value: value)
         }
     }
 }

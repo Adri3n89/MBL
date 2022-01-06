@@ -27,6 +27,9 @@ struct Top50View: View {
                         }
                     }
                 }
+                .alert(viewModel.error, isPresented: $viewModel.showError) {
+                    Button(Constantes.ok, role: .cancel) { }
+                }
                 .padding(.horizontal)
                 .background(BackgroundView())
                 .onAppear {

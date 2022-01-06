@@ -11,9 +11,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 
-final class PictureRepository: ObservableObject {
+final class PictureRepository {
     
-    static let shared = PictureRepository()
     private let ref = Database.database(url: Constantes.refURL).reference()
 
     func uploadPicture(image: UIImage, childRef: String) {

@@ -17,6 +17,16 @@ struct ConversationData: Identifiable {
     var user2: UserData?
 }
 
+struct ConversationDate: Identifiable {
+    var id = UUID()
+    var conversationID: String
+    var user1ID: String
+    var user2ID: String
+    var messages: [MessageDate]?
+    var user1: UserData?
+    var user2: UserData?
+}
+
 struct Message: Identifiable {
     var id = UUID()
     var text: String

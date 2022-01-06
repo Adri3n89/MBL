@@ -9,9 +9,8 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-final class ConversationRepository {
+final class ConversationRepository: ConversationRepositoryProvider {
     
-    static let shared = ConversationRepository()
     private let auth = Auth.auth()
     var currentUserID: String? {
         get {

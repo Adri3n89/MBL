@@ -9,9 +9,8 @@ import Foundation
 import FirebaseDatabase
 import FirebaseAuth
 
-final class UserRepository: ObservableObject {
+final class UserRepository: UserRepositoryProvider {
     
-    static let shared = UserRepository()
     private let ref = Database.database(url: Constantes.refURL).reference()
     var userID: String? {
         get {
@@ -39,7 +38,7 @@ final class UserRepository: ObservableObject {
     
     func addOrRemove(id: String, type: String) {
         // ajoute l'id d'un jeu dans la library de l'utilisateur et si le jeu y est déja il le retire
-        ref.child("Users").child(userID!).child(Constantes.gameType[0]).observeSingleEvent(of: .value, with: { games in
+        ref.child("Users").child(userID!).child(type).observeSingleEvent(of: .value, with: { games in
             for game in games.children.allObjects as! [DataSnapshot] {
                 let value = game.value as? NSDictionary
                 let gameId = value?["ID"] as! String

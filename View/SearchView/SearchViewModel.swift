@@ -15,16 +15,13 @@ final class SearchViewModel: ObservableObject {
     @Published var error = ""
     @Published var showError = false
     @Published var isLoading = false
+    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     
     func searchGame() {
-        // convert the caracteres to the good format for the api request
         searchResult = []
-        let okayChars : Set<Character> =
-                Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")
-        let name = gameName.replacingOccurrences(of: " ", with: "_")
-        let name2 = String(name.filter {okayChars.contains($0) })
-        ApiService.shared.searchGameName(name: name2)
+        // convert the caracteres to the good format for the api request
+        apiService.searchGameName(name: gameName.convertForSearch())
             .receive(on: DispatchQueue.main)
             .sink { error in
                 print(error)

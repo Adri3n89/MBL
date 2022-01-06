@@ -20,10 +20,12 @@ final class MapViewModel: ObservableObject {
     @Published var allAdresses: [String] = []
     @Published var showLibrary = false
     @Published var userToShow = ""
+    var userRepo: UserRepositoryProvider = UserRepository()
+    var authRepo: AuthRepositoryProvider = AuthRepository()
     
     func getAllUsers() {
         // fetch all users from Firebase
-        UserRepository.shared.fetchAllUsers { usersInfo in
+        userRepo.fetchAllUsers { usersInfo in
             self.allUsers = usersInfo
             self.getAllAdresses()
         }
@@ -39,7 +41,7 @@ final class MapViewModel: ObservableObject {
         // geocode all adresses and append coordinates into allCoordinates
         geoCode(addresses: allAdresses) { placemarks in
             for index in 0...placemarks.count-1 {
-                if self.allUsers[index].userID != AuthRepository.shared.userID {
+                if self.allUsers[index].userID != self.authRepo.userID {
                 self.allCoordinates.append(PinInfo(name: self.allUsers[index].name, lastName: self.allUsers[index].lastName, userID: self.allUsers[index].userID, coordinates: CLLocationCoordinate2D(latitude: (placemarks[index].location?.coordinate.latitude)! , longitude: (placemarks[index].location?.coordinate.longitude)!)))
                 } else {
                     self.region.center = CLLocationCoordinate2D(latitude: (placemarks[index].location?.coordinate.latitude)! , longitude: (placemarks[index].location?.coordinate.longitude)!)

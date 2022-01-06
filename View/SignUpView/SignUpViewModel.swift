@@ -18,6 +18,8 @@ final class SignUpViewModel: ObservableObject {
     @Published var city: String = ""
     @Published var showError = false
     @Published var error: String = ""
+    var userRepo: UserRepositoryProvider = UserRepository()
+    var authRepo: AuthRepositoryProvider = AuthRepository()
     
     func signUp() {
         // check if the adress if found with the geocoder to be sure the user can be find on the mapTab
@@ -33,14 +35,14 @@ final class SignUpViewModel: ObservableObject {
                 self.showError = true
                 return
             }
-            AuthRepository.shared.signUp(email: self.email, password: self.password, name: self.name, lastName: self.lastName, city: self.city) { result in
+            self.authRepo.signUp(email: self.email, password: self.password, name: self.name, lastName: self.lastName, city: self.city) { result in
                 switch result {
-                    case .success(_):
-                        self.isCreated = true
-                        AuthRepository.shared.signIn(email: self.email, password: self.password) { result in
+                    case .success(let bool):
+                        self.isCreated = bool
+                        self.authRepo.signIn(email: self.email, password: self.password) { result in
                             switch result {
                                 case .success(_):
-                                    UserRepository.shared.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
+                                self.userRepo.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
                                 case .failure(let error):
                                     self.error = error.localizedDescription
                                     self.showError = true

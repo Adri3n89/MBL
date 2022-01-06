@@ -45,7 +45,7 @@ struct ConversationView: View {
             ScrollViewReader { value in
                 ScrollView {
                     ForEach(viewModel.messages) { message in
-                        if message.userID == ConversationRepository.shared.currentUserID {
+                        if message.userID == viewModel.conversationRepo.currentUserID {
                             RightBubbleView(text: message.text)
                                 .id(message.id)
                         } else {

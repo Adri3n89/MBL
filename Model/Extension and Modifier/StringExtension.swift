@@ -54,6 +54,14 @@ extension String {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.date(from: self)!
     }
+    
+    func convertForSearch() -> String {
+        let okayChars : Set<Character> =
+                Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")
+        let string = self.replacingOccurrences(of: " ", with: "_")
+        let finalString = String(string.filter {okayChars.contains($0) })
+        return finalString
+    }
 }
 
 private extension String {

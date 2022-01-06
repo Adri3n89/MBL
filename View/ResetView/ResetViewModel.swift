@@ -12,10 +12,11 @@ final class ResetViewModel: ObservableObject {
     @Published var email = ""
     @Published var message = ""
     @Published var showMessage = false
+    var authRepo: AuthRepositoryProvider = AuthRepository()
     
     // send email to user to reset password
     func getNewPassword() {
-        AuthRepository.shared.forgotPassword(email: email) { message in
+        authRepo.forgotPassword(email: email) { message in
             self.message = message
             self.showMessage.toggle()
         }

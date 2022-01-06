@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "083C46422768A7130058918F"
-               BuildableName = "ApiServiceTest.xctest"
-               BlueprintName = "ApiServiceTest"
+               BuildableName = "MBLTests.xctest"
+               BlueprintName = "MBLTests"
                ReferencedContainer = "container:MBL.xcodeproj">
             </BuildableReference>
          </TestableReference>

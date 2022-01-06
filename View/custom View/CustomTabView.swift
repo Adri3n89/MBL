@@ -11,7 +11,9 @@ struct CustomTabView: View {
     @State var selection = 1
     
     init() {
-        UITabBar.appearance().barTintColor = UIColor.black
+        let appearance: UITabBarAppearance = UITabBarAppearance()
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+        UITabBar.appearance().backgroundColor = UIColor(Color.black)
     }
     
     var body: some View {
@@ -41,7 +43,7 @@ struct CustomTabView: View {
                     Text(Constantes.tab5)
                     Image(systemName: Constantes.tab5Logo)
                 }.tag(5)
-        }.tint(.gray)
+        }
     }
 }
 

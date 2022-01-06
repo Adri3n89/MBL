@@ -22,6 +22,9 @@ final class ProfilViewModel: ObservableObject {
     @Published var showPicker = false
     @Published var showCity = false
     @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    var userRepo: UserRepositoryProvider = UserRepository()
+    var authRepo: AuthRepositoryProvider = AuthRepository()
+    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     
     var columns: [GridItem] = [
@@ -33,7 +36,7 @@ final class ProfilViewModel: ObservableObject {
     private func getGames(type: String) {
         if type == Constantes.gameType[0] {
            for gameID in libraryID {
-               ApiService.shared.getGames(gameID: gameID)
+               apiService.getGames(gameID: gameID)
                    .receive(on: DispatchQueue.main)
                    .sink { error in
                        print(error)
@@ -44,7 +47,7 @@ final class ProfilViewModel: ObservableObject {
            }
         } else {
            for gameID in wishID {
-               ApiService.shared.getGames(gameID: gameID)
+               apiService.getGames(gameID: gameID)
                    .receive(on: DispatchQueue.main)
                    .sink { error in
                        print(error)
@@ -58,7 +61,7 @@ final class ProfilViewModel: ObservableObject {
     
     // fetch game ID from library in array
     func fetchLibraryID() {
-        UserRepository.shared.fetchUserGame(type: Constantes.gameType[0], user: AuthRepository.shared.userID!) { libraryID in
+       userRepo.fetchUserGame(type: Constantes.gameType[0], user: authRepo.userID!) { libraryID in
             self.libraryID = libraryID
             self.getGames(type: Constantes.gameType[0])
         }
@@ -66,7 +69,7 @@ final class ProfilViewModel: ObservableObject {
     
     // fetch game ID from wishlist in array
     func fetchWishlistID() {
-        UserRepository.shared.fetchUserGame(type: Constantes.gameType[1], user: AuthRepository.shared.userID!) { wishID in
+        userRepo.fetchUserGame(type: Constantes.gameType[1], user: authRepo.userID!) { wishID in
             self.wishID = wishID
             self.getGames(type: Constantes.gameType[1])
         }
@@ -74,17 +77,18 @@ final class ProfilViewModel: ObservableObject {
     
     // sign out the Firebase session and go to logIn screen
     func logOut() {
-        AuthRepository.shared.logOut()
+        authRepo.logOut()
     }
     
     // fetch currentuser info from Firebase
     func fetchUserInfo() {
-        UserRepository.shared.fetchUserInfo(user: AuthRepository.shared.userID!) { userInfo in
+        userRepo.fetchUserInfo(user: authRepo.userID!) { userInfo in
             self.userInfo.city = userInfo.city
             self.userInfo.lastName = userInfo.lastName
             self.userInfo.name = userInfo.name
             self.userInfo.picture = userInfo.picture
             self.userInfo.refPic = userInfo.refPic
+            self.userInfo.userID = userInfo.userID
         }
     }
     

@@ -16,12 +16,14 @@ final class LogInViewModel: ObservableObject {
     @Published var showError = false
     @Published var showReset = false
     @Published var resetEmail = ""
+    var authRepo: AuthRepositoryProvider = AuthRepository()
+
     
     func signIn() {
-        AuthRepository.shared.signIn(email: email, password: password) { result in
+        authRepo.signIn(email: email, password: password) { result in
             switch result {
-                case .success(_):
-                    self.isPresented = true
+                case .success(let bool):
+                    self.isPresented = bool
                 case .failure(let error):
                     self.error = error.localizedDescription
                     self.showError = true

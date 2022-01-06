@@ -9,7 +9,11 @@ import Foundation
 import CoreLocation
 import SwiftUI
 
-struct UserData: Identifiable {
+struct UserData: Identifiable, Equatable {
+    static func == (lhs: UserData, rhs: UserData) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id = UUID()
     var name: String
     var lastName: String

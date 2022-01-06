@@ -9,13 +9,12 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-final class AuthRepository: ObservableObject {
+class AuthRepository: AuthRepositoryProvider {
     
-    static let shared = AuthRepository()
-    private let auth = Auth.auth()
+    var auth = Auth.auth()
     var userID: String? {
         get {
-            return auth.currentUser?.uid
+            return Auth.auth().currentUser?.uid
         }
     }
     
@@ -27,13 +26,13 @@ final class AuthRepository: ObservableObject {
         }
     }
     
-    func signIn(email: String, password: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
+    func signIn(email: String, password: String, completed: @escaping (Result<Bool,Error>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
                 completed(.failure(error!))
                 return
             }
-            completed(.success(result!))
+            completed(.success(true))
         }
     }
     
@@ -47,13 +46,13 @@ final class AuthRepository: ObservableObject {
         }
     }
     
-    func signUp(email: String, password: String, name: String, lastName: String, city: String, completed: @escaping (Result<AuthDataResult,Error>) -> Void) {
+    func signUp(email: String, password: String, name: String, lastName: String, city: String, completed: @escaping (Result<Bool,Error>) -> Void) {
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
                 completed(.failure(error!))
                 return
             }
-            completed(.success(result!))
+            completed(.success(true))
         }
     }
     
@@ -62,5 +61,6 @@ final class AuthRepository: ObservableObject {
         }
         catch { print(error.localizedDescription) }
     }
+
     
 }
