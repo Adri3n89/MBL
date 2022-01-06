@@ -45,13 +45,7 @@ struct ConversationView: View {
             ScrollViewReader { value in
                 ScrollView {
                     ForEach(viewModel.messages) { message in
-                        if message.userID == viewModel.conversationRepo.currentUserID {
-                            RightBubbleView(text: message.text)
-                                .id(message.id)
-                        } else {
-                            LeftBubbleView(text: message.text)
-                                .id(message.id)
-                        }
+                        message.userID == viewModel.conversationRepo.currentUserID ? BubbleView(text: message.text, isLeft: false).id(message.id) : BubbleView(text: message.text, isLeft: true).id(message.id)
                     }
                 }.onAppear {
                     value.scrollTo(viewModel.messages.last?.id)

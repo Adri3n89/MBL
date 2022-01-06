@@ -25,7 +25,7 @@ struct ProfilView: View {
                             Button(Constantes.camera) {
                                 viewModel.sourceType = .camera
                                 viewModel.showPicker = true
-                            }
+                            }.disabled(!UIImagePickerController.isCameraDeviceAvailable(.front) && !UIImagePickerController.isCameraDeviceAvailable(.rear))
                             Button(Constantes.gallery) {
                                 viewModel.sourceType = .photoLibrary
                                 viewModel.showPicker = true
@@ -49,7 +49,9 @@ struct ProfilView: View {
                     Divider()
                     HStack {
                         Text(Constantes.city)
+                            .foregroundColor(.white)
                         Text(viewModel.userInfo.city)
+                            .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                             .onTapGesture(perform: {
                                 viewModel.showCity.toggle()
@@ -60,11 +62,12 @@ struct ProfilView: View {
                             })
                     }
                         .padding()
-                        .foregroundColor(.white)
                     Picker("", selection: $viewModel.type) {
                         ForEach(Constantes.gameType, id: \.self) {
                             Text($0)
                         }
+                    }.alert(viewModel.error, isPresented: $viewModel.showError) {
+                        Button(Constantes.cancel, role: .cancel) { }
                     }
                         .pickerStyle(.segmented)
                         .foregroundColor(.black)
@@ -87,11 +90,11 @@ struct ProfilView: View {
                     }
                 }
                 .onAppear {
-                   viewModel.libraryGames = []
-                   viewModel.wishGames = []
-                   viewModel.fetchWishlistID()
-                   viewModel.fetchLibraryID()
-                   viewModel.fetchUserInfo()
+                    viewModel.libraryGames = []
+                    viewModel.wishGames = []
+                    viewModel.fetchID(type: Constantes.gameType[0])
+                    viewModel.fetchID(type: Constantes.gameType[1])
+                    viewModel.fetchUserInfo()
                }
                .background(BackgroundView())
                .navigationBarHidden(true)

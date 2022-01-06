@@ -21,7 +21,9 @@ final class ProfilViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var showPicker = false
     @Published var showCity = false
+    @Published var showError = false
     @Published var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    var error = ""
     var userRepo: UserRepositoryProvider = UserRepository()
     var authRepo: AuthRepositoryProvider = AuthRepository()
     var apiService = ApiService()
@@ -34,44 +36,33 @@ final class ProfilViewModel: ObservableObject {
     
     // get games info from the array ID choose
     private func getGames(type: String) {
-        if type == Constantes.gameType[0] {
-           for gameID in libraryID {
-               apiService.getGames(gameID: gameID)
-                   .receive(on: DispatchQueue.main)
-                   .sink { error in
-                       print(error)
-                   } receiveValue: { game in
-                       self.libraryGames.append(game)
+        for gameID in type == Constantes.gameType[0] ? libraryID : wishID {
+           apiService.getGames(gameID: gameID)
+               .receive(on: DispatchQueue.main)
+               .sink { completion in
+                   switch completion {
+                   case .failure(let error):
+                       self.error = error.localizedDescription
+                       self.showError = true
+                   case .finished:
+                       print("success")
                    }
-                   .store(in: &cancellable)
-           }
-        } else {
-           for gameID in wishID {
-               apiService.getGames(gameID: gameID)
-                   .receive(on: DispatchQueue.main)
-                   .sink { error in
-                       print(error)
-                   } receiveValue: { game in
-                       self.wishGames.append(game)
-                   }
-                   .store(in: &cancellable)
-            }
-        }
+               } receiveValue: { game in
+                   type == Constantes.gameType[0] ? self.libraryGames.append(game) : self.wishGames.append(game)
+               }
+               .store(in: &cancellable)
+       }
     }
     
     // fetch game ID from library in array
-    func fetchLibraryID() {
-       userRepo.fetchUserGame(type: Constantes.gameType[0], user: authRepo.userID!) { libraryID in
-            self.libraryID = libraryID
-            self.getGames(type: Constantes.gameType[0])
-        }
-    }
-    
-    // fetch game ID from wishlist in array
-    func fetchWishlistID() {
-        userRepo.fetchUserGame(type: Constantes.gameType[1], user: authRepo.userID!) { wishID in
-            self.wishID = wishID
-            self.getGames(type: Constantes.gameType[1])
+    func fetchID(type: String) {
+       userRepo.fetchUserGame(type: type, user: authRepo.userID!) { IDs in
+           if type == Constantes.gameType[0] {
+               self.libraryID = IDs
+           } else {
+               self.wishID = IDs
+           }
+            self.getGames(type: type)
         }
     }
     

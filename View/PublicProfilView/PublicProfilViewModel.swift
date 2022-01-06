@@ -31,8 +31,13 @@ final class PublicProfilViewModel: ObservableObject {
        for gameID in libraryID {
            apiService.getGames(gameID: gameID)
                .receive(on: DispatchQueue.main)
-               .sink { error in
-                   print(error)
+               .sink { completion in
+                   switch completion {
+                   case .finished: print("success")
+                   case .failure(let error):
+                       self.message = error.localizedDescription
+                       self.showMessage = true
+                   }
                } receiveValue: { game in
                    self.libraryGames.append(game)
                }

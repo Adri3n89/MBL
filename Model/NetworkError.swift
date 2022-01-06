@@ -25,7 +25,6 @@ enum NetworkError: Error {
         }
     }
     
-    
 }
 
 extension NetworkError: LocalizedError {

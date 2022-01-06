@@ -67,14 +67,7 @@ final class UserRepository: UserRepositoryProvider {
     
     func fetchUserInfo(user: String,completed: @escaping (UserData) -> Void) {
         ref.child("Users").child(user).observe(.value, with: { info in
-            let value = info.value as? NSDictionary
-            let name = value?["Name"] as! String
-            let lastName = value?["LastName"] as! String
-            let city = value?["City"] as! String
-            let userID = value?["Userid"] as! String
-            let picture = value?["Picture"] as! String?
-            let refPic = value?["RefPic"] as! String?
-            completed(UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? Constantes.defaultProfilPicture, refPic: refPic ?? ""))
+            completed(self.parseDate(info.value as? NSDictionary))
         })
     }
     
@@ -82,19 +75,23 @@ final class UserRepository: UserRepositoryProvider {
         var usersInfo: [UserData] = []
         ref.child("Users").observe(.value) { users in
             for user in users.children.allObjects as! [DataSnapshot] {
-                let value = user.value as? NSDictionary
-                let name = value?["Name"] as! String
-                let lastName = value?["LastName"] as! String
-                let city = value?["City"] as! String
-                let userID = value?["Userid"] as! String
-                let picture = value?["Picture"] as! String?
-                let refPic = value?["RefPic"] as! String?
-                usersInfo.append(UserData(name: name, lastName: lastName, userID: userID, city: city, picture: picture ?? Constantes.defaultProfilPicture, refPic: refPic ?? ""))
+                usersInfo.append(self.parseDate(user.value as? NSDictionary))
                 if users.children.allObjects.count == usersInfo.count {
                     completed(usersInfo)
                 }
             }
         }
+    }
+    
+    private func parseDate(_ dictionary: NSDictionary?) -> UserData {
+        let value = dictionary
+        let name = value?["Name"] as! String
+        let lastName = value?["LastName"] as! String
+        let city = value?["City"] as! String
+        let userID = value?["Userid"] as! String
+        let picture = value?["Picture"] as! String?
+        let refPic = value?["RefPic"] as! String?
+        return UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? Constantes.defaultProfilPicture, refPic: refPic ?? "")
     }
     
     

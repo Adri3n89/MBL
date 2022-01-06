@@ -39,12 +39,3 @@ struct GameCellView: View {
             .foregroundColor(.white)
     }
 }
-
-//struct GameCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            GameCellView(width: 300)
-//                .previewLayout(.sizeThatFits)
-//        }
-//    }
-//}

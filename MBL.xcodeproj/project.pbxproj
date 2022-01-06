@@ -26,7 +26,7 @@
 		085DD2C1277A24540081E255 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DD2C0277A24540081E255 /* APIProvider.swift */; };
 		085DD2C3277A269B0081E255 /* APIMockResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DD2C2277A269B0081E255 /* APIMockResources.swift */; };
 		086EF30C27843D1D000DFFB2 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EF30B27843D1D000DFFB2 /* ConversationViewModelTests.swift */; };
-		086EF310278447F6000DFFB2 /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EF30F278447F6000DFFB2 /* SignUpViewModelTests.swift */; };
+		086EF31427875F14000DFFB2 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EF31327875F14000DFFB2 /* UIImageExtension.swift */; };
 		08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7027561DD2007C77B9 /* BackgroundClearView.swift */; };
 		08706A7327565C3E007C77B9 /* ConversationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7227565C3E007C77B9 /* ConversationRepository.swift */; };
 		08706A7527567D8E007C77B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08706A7427567D8E007C77B9 /* DateExtension.swift */; };
@@ -52,12 +52,10 @@
 		08B1B5AE277F721B00323DB6 /* ConvertStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B1B5AD277F721B00323DB6 /* ConvertStringTests.swift */; };
 		08B1B5B1278051AB00323DB6 /* APIServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B1B5AF2780513400323DB6 /* APIServiceProvider.swift */; };
 		08B1B5B32780553900323DB6 /* ApiServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B1B5B22780553900323DB6 /* ApiServiceMock.swift */; };
-		08C5519B27805B2100A2A3F5 /* Top50ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5519A27805B2100A2A3F5 /* Top50ViewModelTests.swift */; };
 		08C5519D2780EC7E00A2A3F5 /* ConversationRepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5519C2780EC7E00A2A3F5 /* ConversationRepositoryProvider.swift */; };
 		08C5519F2780EDCD00A2A3F5 /* ConversationRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5519E2780EDCD00A2A3F5 /* ConversationRepositoryMock.swift */; };
 		08C551A12780F16F00A2A3F5 /* ChatViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C551A02780F16F00A2A3F5 /* ChatViewModelTests.swift */; };
-		08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */; };
-		08C6F407275B6B800028D5E4 /* RightBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F406275B6B800028D5E4 /* RightBubbleView.swift */; };
+		08C6F405275B6A6C0028D5E4 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F404275B6A6C0028D5E4 /* BubbleView.swift */; };
 		096AB4C9DBA7F900EDF3CAA0 /* Pods_MBL__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0F38E5C2C020B412C5235 /* Pods_MBL__iOS_.framework */; };
 		7A10A3A227446BBD006B09DD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A10A3A127446BBD006B09DD /* NetworkError.swift */; };
 		7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40E44D27450E95002D0FD8 /* Constantes.swift */; };
@@ -130,7 +128,7 @@
 		085DD2C0277A24540081E255 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		085DD2C2277A269B0081E255 /* APIMockResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMockResources.swift; sourceTree = "<group>"; };
 		086EF30B27843D1D000DFFB2 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
-		086EF30F278447F6000DFFB2 /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelTests.swift; sourceTree = "<group>"; };
+		086EF31327875F14000DFFB2 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		08706A7027561DD2007C77B9 /* BackgroundClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClearView.swift; sourceTree = "<group>"; };
 		08706A7227565C3E007C77B9 /* ConversationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepository.swift; sourceTree = "<group>"; };
 		08706A7427567D8E007C77B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -156,12 +154,10 @@
 		08B1B5AD277F721B00323DB6 /* ConvertStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertStringTests.swift; sourceTree = "<group>"; };
 		08B1B5AF2780513400323DB6 /* APIServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProvider.swift; sourceTree = "<group>"; };
 		08B1B5B22780553900323DB6 /* ApiServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceMock.swift; sourceTree = "<group>"; };
-		08C5519A27805B2100A2A3F5 /* Top50ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50ViewModelTests.swift; sourceTree = "<group>"; };
 		08C5519C2780EC7E00A2A3F5 /* ConversationRepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepositoryProvider.swift; sourceTree = "<group>"; };
 		08C5519E2780EDCD00A2A3F5 /* ConversationRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepositoryMock.swift; sourceTree = "<group>"; };
 		08C551A02780F16F00A2A3F5 /* ChatViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelTests.swift; sourceTree = "<group>"; };
-		08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBubbleView.swift; sourceTree = "<group>"; };
-		08C6F406275B6B800028D5E4 /* RightBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBubbleView.swift; sourceTree = "<group>"; };
+		08C6F404275B6A6C0028D5E4 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		0AA040C4A4CE52B6FF44A565 /* Pods-MBL (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBL (iOS).release.xcconfig"; path = "Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS).release.xcconfig"; sourceTree = "<group>"; };
 		1BE8EF24C3F105BBA84C63DC /* Pods-MBL (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBL (iOS).debug.xcconfig"; path = "Target Support Files/Pods-MBL (iOS)/Pods-MBL (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		5EC0F38E5C2C020B412C5235 /* Pods_MBL__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBL__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +243,7 @@
 				083C3C83274E5FE300864AF5 /* StringExtension.swift */,
 				08706A7427567D8E007C77B9 /* DateExtension.swift */,
 				7A436EB5274C3D9B00D8D28F /* ViewExtension.swift */,
+				086EF31327875F14000DFFB2 /* UIImageExtension.swift */,
 			);
 			path = "Extension and Modifier";
 			sourceTree = "<group>";
@@ -260,10 +257,8 @@
 				08B1B5A0277F0A2F00323DB6 /* PublicProfilViewModelTests.swift */,
 				08B1B5A7277F64B200323DB6 /* ResetViewModelTests.swift */,
 				08B1B5A9277F69E200323DB6 /* DetailsViewModelTests.swift */,
-				08C5519A27805B2100A2A3F5 /* Top50ViewModelTests.swift */,
 				08B1B5AB277F6DEF00323DB6 /* LogInViewModelTests.swift */,
 				08C551A02780F16F00A2A3F5 /* ChatViewModelTests.swift */,
-				086EF30F278447F6000DFFB2 /* SignUpViewModelTests.swift */,
 				086EF30B27843D1D000DFFB2 /* ConversationViewModelTests.swift */,
 				083C464C2768A7300058918F /* FakeResponseData.swift */,
 				083C46502768A8E90058918F /* searchName.json */,
@@ -278,6 +273,15 @@
 				08C5519E2780EDCD00A2A3F5 /* ConversationRepositoryMock.swift */,
 			);
 			path = MBLTests;
+			sourceTree = "<group>";
+		};
+		086EF315278764E8000DFFB2 /* AlertTFView */ = {
+			isa = PBXGroup;
+			children = (
+				083C45EF276743360058918F /* AlertTFView.swift */,
+				083C45F1276743660058918F /* AlertTFViewModel.swift */,
+			);
+			path = AlertTFView;
 			sourceTree = "<group>";
 		};
 		08706A7C2756B3BE007C77B9 /* ConversationView */ = {
@@ -466,10 +470,9 @@
 		7AB6EB922731584F00E60A49 /* custom View */ = {
 			isa = PBXGroup;
 			children = (
+				086EF315278764E8000DFFB2 /* AlertTFView */,
 				7A4C2A38272FFAC900C4AC30 /* HeaderView.swift */,
 				081BC7C5276A4F8C000AE740 /* BackgroundView.swift */,
-				083C45EF276743360058918F /* AlertTFView.swift */,
-				083C45F1276743660058918F /* AlertTFViewModel.swift */,
 				0882136727624D1D008D04B4 /* ProfilInfoView.swift */,
 				7A4C2A32272FF96400C4AC30 /* TFView.swift */,
 				083C45ED27673BE70058918F /* CustomSecureTF.swift */,
@@ -481,8 +484,7 @@
 				7ACB1738274A6E4C00C88CE8 /* ImagePicker.swift */,
 				08706A7027561DD2007C77B9 /* BackgroundClearView.swift */,
 				08706A7A275697ED007C77B9 /* ConversationCellView.swift */,
-				08C6F404275B6A6C0028D5E4 /* LeftBubbleView.swift */,
-				08C6F406275B6B800028D5E4 /* RightBubbleView.swift */,
+				08C6F404275B6A6C0028D5E4 /* BubbleView.swift */,
 				0882136527624C34008D04B4 /* ProfilImageView.swift */,
 			);
 			path = "custom View";
@@ -655,7 +657,6 @@
 			files = (
 				08B1B5B32780553900323DB6 /* ApiServiceMock.swift in Sources */,
 				08B1B5AC277F6DEF00323DB6 /* LogInViewModelTests.swift in Sources */,
-				08C5519B27805B2100A2A3F5 /* Top50ViewModelTests.swift in Sources */,
 				08B1B5AA277F69E200323DB6 /* DetailsViewModelTests.swift in Sources */,
 				08B1B59B277E165800323DB6 /* ProfilViewModelTests.swift in Sources */,
 				083C46462768A7130058918F /* ApiServiceTest.swift in Sources */,
@@ -669,7 +670,6 @@
 				08B1B5A8277F64B200323DB6 /* ResetViewModelTests.swift in Sources */,
 				08C551A12780F16F00A2A3F5 /* ChatViewModelTests.swift in Sources */,
 				08B1B5A1277F0A2F00323DB6 /* PublicProfilViewModelTests.swift in Sources */,
-				086EF310278447F6000DFFB2 /* SignUpViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,7 +687,7 @@
 				7A40E44E27450E95002D0FD8 /* Constantes.swift in Sources */,
 				08706A802756B3D9007C77B9 /* ConversationViewModel.swift in Sources */,
 				7A4C2A21272FEF7C00C4AC30 /* ProfilView.swift in Sources */,
-				08C6F405275B6A6C0028D5E4 /* LeftBubbleView.swift in Sources */,
+				08C6F405275B6A6C0028D5E4 /* BubbleView.swift in Sources */,
 				08706A7127561DD2007C77B9 /* BackgroundClearView.swift in Sources */,
 				083C45F2276743660058918F /* AlertTFViewModel.swift in Sources */,
 				7A4C2A33272FF96400C4AC30 /* TFView.swift in Sources */,
@@ -702,7 +702,6 @@
 				7A4C2A39272FFAC900C4AC30 /* HeaderView.swift in Sources */,
 				7A4C2A2A272FF6D800C4AC30 /* CustomTabView.swift in Sources */,
 				7ACB1735274A6B1D00C88CE8 /* PictureRepository.swift in Sources */,
-				08C6F407275B6B800028D5E4 /* RightBubbleView.swift in Sources */,
 				7A4C2A36272FFA1C00C4AC30 /* BottomLogInView.swift in Sources */,
 				7A6FA25B273020C9001EE307 /* SignUpView.swift in Sources */,
 				08706A7E2756B3CC007C77B9 /* ConversationView.swift in Sources */,
@@ -736,6 +735,7 @@
 				7A4C2A18272FEF6500C4AC30 /* Top50View.swift in Sources */,
 				7A87477C274CE87C00FB46A8 /* GlowBorder.swift in Sources */,
 				085DD2BF277A243A0081E255 /* APIResources.swift in Sources */,
+				086EF31427875F14000DFFB2 /* UIImageExtension.swift in Sources */,
 				7A436EB6274C3D9B00D8D28F /* ViewExtension.swift in Sources */,
 				7AA64399274129F80051EC70 /* GameCellView.swift in Sources */,
 				7A4C2A06272FEF1200C4AC30 /* MBLApp.swift in Sources */,

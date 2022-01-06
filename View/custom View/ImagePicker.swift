@@ -20,7 +20,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
+
         imagePicker.sourceType = sourceType == .camera ? .camera : .photoLibrary
+
         imagePicker.delegate = context.coordinator
         
         return imagePicker
@@ -55,19 +57,6 @@ struct ImagePicker: UIViewControllerRepresentable {
                 parent.pictureRepo.uploadPicture(image: image.aspectFittedToHeight(100), childRef: childRef)
             }
             parent.presentationMode.wrappedValue.dismiss()
-        }
-    }
-}
-
-extension UIImage {
-    func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
-        let scale = newHeight / self.size.height
-        let newWidth = self.size.width * scale
-        let newSize = CGSize(width: newWidth, height: newHeight)
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-
-        return renderer.image { _ in
-            self.draw(in: CGRect(origin: .zero, size: newSize))
         }
     }
 }
