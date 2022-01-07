@@ -12,6 +12,17 @@ struct SearchResult: Codable {
     let items: ItemsResult
 }
 
+// MARK: - OneResult
+struct OneResult: Codable {
+    let items: OneItemResult
+}
+
+struct OneItemResult: Codable {
+    let total: String
+    let termsofuse: String
+    let item: ItemResult
+}
+
 // MARK: - Items
 struct ItemsResult: Codable {
     let total: String

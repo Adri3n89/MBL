@@ -57,14 +57,28 @@ final class ApiService {
             return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
         return apiResources.fetch(url: url)
-            .decode(type: SearchResult.self, decoder: JSONDecoder())
-            .tryMap { result in
-                guard let games = result.items.item else { return [] }
-                 return games
-            }
-            .mapError{ error in
-                NetworkError.convert(error: error)
-            }
+            .flatMap { v in
+                  Just(v)
+                     // #2 try to decode data as a `Response`
+                     .decode(type: SearchResult.self, decoder: JSONDecoder())
+                     .tryMap { result in
+                         guard let games = result.items.item else { return [] }
+                          return games
+                     }
+                     // #3 if decoding fails,
+                     .tryCatch { _ in
+                        Just(v)
+                           // #3.1 ... decode as an `ErrorResponse`
+                           .decode(type: OneResult.self, decoder: JSONDecoder())
+                           // #4 if both fail
+                           .mapError { _ in NetworkError.undecodableData }
+                           // #3.2 ... and throw my singleItem
+                           .tryMap { result in
+                                return [result.items.item]
+                           }
+                     }
+                     .mapError { NetworkError.convert(error: $0) }
+               }
             .eraseToAnyPublisher()
     }
     
