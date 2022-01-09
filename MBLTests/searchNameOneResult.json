@@ -1,0 +1,17 @@
+{
+    "items": {
+        "total": "1",
+        "termsofuse": "https://boardgamegeek.com/xmlapi/termsofuse",
+        "item": {
+            "type": "boardgame",
+            "id": "73365",
+            "name": {
+                "type": "primary",
+                "value": "Papayoo"
+            },
+            "yearpublished": {
+                "value": "2010"
+            }
+        }
+    }
+}

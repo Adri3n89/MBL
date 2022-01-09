@@ -32,22 +32,6 @@ class PublicProfilViewModelTests: XCTestCase {
         XCTAssertEqual(publicProfilViewModel.userInfo.picture, "pic")
     }
     
-    func testFetchLibraryIDwith2Games() {
-        publicProfilViewModel.userRepo = UserRepositoryMock(userGame: ["123"], userData: nil, allUsers: [])
-        publicProfilViewModel.apiService = ApiServiceMock(resultHotGame: nil, resultGetGames: .success(GameData(name: "Jeu", year: "2020", id: "123", rank: "", image: "image", description: "description", minPlayer: "2", maxPlayer: "4", minTime: "34", maxTime: "54")), resultSearchGame: nil)
-        
-        XCTAssertEqual(publicProfilViewModel.libraryGames.count, 0)
-        XCTAssertEqual(publicProfilViewModel.libraryID.count, 0)
-
-        publicProfilViewModel.fetchLibraryID(user: "john")
-        
-        XCTAssertEqual(publicProfilViewModel.libraryID.count, 1)
-        XCTAssertEqual(publicProfilViewModel.libraryID[0], "123")
-        
-        XCTAssertEqual(publicProfilViewModel.libraryGames.count, 1)
-
-    }
-    
     func testCreateConversationAlreadyExist() {
         publicProfilViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: Constantes.alreadyConversation, conversationData: nil)
         

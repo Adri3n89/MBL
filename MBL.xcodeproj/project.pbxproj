@@ -10,6 +10,7 @@
 		081BC7C2276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 081BC7C1276A42AB000AE740 /* FloatingLabelTextFieldSwiftUI */; };
 		081BC7C4276A433E000AE740 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081BC7C3276A433E000AE740 /* UserRepository.swift */; };
 		081BC7C6276A4F8C000AE740 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081BC7C5276A4F8C000AE740 /* BackgroundView.swift */; };
+		0824607D278889C80099782D /* searchNameOneResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 0824607C278889C80099782D /* searchNameOneResult.json */; };
 		082A633327691C1D00BD5921 /* searchIDwithNilValue.json in Resources */ = {isa = PBXBuildFile; fileRef = 082A633227691C1D00BD5921 /* searchIDwithNilValue.json */; };
 		082A63352769222600BD5921 /* searchNameNoResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 082A63342769222600BD5921 /* searchNameNoResult.json */; };
 		083C3C84274E5FE300864AF5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083C3C83274E5FE300864AF5 /* StringExtension.swift */; };
@@ -111,6 +112,7 @@
 /* Begin PBXFileReference section */
 		081BC7C3276A433E000AE740 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		081BC7C5276A4F8C000AE740 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		0824607C278889C80099782D /* searchNameOneResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchNameOneResult.json; sourceTree = "<group>"; };
 		082A633227691C1D00BD5921 /* searchIDwithNilValue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchIDwithNilValue.json; sourceTree = "<group>"; };
 		082A63342769222600BD5921 /* searchNameNoResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchNameNoResult.json; sourceTree = "<group>"; };
 		083C3C83274E5FE300864AF5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				083C464C2768A7300058918F /* FakeResponseData.swift */,
 				083C46502768A8E90058918F /* searchName.json */,
 				082A63342769222600BD5921 /* searchNameNoResult.json */,
+				0824607C278889C80099782D /* searchNameOneResult.json */,
 				083C46522768A8EF0058918F /* searchID.json */,
 				082A633227691C1D00BD5921 /* searchIDwithNilValue.json */,
 				083C464E2768A8D60058918F /* top50.json */,
@@ -591,6 +594,7 @@
 			files = (
 				083C46512768A8E90058918F /* searchName.json in Resources */,
 				083C46532768A8EF0058918F /* searchID.json in Resources */,
+				0824607D278889C80099782D /* searchNameOneResult.json in Resources */,
 				083C464F2768A8D60058918F /* top50.json in Resources */,
 				082A63352769222600BD5921 /* searchNameNoResult.json in Resources */,
 				082A633327691C1D00BD5921 /* searchIDwithNilValue.json in Resources */,

@@ -64,13 +64,4 @@ class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(detailsViewModel.description(), "description")
     }
     
-    func testGetGames() {
-        detailsViewModel.id = "123"
-        detailsViewModel.apiService = ApiServiceMock(resultHotGame: nil, resultGetGames: .success(GameData(name: "Catan", year: "2020", id: "123", rank: "1", image: "image", description: "description", minPlayer: "2", maxPlayer: "4", minTime: "30", maxTime: "45")), resultSearchGame: nil)
-        
-        detailsViewModel.getDetail()
-        
-        XCTAssertEqual(detailsViewModel.gameInfo?.name, "Catan")
-    }
-    
 }

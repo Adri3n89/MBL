@@ -30,6 +30,13 @@ class FakeResponseData {
         return data
     }
     
+    var searchByNameOneResultData: Data {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: "searchNameOneResult", withExtension: "json")
+        let data = try! Data(contentsOf: url!)
+        return data
+    }
+    
     var searchByIDData: Data {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "searchID", withExtension: "json")

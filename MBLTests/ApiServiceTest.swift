@@ -238,6 +238,25 @@ class ApiServiceTest: XCTestCase {
         
     }
     
+    func testGetGameByNameGivenGoodDataAndOneResult() {
+        let data = FakeResponseData().searchByNameOneResultData
+        let mock = APIMockResources(result: .success(data))
+        let apiService = ApiService(apiResources: mock)
+        
+        let expectation = expectation(description: "receiving data")
+        
+        apiService.searchGameName(name: "Papayoo")
+            .sink { completion in
+    
+            } receiveValue: { games in
+                XCTAssert(games[0].name.value.lowercased().contains("papayoo"))
+                expectation.fulfill()
+            }.store(in: &subscriptions)
+        
+        wait(for: [expectation], timeout: 1)
+        
+    }
+    
     func testGetGameByNameGivenGoodDatawithZeroResult() {
         let data = FakeResponseData().searchByNameNoResultData
         let mock = APIMockResources(result: .success(data))
