@@ -42,10 +42,11 @@ struct SearchView: View {
                             DetailsView(id: game.id)
                         } label: {
                             Text("- \(game.name.value)")
+                                .glowBorder(color: .white, lineWidth: 4)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                     }
                 }
                 .padding()

@@ -12,6 +12,10 @@ import XCTest
 class LogInViewModelTests: XCTestCase {
     
     var logInViewModel = LogInViewModel()
+    
+    override func setUp() {
+        logInViewModel = LogInViewModel()
+    }
  
     func testLogInWithSucces() {
         logInViewModel.authRepo = AuthRepositoryMock(isSignedIn: nil, signIn: .success(true), forgotString: nil, signUp: nil)

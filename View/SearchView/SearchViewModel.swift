@@ -26,6 +26,7 @@ final class SearchViewModel: ObservableObject {
             .sink { error in
                 print(error)
             } receiveValue: { result in
+                // show the result and stop the ProgressView
                 self.searchResult = result
                 self.isLoading = false
                 if result.count == 0 {

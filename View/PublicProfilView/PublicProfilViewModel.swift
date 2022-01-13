@@ -33,7 +33,7 @@ final class PublicProfilViewModel: ObservableObject {
                .receive(on: DispatchQueue.main)
                .sink { completion in
                    switch completion {
-                   case .finished: print("success")
+                   case .finished: self.showMessage = false
                    case .failure(let error):
                        self.message = error.localizedDescription
                        self.showMessage = true

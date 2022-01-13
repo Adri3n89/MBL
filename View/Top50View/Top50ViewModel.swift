@@ -30,7 +30,7 @@ final class Top50ViewModel: ObservableObject {
                case .failure(let error):
                    self.error = error.localizedDescription
                    self.showError = true
-               case .finished: print("success")
+               case .finished: self.showError = false
                }
            } receiveValue: { top50 in
                self.top50 = top50

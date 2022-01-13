@@ -13,6 +13,7 @@ struct UserRepositoryMock: UserRepositoryProvider {
     var userGame: [String]?
     var userData: UserData?
     var allUsers: [UserData]?
+    var addOrRemoveResult: String?
     
     func fetchUserGame(type: String, user: String, completed: @escaping ([String]) -> Void) {
         completed(userGame!)
@@ -27,8 +28,12 @@ struct UserRepositoryMock: UserRepositoryProvider {
     }
     
     func createUserInfo(email: String, name: String, lastName: String, city: String) {}
+    
     func updateProfil(key: String, value: String) {}
-    func addOrRemove(id: String, type: String) {}
+    
+    func addOrRemove(id: String, type: String, completed: @escaping (String) -> Void) {
+        completed(addOrRemoveResult!)
+    }
     
     
 }

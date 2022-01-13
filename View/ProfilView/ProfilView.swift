@@ -61,6 +61,7 @@ struct ProfilView: View {
                                     .background(BackgroundClearView())
                             })
                     }
+                    .glowBorder(color: .black, lineWidth: 4)
                         .padding()
                     Picker("", selection: $viewModel.type) {
                         ForEach(Constantes.gameType, id: \.self) {

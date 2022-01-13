@@ -36,6 +36,7 @@ struct ProfilInfoView: View {
                         .background(BackgroundClearView())
                 })
         }
+        .glowBorder(color: .black, lineWidth: 4)
         Spacer()
     }
 }

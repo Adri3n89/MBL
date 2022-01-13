@@ -11,6 +11,7 @@ struct DetailsView: View {
     
     @State var id: String
     @ObservedObject var viewModel = DetailsViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         GeometryReader { geo in
@@ -75,6 +76,9 @@ struct DetailsView: View {
                 viewModel.getIDs(type: Constantes.gameType[0])
                 viewModel.getIDs(type: Constantes.gameType[1])
                 viewModel.getDetail()
+            }
+            .onChange(of: viewModel.result) { newValue in
+                presentationMode.wrappedValue.dismiss()
             }
         }
     }

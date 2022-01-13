@@ -45,16 +45,21 @@ final class ProfilViewModel: ObservableObject {
                        self.error = error.localizedDescription
                        self.showError = true
                    case .finished:
-                       print("success")
+                       self.showError = false
                    }
                } receiveValue: { game in
-                   type == Constantes.gameType[0] ? self.libraryGames.append(game) : self.wishGames.append(game)
+                   // check if the game is already in the array and don't add it again
+                   if type == Constantes.gameType[0] {
+                       if (!self.libraryGames.contains { $0.id == game.id}) { self.libraryGames.append(game) }
+                   } else {
+                       if (!self.wishGames.contains { $0.id == game.id}) { self.wishGames.append(game) }
+                   }
                }
                .store(in: &cancellable)
        }
     }
     
-    // fetch game ID from library in array
+    // fetch game ID from library or wishList in array
     func fetchID(type: String) {
        userRepo.fetchUserGame(type: type, user: authRepo.userID!) { IDs in
            if type == Constantes.gameType[0] {

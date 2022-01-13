@@ -56,7 +56,7 @@ struct ConversationView: View {
             }
             HStack {
                 TextEditor(text: $viewModel.newMessage)
-                    .background(Color.gray)
+                    .background(Color.gray.opacity(0.8))
                     .frame(height: 50)
                     .padding()
                 Button {
@@ -69,7 +69,7 @@ struct ConversationView: View {
                 .padding([.leading,.trailing])
 
             }
-            .background(Color.black)
+            .background(Color.black.opacity(0.8))
         }.onAppear(perform: {
             viewModel.fetchConversation()
         })

@@ -18,7 +18,7 @@ final class LogInViewModel: ObservableObject {
     @Published var resetEmail = ""
     var authRepo: AuthRepositoryProvider = AuthRepository()
 
-    
+    // sign in the app with email and password
     func signIn() {
         authRepo.signIn(email: email, password: password) { result in
             switch result {

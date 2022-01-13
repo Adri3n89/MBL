@@ -12,7 +12,10 @@ import Combine
 class DetailsViewModelTests: XCTestCase {
 
     var detailsViewModel = DetailsViewModel()
-    var cancellables = Set<AnyCancellable>()
+    
+    override func setUp() {
+        detailsViewModel = DetailsViewModel()
+    }
     
     func testGetIDWithGameInLibrary() {
         detailsViewModel.id = "123"
@@ -62,6 +65,22 @@ class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(detailsViewModel.playTime(), "Estimate play time: 30-45")
         XCTAssertEqual(detailsViewModel.gamePicture(), "image")
         XCTAssertEqual(detailsViewModel.description(), "description")
+    }
+    
+    func testAddGameToLibrary() {
+        detailsViewModel.userRepo = UserRepositoryMock(userGame: nil, userData: nil, allUsers: nil, addOrRemoveResult: "added")
+        
+        detailsViewModel.addOrRemove(id: "123", type: "Library")
+        
+        XCTAssertEqual(detailsViewModel.result, "added")
+    }
+    
+    func testRemoveGameToWishlist() {
+        detailsViewModel.userRepo = UserRepositoryMock(userGame: nil, userData: nil, allUsers: nil, addOrRemoveResult: "removed")
+        
+        detailsViewModel.addOrRemove(id: "123", type: "Wishlist")
+        
+        XCTAssertEqual(detailsViewModel.result, "removed")
     }
     
 }

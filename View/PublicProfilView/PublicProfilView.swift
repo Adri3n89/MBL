@@ -25,7 +25,10 @@ struct PublicProfilView: View {
                     } label: {
                         Text(Constantes.contact)
                         Image(systemName: Constantes.envelope)
-                    }.alert(viewModel.message, isPresented: $viewModel.showMessage) {
+                        
+                    }.foregroundColor(.white)
+                    .glowBorder(color: .black, lineWidth: 4)
+                    .alert(viewModel.message, isPresented: $viewModel.showMessage) {
                         Button(Constantes.cancel, role: .cancel) { }
                     }
                     Spacer()
@@ -36,7 +39,10 @@ struct PublicProfilView: View {
                     Text(Constantes.city)
                     Text(viewModel.userInfo.city)
                         .multilineTextAlignment(.leading)
-                }.padding()
+                }
+                .foregroundColor(.white)
+                .glowBorder(color: .black, lineWidth: 4)
+                .padding()
                 Spacer()
                 ScrollView {
                     LazyVGrid(columns: viewModel.columns, spacing: 15) {
@@ -46,7 +52,6 @@ struct PublicProfilView: View {
                             } label: {
                                 GameCellView(game: game, width: geo.size.width)
                             }
-                            .foregroundColor(Color.black)
                         }
                     }
                         .padding()

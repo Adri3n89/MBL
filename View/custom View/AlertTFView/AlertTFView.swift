@@ -32,7 +32,7 @@ struct AlertTFView: View {
                 .padding([.trailing, .leading, .bottom], 20)
             Button(buttonText) {
                 viewModel.changeValue(key: placeholder, value: viewModel.text)
-            }.alert("Wrong address", isPresented: $viewModel.showAlert, actions: {
+            }.alert(viewModel.message, isPresented: $viewModel.showAlert, actions: {
                 Button(role: .cancel) {
                     
                 } label: {

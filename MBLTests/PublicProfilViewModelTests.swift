@@ -50,4 +50,20 @@ class PublicProfilViewModelTests: XCTestCase {
         XCTAssertTrue(publicProfilViewModel.showMessage)
     }
     
+    func testFetchLibraryIDwith2Games() {
+        publicProfilViewModel.userRepo = UserRepositoryMock(userGame: ["1234", "2345"], userData: nil, allUsers: nil, addOrRemoveResult: nil)
+        
+        publicProfilViewModel.fetchLibraryID(user: "Toto")
+        
+        XCTAssertEqual(publicProfilViewModel.libraryID, ["1234", "2345"])
+    }
+    
+    func testFetchLibraryIDwithNoGame() {
+        publicProfilViewModel.userRepo = UserRepositoryMock(userGame: [], userData: nil, allUsers: nil, addOrRemoveResult: nil)
+        
+        publicProfilViewModel.fetchLibraryID(user: "Toto")
+        
+        XCTAssertEqual(publicProfilViewModel.libraryID, [])
+    }
+    
 }

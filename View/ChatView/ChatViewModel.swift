@@ -17,7 +17,9 @@ final class ChatViewModel: ObservableObject {
         allConversationsDate = []
         conversationRepo.fetchUserConversations { conversation in
             guard let conversation = conversation else {return}
+            // convert it to a ConversationDate and filter messages
             self.allConversationsDate.append(ConversationDate(id: UUID(), conversationID: conversation.conversationID, user1ID: conversation.user1ID, user2ID: conversation.user2ID, messages: self.filterMessages(conversation: conversation), user1: conversation.user1, user2: conversation.user2))
+            // filter all conversations to put the conversation with the latest message on top
             self.allConversationsDate = self.allConversationsDate.sorted(by: {
                 ($0.messages?.last?.date ?? Date(timeIntervalSince1970: 0)).compare($1.messages?.last?.date ?? Date(timeIntervalSince1970: 0)) == .orderedDescending
             })
@@ -50,7 +52,8 @@ final class ChatViewModel: ObservableObject {
         }
     }
     
-    func filterMessages(conversation: ConversationData) -> [MessageDate] {
+    // filter messages by date by converte the Message in MessageDate
+    private func filterMessages(conversation: ConversationData) -> [MessageDate] {
         var messages = [MessageDate]()
         if conversation.messages != nil {
             for message in conversation.messages! {

@@ -32,7 +32,7 @@ struct ConversationCellView: View {
                 Text(name)
                     .frame(height: 15)
                 Divider()
-                Text(lastMessage ?? "No Message")
+                Text(lastMessage ?? Constantes.noMessage)
                     .frame(height: 15)
             }
             .padding()

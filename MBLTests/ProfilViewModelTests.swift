@@ -12,6 +12,10 @@ class ProfilViewModelTests: XCTestCase {
 
     var profilViewModel = ProfilViewModel()
     
+    override func setUp() {
+        profilViewModel = ProfilViewModel()
+    }
+    
     func testGameToShowWithTypeLibrary() {
         profilViewModel.type = "Library"
         
@@ -60,6 +64,30 @@ class ProfilViewModelTests: XCTestCase {
         XCTAssertEqual(profilViewModel.userInfo.city, "PARIS")
         XCTAssertEqual(profilViewModel.userInfo.picture, "pic")
         XCTAssertEqual(profilViewModel.userInfo.refPic, "refpic")
+    }
+    
+    func testFetchLibraryID() {
+        profilViewModel.userRepo = UserRepositoryMock(userGame: ["123", "234"], userData: nil, allUsers: nil, addOrRemoveResult: nil)
+        
+        XCTAssertEqual(profilViewModel.libraryID, [])
+        XCTAssertEqual(profilViewModel.wishID, [])
+        
+        profilViewModel.fetchID(type: "Library")
+        
+        XCTAssertEqual(profilViewModel.libraryID, ["123", "234"])
+        XCTAssertEqual(profilViewModel.wishID, [])
+    }
+    
+    func testFetchWishID() {
+        profilViewModel.userRepo = UserRepositoryMock(userGame: ["123", "234"], userData: nil, allUsers: nil, addOrRemoveResult: nil)
+        
+        XCTAssertEqual(profilViewModel.libraryID, [])
+        XCTAssertEqual(profilViewModel.wishID, [])
+        
+        profilViewModel.fetchID(type: "Wishlist")
+        
+        XCTAssertEqual(profilViewModel.libraryID, [])
+        XCTAssertEqual(profilViewModel.wishID, ["123", "234"])
     }
 
 }

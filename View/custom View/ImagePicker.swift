@@ -17,7 +17,6 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
-        
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
 
@@ -28,14 +27,11 @@ struct ImagePicker: UIViewControllerRepresentable {
         return imagePicker
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-        
-    }
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self, refPic: refPic)
     }
-    
     
     final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
@@ -47,7 +43,6 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 var randomString: String {
                     let letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"

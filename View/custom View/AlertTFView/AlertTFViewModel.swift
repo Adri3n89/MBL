@@ -12,20 +12,25 @@ final class AlertTFViewModel: ObservableObject {
     
     @Published var text = ""
     @Published var showAlert = false
+    var message = ""
     var userRepo: UserRepositoryProvider = UserRepository()
-    let message = "Address not find, please try again"
     
     func changeValue(key: String, value: String) {
         if key == "City" {
             let geoCoder = CLGeocoder()
             geoCoder.geocodeAddressString(value) { placemarks, error in
                 guard (placemarks?.first) != nil else {
+                    self.message = "Wrong adress"
                     self.showAlert.toggle()
                     return
                 }
                 self.userRepo.updateProfil(key: key, value: value)
             }
         } else {
+            guard value.count >= 1 else {
+                self.message = "Need 1 Character minimum"
+                self.showAlert.toggle()
+                return }
             userRepo.updateProfil(key: key, value: value)
         }
     }

@@ -15,11 +15,7 @@ struct CustomSecureTF: View {
     @State var isTextShow: Bool
     
     var body: some View {
-        FloatingLabelTextField($text, placeholder: placeholder, editingChanged: { isChanged in
-            
-        }, commit: {
-            
-        })
+        FloatingLabelTextField($text, placeholder: placeholder, editingChanged: { isChanged in }, commit: {})
         .selectedLineColor(.white)
         .selectedTitleColor(.white)
         .selectedTextColor(.white)
@@ -36,7 +32,6 @@ struct CustomSecureTF: View {
             } label: {
                 Image(systemName: isTextShow ? "eye.slash.fill" : "eye.fill")
             }
-
         })
         .padding(5)
         .background(Color.gray.opacity(0.8))

@@ -20,7 +20,9 @@ final class DetailsViewModel: ObservableObject {
     var authRepo: AuthRepositoryProvider = AuthRepository()
     var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
+    var result = ""
     
+    // get gameData from API from the ID passed when tapping on a game
     func getDetail() {
         gameInfo = nil
         apiService.getGames(gameID: id)
@@ -33,8 +35,11 @@ final class DetailsViewModel: ObservableObject {
             .store(in: &cancellable)
     }
     
+    // check the database if the game is already in library or wishlist to Add it or remove It
     func addOrRemove(id: String, type: String) {
-        userRepo.addOrRemove(id: id, type: type)
+        userRepo.addOrRemove(id: id, type: type) { result in
+            self.result = result
+        }
     }
     
     // get the user games and check if the game is already in wishlist or library
@@ -72,6 +77,7 @@ final class DetailsViewModel: ObservableObject {
         wishListButtonText = index == 0 ? Constantes.addWish : Constantes.removeWish
     }
     
+    // return the good string for the view
     func gameYear() -> String {
         guard let game = gameInfo else { return "" }
         return Constantes.year + game.year

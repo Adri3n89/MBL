@@ -36,7 +36,7 @@ final class UserRepository: UserRepositoryProvider {
         newChild.setValue(value)
     }
     
-    func addOrRemove(id: String, type: String) {
+    func addOrRemove(id: String, type: String, completed: @escaping (String) -> Void)  {
         // ajoute l'id d'un jeu dans la library de l'utilisateur et si le jeu y est déja il le retire
         ref.child("Users").child(userID!).child(type).observeSingleEvent(of: .value, with: { games in
             for game in games.children.allObjects as! [DataSnapshot] {
@@ -44,10 +44,12 @@ final class UserRepository: UserRepositoryProvider {
                 let gameId = value?["ID"] as! String
                 if id == gameId {
                     self.ref.child("Users").child(self.userID!).child(type).child(game.key).removeValue()
+                    completed("removed")
                     return
                 }
             }
             self.ref.child("Users").child(self.userID!).child(type).childByAutoId().child("ID").setValue(id)
+            completed("added")
          })
     }
     

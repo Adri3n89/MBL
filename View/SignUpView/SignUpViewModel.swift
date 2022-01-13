@@ -25,24 +25,28 @@ final class SignUpViewModel: ObservableObject {
         // check if the adress if found with the geocoder to be sure the user can be find on the mapTab
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(city) { placemarks, error in
+            // check if at least one placemark exist
             guard (placemarks?.first) != nil else {
                 self.error = Constantes.errorAdress
                 self.showError = true
                 return
             }
+            // check if name and lastname have at least 1 caractere
             guard self.name.count >= 1 && self.lastName.count >= 1 else {
                 self.error = Constantes.errorName
                 self.showError = true
                 return
             }
+            // create account
             self.authRepo.signUp(email: self.email, password: self.password, name: self.name, lastName: self.lastName, city: self.city) { result in
                 switch result {
                     case .success(let bool):
                         self.isCreated = bool
+                    // account created, sign In with the account and create user in Database
+                        self.userRepo.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
                         self.authRepo.signIn(email: self.email, password: self.password) { result in
                             switch result {
-                                case .success(_):
-                                self.userRepo.createUserInfo(email: self.email, name: self.name, lastName: self.lastName, city: self.city)
+                                case .success(_): self.showError = false
                                 case .failure(let error):
                                     self.error = error.localizedDescription
                                     self.showError = true

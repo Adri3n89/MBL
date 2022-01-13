@@ -13,5 +13,5 @@ protocol UserRepositoryProvider {
     func fetchAllUsers(completed: @escaping ([UserData]) -> Void)
     func createUserInfo(email: String, name: String, lastName: String, city: String)
     func updateProfil(key: String, value: String)
-    func addOrRemove(id: String, type: String)
+    func addOrRemove(id: String, type: String, completed: @escaping (String) -> Void)
 }

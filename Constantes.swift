@@ -31,7 +31,7 @@ struct Constantes {
     static let cancel = "Cancel"
     static let camera = "Camera"
     static let gallery = "Gallery"
-    static let background = "background"
+    static let background = "bg5"
     static let year = "Year: "
     static let player = "Players: "
     static let time = "Estimate play time: "
@@ -79,4 +79,6 @@ struct Constantes {
     static let defaultProfilPicture = "https://i.imgur.com/42ZTgTc.png"
     static let noConversation = "Oups no conversations"
     static let resetMail = "reset e-mail send"
+    static let noMessage = "No message"
+    
 }

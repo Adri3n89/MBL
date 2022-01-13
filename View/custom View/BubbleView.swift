@@ -17,7 +17,8 @@ struct BubbleView: View {
             }
             Text(text)
                 .padding(5)
-                .background(isLeft ? .blue : .green)
+                .foregroundColor(.white)
+                .background(isLeft ? .gray.opacity(0.8) : .black.opacity(0.8))
                 .cornerRadius(8)
                 .padding(isLeft ? .leading : .trailing)
                 .frame(maxWidth: 200, alignment: isLeft ? .leading : .trailing)

@@ -14,11 +14,7 @@ struct CustomTF: View {
     let placeholder: String
     
     var body: some View {
-        FloatingLabelTextField($text, placeholder: placeholder, editingChanged: { isChanged in
-            
-        }, commit: {
-            
-        })
+        FloatingLabelTextField($text, placeholder: placeholder, editingChanged: { isChanged in }, commit: {})
         .selectedLineColor(.white)
         .selectedTitleColor(.white)
         .selectedTextColor(.white)

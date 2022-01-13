@@ -13,6 +13,10 @@ class ChatViewModelTests: XCTestCase {
 
     var chatViewModel = ChatViewModel()
     
+    override func setUp() {
+        chatViewModel = ChatViewModel()
+    }
+    
     func testFetchConversationWithOne() {
         chatViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: nil, conversationData: ConversationData(conversationID: "123", user1ID: "1", user2ID: "2"))
         
@@ -20,6 +24,25 @@ class ChatViewModelTests: XCTestCase {
         
         XCTAssertEqual(chatViewModel.allConversationsDate.count, 1)
         XCTAssertEqual(chatViewModel.allConversationsDate[0].conversationID, "123")
+    }
+    
+    func testFetchConversationWithOneAnd2Messages() {
+        chatViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: nil, conversationData: ConversationData(id: UUID(), conversationID: "12345", user1ID: "123", user2ID: "234", messages: [Message(text: "Au revoir", date: "2022-01-01 09:01:10", userID: "123"), Message(text: "Bonjour", date: "2022-01-01 08:01:10", userID: "234")], user1: nil, user2: nil))
+        
+        chatViewModel.fetchAllUserConversations()
+        
+        XCTAssertEqual(chatViewModel.allConversationsDate.count, 1)
+        XCTAssertEqual(chatViewModel.allConversationsDate[0].conversationID, "12345")
+        XCTAssertEqual(chatViewModel.allConversationsDate[0].messages![0].text, "Bonjour")
+        XCTAssertEqual(chatViewModel.allConversationsDate[0].messages![0].userID, "234")
+    }
+    
+    func testFetchConversationWithOneAnd0Message() {
+        chatViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: nil, conversationData: ConversationData(id: UUID(), conversationID: "12345", user1ID: "123", user2ID: "234", messages: nil))
+        
+        chatViewModel.fetchAllUserConversations()
+        
+        XCTAssertEqual(chatViewModel.allConversationsDate.count, 1)
     }
     
     func testFetchConversationWithNoConversation() {
