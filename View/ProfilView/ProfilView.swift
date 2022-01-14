@@ -57,7 +57,7 @@ struct ProfilView: View {
                                 viewModel.showCity.toggle()
                             })
                             .sheet(isPresented: $viewModel.showCity, content: {
-                                AlertTFView(placeholder: "City", buttonText: "Update your city")
+                                AlertTFView(placeholder: String(Constantes.city.dropLast()), buttonText: Constantes.updateCity)
                                     .background(BackgroundClearView())
                             })
                     }

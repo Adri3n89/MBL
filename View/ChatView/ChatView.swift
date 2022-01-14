@@ -31,7 +31,7 @@ struct ChatView: View {
                             NavigationLink {
                                 ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(conversation, userID: viewModel.conversationRepo.currentUserID!), conversationID: conversation.conversationID))
                             } label: {
-                                ConversationCellView(name: viewModel.returnGoodName(conversation, userID: viewModel.conversationRepo.currentUserID!), imageURL: viewModel.returnGoodPicture(conversation, userID: viewModel.conversationRepo.currentUserID!), lastMessage: conversation.messages?.last?.text ?? "No Message")
+                                ConversationCellView(name: viewModel.returnGoodName(conversation, userID: viewModel.conversationRepo.currentUserID!), imageURL: viewModel.returnGoodPicture(conversation, userID: viewModel.conversationRepo.currentUserID!), lastMessage: conversation.messages?.last?.text ?? Constantes.noMessage)
                             }
                         })
                     }

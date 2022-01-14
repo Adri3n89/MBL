@@ -17,7 +17,7 @@ final class ProfilViewModel: ObservableObject {
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var wishID: [String] = []
-    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "", refPic: "")
+    @Published var userInfo: UserData = UserData()
     @Published var showAlert = false
     @Published var showPicker = false
     @Published var showCity = false
@@ -26,7 +26,6 @@ final class ProfilViewModel: ObservableObject {
     var error = ""
     var userRepo: UserRepositoryProvider = UserRepository()
     var authRepo: AuthRepositoryProvider = AuthRepository()
-    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     
     var columns: [GridItem] = [
@@ -37,7 +36,7 @@ final class ProfilViewModel: ObservableObject {
     // get games info from the array ID choose
     private func getGames(type: String) {
         for gameID in type == Constantes.gameType[0] ? libraryID : wishID {
-           apiService.getGames(gameID: gameID)
+            ApiService.shared.getGames(gameID: gameID)
                .receive(on: DispatchQueue.main)
                .sink { completion in
                    switch completion {
@@ -79,12 +78,7 @@ final class ProfilViewModel: ObservableObject {
     // fetch currentuser info from Firebase
     func fetchUserInfo() {
         userRepo.fetchUserInfo(user: authRepo.userID!) { userInfo in
-            self.userInfo.city = userInfo.city
-            self.userInfo.lastName = userInfo.lastName
-            self.userInfo.name = userInfo.name
-            self.userInfo.picture = userInfo.picture
-            self.userInfo.refPic = userInfo.refPic
-            self.userInfo.userID = userInfo.userID
+            self.userInfo = userInfo
         }
     }
     

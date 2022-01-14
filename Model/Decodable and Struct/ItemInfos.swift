@@ -40,7 +40,3 @@ struct ItemInfo: Codable, Identifiable {
 struct Maxplayers: Codable {
     let value: String
 }
-
-//struct GameName: Codable {
-//    let type, sortindex, value: String
-//}

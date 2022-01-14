@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class ChatViewModel: ObservableObject {
     
@@ -30,9 +31,9 @@ final class ChatViewModel: ObservableObject {
     
     func returnGoodName(_ conversation: ConversationDate, userID: String) -> String {
         if conversation.user1!.userID == userID {
-            return conversation.user2!.name + " " + conversation.user2!.lastName
+            return "\(conversation.user2!.name) \(conversation.user2!.lastName)"
         } else {
-            return conversation.user1!.name + " " + conversation.user1!.lastName
+            return "\(conversation.user1!.name) \(conversation.user1!.lastName)"
         }
     }
     
@@ -56,12 +57,10 @@ final class ChatViewModel: ObservableObject {
     private func filterMessages(conversation: ConversationData) -> [MessageDate] {
         var messages = [MessageDate]()
         if conversation.messages != nil {
-            for message in conversation.messages! {
+            conversation.messages!.forEach { message in
                 messages.append(MessageDate(text: message.text, date: message.date.stringToDate(), userID: message.userID ))
             }
-            messages = messages.sorted(by: {
-                $0.date.compare($1.date) == .orderedAscending
-            })
+            messages = messages.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
             return messages
         } else {
             return []

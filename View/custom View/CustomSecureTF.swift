@@ -30,7 +30,7 @@ struct CustomSecureTF: View {
                     isTextShow.toggle()
                 }
             } label: {
-                Image(systemName: isTextShow ? "eye.slash.fill" : "eye.fill")
+                Image(systemName: isTextShow ? Constantes.showPassword : Constantes.hidePassword)
             }
         })
         .padding(5)

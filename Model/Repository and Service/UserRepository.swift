@@ -95,6 +95,4 @@ final class UserRepository: UserRepositoryProvider {
         let refPic = value?["RefPic"] as! String?
         return UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? Constantes.defaultProfilPicture, refPic: refPic ?? "")
     }
-    
-    
 }

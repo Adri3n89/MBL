@@ -9,10 +9,12 @@ import Foundation
 import Combine
 
 final class ApiService {
+    
+    static let shared = ApiService(apiResources: APIResources())
        
     var apiResources : APIProvider
     
-    init(apiResources: APIProvider = APIResources()) {
+    private init(apiResources: APIProvider = APIResources()) {
         self.apiResources = apiResources
     }
 

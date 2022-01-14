@@ -24,7 +24,6 @@ enum NetworkError: Error {
             return .undecodableData
         }
     }
-    
 }
 
 extension NetworkError: LocalizedError {

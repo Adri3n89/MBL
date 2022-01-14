@@ -14,7 +14,6 @@ final class Top50ViewModel: ObservableObject {
     @Published var top50: [GameData] = []
     @Published var showError = false
     @Published var error: String = ""
-    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -23,7 +22,7 @@ final class Top50ViewModel: ObservableObject {
     
     // fetch the TOP 50 games from the api in array
     func getTop50() {
-        apiService.getHotGame(Constantes.urlTop50)
+        ApiService.shared.getHotGame(Constantes.urlTop50)
            .receive(on: DispatchQueue.main)
            .sink { completion in
                switch completion {

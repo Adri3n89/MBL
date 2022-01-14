@@ -15,13 +15,13 @@ struct UserData: Identifiable, Equatable {
     }
     
     var id = UUID()
-    var name: String
-    var lastName: String
-    var userID: String
-    var city: String
+    var name: String = ""
+    var lastName: String = ""
+    var userID: String = ""
+    var city: String = ""
     var wish: [String] = []
     var library: [String] = []
     var coordinates = CLLocationCoordinate2D()
-    var picture: String
-    var refPic: String
+    var picture: String = ""
+    var refPic: String = ""
 }

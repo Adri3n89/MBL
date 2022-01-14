@@ -68,7 +68,7 @@ struct Constantes {
     static let tab4Logo = "message"
     static let tab5 = "Profil"
     static let tab5Logo = "person"
-    static let mappPin = "mappin.circle.fill"
+    static let pin = "pin.fill"
     static let arrow = "arrowtriangle.down.fill"
     static let refURL = "https://myboardgamelibrary-default-rtdb.europe-west1.firebasedatabase.app"
     static let createConversation = "Conversation create successfull\nGo on the Chat tab to see it"
@@ -80,5 +80,12 @@ struct Constantes {
     static let noConversation = "Oups no conversations"
     static let resetMail = "reset e-mail send"
     static let noMessage = "No message"
-    
+    static let errorPassword = "Password must have 4 characters minimum"
+    static let oneLetter = "Need 1 Character minimum"
+    static let showPassword = "eye.slash.fill"
+    static let hidePassword = "eye.fill"
+    static let updateCity = "Update your city"
+    static let updateName = "Update your name"
+    static let updateLastName = "Update your lastname"
+    static let noResult = "No result"
 }

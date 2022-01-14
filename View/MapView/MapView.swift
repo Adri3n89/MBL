@@ -15,7 +15,7 @@ struct MapView: View {
         var body: some View {
             Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.allCoordinates, annotationContent: { user in
                 MapAnnotation(coordinate: user.coordinates) {
-                    Image(systemName: "pin.fill")
+                    Image(systemName: Constantes.pin)
                         .foregroundColor(.blue)
                         .onTapGesture {
                             viewModel.showLibrary.toggle()

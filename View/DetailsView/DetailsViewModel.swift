@@ -18,14 +18,13 @@ final class DetailsViewModel: ObservableObject {
     @Published var libraryID = [String]()
     var userRepo: UserRepositoryProvider = UserRepository()
     var authRepo: AuthRepositoryProvider = AuthRepository()
-    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     var result = ""
     
     // get gameData from API from the ID passed when tapping on a game
     func getDetail() {
         gameInfo = nil
-        apiService.getGames(gameID: id)
+        ApiService.shared.getGames(gameID: id)
             .receive(on: DispatchQueue.main)
             .sink { error in
                 print(error)
@@ -56,41 +55,29 @@ final class DetailsViewModel: ObservableObject {
     // check if game is already in library or not to change Button Label
     private func checkLibrary(idArray: [String]) {
         libraryID = idArray
-        var index = 0
-        for game in libraryID {
-            if game == id {
-                index += 1
-            }
-        }
-        libraryButtonText = index == 0 ? Constantes.addLibrary : Constantes.removeLibrary
+        libraryButtonText = libraryID.contains(id) ? Constantes.removeLibrary : Constantes.addLibrary
     }
     
     // check if game is already in wishList or not to change Button Label
     private func checkWishlist(idArray: [String]) {
         wishID = idArray
-        var index = 0
-        for game in wishID {
-            if game == id {
-                index += 1
-            }
-        }
-        wishListButtonText = index == 0 ? Constantes.addWish : Constantes.removeWish
+        wishListButtonText = wishID.contains(id) ? Constantes.removeWish : Constantes.addWish
     }
     
     // return the good string for the view
     func gameYear() -> String {
         guard let game = gameInfo else { return "" }
-        return Constantes.year + game.year
+        return "\(Constantes.year)\(game.year)"
     }
     
     func players() -> String {
         guard let game = gameInfo else { return "" }
-        return Constantes.player + game.minPlayer + "-" + game.maxPlayer
+        return "\(Constantes.player)\(game.minPlayer)-\(game.maxPlayer)"
     }
     
     func playTime() -> String {
         guard let game = gameInfo else { return "" }
-        return Constantes.time + game.minTime + "-" + game.maxTime
+        return "\(Constantes.time)\(game.minTime)-\(game.maxTime)"
     }
     
     func gamePicture() -> String {

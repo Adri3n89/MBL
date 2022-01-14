@@ -15,13 +15,12 @@ final class SearchViewModel: ObservableObject {
     @Published var error = ""
     @Published var showError = false
     @Published var isLoading = false
-    var apiService = ApiService()
     var cancellable = Set<AnyCancellable>()
     
     func searchGame() {
         searchResult = []
         // convert the caracteres to the good format for the api request
-        apiService.searchGameName(name: gameName.convertForSearch())
+        ApiService.shared.searchGameName(name: gameName.convertForSearch())
             .receive(on: DispatchQueue.main)
             .sink { error in
                 print(error)
@@ -30,7 +29,7 @@ final class SearchViewModel: ObservableObject {
                 self.searchResult = result
                 self.isLoading = false
                 if result.count == 0 {
-                    self.error = "No Result"
+                    self.error = Constantes.noResult
                     self.showError = true
                 }
             }

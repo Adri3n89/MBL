@@ -49,12 +49,6 @@ extension String {
     return result
   }
     
-    func stringToDate() -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormatter.date(from: self)!
-    }
-    
     func convertForSearch() -> String {
         let okayChars : Set<Character> =
                 Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")

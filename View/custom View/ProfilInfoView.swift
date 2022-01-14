@@ -22,7 +22,7 @@ struct ProfilInfoView: View {
                     showName.toggle()
                 })
                 .sheet(isPresented: $showName, content: {
-                    AlertTFView(placeholder: "Name", buttonText: "Update your name")
+                    AlertTFView(placeholder:Constantes.nameTF, buttonText: Constantes.updateName)
                         .background(BackgroundClearView())
                 })
                 .padding([.bottom], 20)
@@ -32,7 +32,7 @@ struct ProfilInfoView: View {
                     showLastName.toggle()
                 })
                 .sheet(isPresented: $showLastName, content: {
-                    AlertTFView(placeholder: "LastName", buttonText: "Update your lastname")
+                    AlertTFView(placeholder: Constantes.lastNameTF, buttonText: Constantes.updateLastName)
                         .background(BackgroundClearView())
                 })
         }

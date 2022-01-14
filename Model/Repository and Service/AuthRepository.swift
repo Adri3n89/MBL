@@ -61,6 +61,4 @@ class AuthRepository: AuthRepositoryProvider {
         }
         catch { print(error.localizedDescription) }
     }
-
-    
 }

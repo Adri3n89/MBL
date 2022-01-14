@@ -13,12 +13,11 @@ final class PublicProfilViewModel: ObservableObject {
     
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
-    @Published var userInfo: UserData = UserData(name: "", lastName: "", userID: "", city: "", picture: "", refPic: "")
+    @Published var userInfo: UserData = UserData()
     @Published var showMessage = false
     @Published var message = ""
     var cancellable = Set<AnyCancellable>()
     var userRepo: UserRepositoryProvider = UserRepository()
-    var apiService = ApiService()
     var conversationRepo: ConversationRepositoryProvider = ConversationRepository()
     
     var columns: [GridItem] = [
@@ -29,7 +28,7 @@ final class PublicProfilViewModel: ObservableObject {
     // get all user games with the arrayID
     private func getLibraryGame() {
        for gameID in libraryID {
-           apiService.getGames(gameID: gameID)
+           ApiService.shared.getGames(gameID: gameID)
                .receive(on: DispatchQueue.main)
                .sink { completion in
                    switch completion {
@@ -57,12 +56,7 @@ final class PublicProfilViewModel: ObservableObject {
     // fetch user profil from Firebase
     func fetchUserInfo(user: String) {
         userRepo.fetchUserInfo(user: user) { userInfo in
-            self.userInfo.city = userInfo.city
-            self.userInfo.lastName = userInfo.lastName
-            self.userInfo.name = userInfo.name
-            self.userInfo.picture = userInfo.picture
-            self.userInfo.userID = userInfo.userID
-            self.userInfo.refPic = userInfo.refPic
+            self.userInfo = userInfo
         }
     }
     

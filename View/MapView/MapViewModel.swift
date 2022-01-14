@@ -34,9 +34,7 @@ final class MapViewModel: ObservableObject {
     func getAllAdresses() {
         // create an array of all users adresses
         var all = [String]()
-        for user in allUsers {
-            all.append(user.city)
-        }
+        all.append(contentsOf: allUsers.map{ user in user.city})
         allAdresses = all
         // geocode all adresses and append coordinates into allCoordinates
         geoCode(addresses: allAdresses) { placemarks in
@@ -56,18 +54,15 @@ final class MapViewModel: ObservableObject {
             completion(results)
             return
         }
-
+        
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { placemarks, error in
-
             var updatedResults = results
 
             if let placemark = placemarks?.first {
                 updatedResults.append(placemark)
             }
-
             let remainingAddresses = Array(addresses[1..<addresses.count])
-
             self.geoCode(addresses: remainingAddresses, results: updatedResults, completion: completion)
         }
     }

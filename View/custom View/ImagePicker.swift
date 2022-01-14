@@ -44,11 +44,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                var randomString: String {
-                    let letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
-                    return String((0 ..< 24).map { _ in letters.randomElement()! })
-                }
-                let childRef = parent.refPic == "" ? randomString + ".png" : parent.refPic
+                let childRef = parent.refPic == "" ? String().imageName() + ".png" : parent.refPic
                 parent.pictureRepo.uploadPicture(image: image.aspectFittedToHeight(100), childRef: childRef)
             }
             parent.presentationMode.wrappedValue.dismiss()

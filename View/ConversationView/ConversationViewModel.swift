@@ -38,12 +38,10 @@ final class ConversationViewModel: ObservableObject {
     // filter messages to put the last message at the end of the array
     private func filterMessages(conversation: ConversationData) {
         if conversation.messages != nil {
-            for message in conversation.messages! {
+            conversation.messages!.forEach { message in
                 self.messages.append(MessageDate(text: message.text, date: message.date.stringToDate(), userID: message.userID ))
             }
-            self.messages = self.messages.sorted(by: {
-                $0.date.compare($1.date) == .orderedAscending
-            })
+            self.messages = self.messages.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
         }
     }
     

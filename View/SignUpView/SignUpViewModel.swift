@@ -26,14 +26,13 @@ final class SignUpViewModel: ObservableObject {
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(city) { placemarks, error in
             // check if at least one placemark exist
-            guard (placemarks?.first) != nil else {
-                self.error = Constantes.errorAdress
-                self.showError = true
-                return
-            }
+            self.error = placemarks?.first != nil ? self.error : Constantes.errorAdress
             // check if name and lastname have at least 1 caractere
-            guard self.name.count >= 1 && self.lastName.count >= 1 else {
-                self.error = Constantes.errorName
+            self.error = (self.name.count >= 1 && self.lastName.count >= 1) ? self.error : Constantes.errorName
+           // check if password have 4 characters minimum
+            self.error = self.password.count >= 4 ? self.error : Constantes.errorPassword
+
+            guard self.error.isEmpty else {
                 self.showError = true
                 return
             }

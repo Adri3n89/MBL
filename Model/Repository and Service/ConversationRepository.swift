@@ -122,8 +122,5 @@ final class ConversationRepository: ConversationRepositoryProvider {
         let picture = value?["Picture"] as! String?
         let refPic = value?["RefPic"] as! String?
         return UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? Constantes.defaultProfilPicture, refPic: refPic ?? "")
-    }
-    
-    
-    
+    } 
 }
