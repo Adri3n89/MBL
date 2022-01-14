@@ -36,7 +36,6 @@ struct SignUpView: View {
                 Button(Constantes.signIn) {
                     presentationMode.wrappedValue.dismiss()
                 }
-                .padding([.bottom], 20)
                 .tint(.white)
             }
         }.alert(viewModel.error, isPresented: $viewModel.showError) {

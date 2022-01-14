@@ -86,7 +86,7 @@ final class ConversationRepository: ConversationRepositoryProvider {
     }
     
     func fetchConversation(conversationID: String, completed: @escaping (ConversationData) -> Void) {
-        ref.child("Conversations").child(conversationID).observeSingleEvent(of: .value, with: { conversation in
+        ref.child("Conversations").child(conversationID).observe(.value, with: { conversation in
             completed(self.fetchConversationData(conversation: conversation)!)
             
          })
