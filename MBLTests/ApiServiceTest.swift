@@ -22,7 +22,8 @@ class ApiServiceTest: XCTestCase {
     func testGetHotGameGivenGoodData() {
         let data = FakeResponseData().top50Data
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -39,31 +40,32 @@ class ApiServiceTest: XCTestCase {
     }
     
     func testGetHotGameGivenBadURL() {
-            //given
-            let badURL = "ezifjef zioejf o"
-            let expectation = XCTestExpectation(description: "changing queue")
-            let apiService = ApiService()
-    
+        //given
+        let badURL = "ezifjef zioejf o"
+        let expectation = XCTestExpectation(description: "changing queue")
+        let apiService = ApiService.shared
+
         apiService.getHotGame(badURL)
-            .sink { completion in
-                switch completion {
-                case .failure(let error) :
-                    XCTAssertEqual(error.localizedDescription, "Bad URL.")
-                case .finished:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            } receiveValue: { top50 in
-                
-            }.store(in: &subscriptions)
-        
-            wait(for: [expectation], timeout: 1)
-        }
+        .sink { completion in
+            switch completion {
+            case .failure(let error) :
+                XCTAssertEqual(error.localizedDescription, "Bad URL.")
+            case .finished:
+                XCTFail()
+            }
+            expectation.fulfill()
+        } receiveValue: { top50 in
+            
+        }.store(in: &subscriptions)
+    
+        wait(for: [expectation], timeout: 1)
+    }
     
     func testGetHotGameGivenBadData() {
         let data = FakeResponseData().incorrectData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -86,7 +88,8 @@ class ApiServiceTest: XCTestCase {
     
     func testGetHotGameGivenBadResponse() {
         let mock = APIMockResources(result: .failure(.badResponse))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving bad response")
         
@@ -112,7 +115,8 @@ class ApiServiceTest: XCTestCase {
     func testGetGamesGivenGoodData() {
         let data = FakeResponseData().searchByIDData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -131,7 +135,8 @@ class ApiServiceTest: XCTestCase {
     func testGetGamesGivenGoodDatawithNilImage() {
         let data = FakeResponseData().searchByIDWithNilValueData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -150,30 +155,31 @@ class ApiServiceTest: XCTestCase {
     
     func testGetGamesGivenBadURL() {
             //given
-            let badURL = "ezifjef zioejf o"
-            let expectation = XCTestExpectation(description: "changing queue")
-            let apiService = ApiService()
-    
+        let badURL = "ezifjef zioejf o"
+        let expectation = XCTestExpectation(description: "changing queue")
+        let apiService = ApiService.shared
+
         apiService.getGames(gameID: badURL)
-            .sink { completion in
-                switch completion {
-                case .failure(let error) :
-                    XCTAssertEqual(error.localizedDescription, "Bad URL.")
-                case .finished:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            } receiveValue: { game in
-                
-            }.store(in: &subscriptions)
-        
-            wait(for: [expectation], timeout: 1)
-        }
+        .sink { completion in
+            switch completion {
+            case .failure(let error) :
+                XCTAssertEqual(error.localizedDescription, "Bad URL.")
+            case .finished:
+                XCTFail()
+            }
+            expectation.fulfill()
+        } receiveValue: { game in
+            
+        }.store(in: &subscriptions)
+    
+        wait(for: [expectation], timeout: 1)
+    }
     
     func testGetGamesGivenBadData() {
         let data = FakeResponseData().incorrectData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -196,7 +202,8 @@ class ApiServiceTest: XCTestCase {
     
     func testGetGamesGivenBadResponse() {
         let mock = APIMockResources(result: .failure(.badResponse))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving bad response")
         
@@ -222,7 +229,8 @@ class ApiServiceTest: XCTestCase {
     func testGetGameByNameGivenGoodData() {
         let data = FakeResponseData().searchByNameData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -241,7 +249,8 @@ class ApiServiceTest: XCTestCase {
     func testGetGameByNameGivenGoodDataAndOneResult() {
         let data = FakeResponseData().searchByNameOneResultData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -260,7 +269,8 @@ class ApiServiceTest: XCTestCase {
     func testGetGameByNameGivenGoodDatawithZeroResult() {
         let data = FakeResponseData().searchByNameNoResultData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -277,31 +287,32 @@ class ApiServiceTest: XCTestCase {
     }
     
     func testGetGameByNameGivenBadURL() {
-            //given
-            let badURL = "ezifjef zioejf o"
-            let expectation = XCTestExpectation(description: "changing queue")
-            let apiService = ApiService()
-    
+        //given
+        let badURL = "ezifjef zioejf o"
+        let expectation = XCTestExpectation(description: "changing queue")
+        let apiService = ApiService.shared
+
         apiService.searchGameName(name: badURL)
-            .sink { completion in
-                switch completion {
-                case .failure(let error) :
-                    XCTAssertEqual(error.localizedDescription, "Bad URL.")
-                case .finished:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            } receiveValue: { game in
-                
-            }.store(in: &subscriptions)
-        
-            wait(for: [expectation], timeout: 1)
-        }
+        .sink { completion in
+            switch completion {
+            case .failure(let error) :
+                XCTAssertEqual(error.localizedDescription, "Bad URL.")
+            case .finished:
+                XCTFail()
+            }
+            expectation.fulfill()
+        } receiveValue: { game in
+            
+        }.store(in: &subscriptions)
+    
+        wait(for: [expectation], timeout: 1)
+    }
     
     func testGetGameByNameGivenBadData() {
         let data = FakeResponseData().incorrectData
         let mock = APIMockResources(result: .success(data))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving data")
         
@@ -324,7 +335,8 @@ class ApiServiceTest: XCTestCase {
     
     func testGetGameByNameGivenBadResponse() {
         let mock = APIMockResources(result: .failure(.badResponse))
-        let apiService = ApiService(apiResources: mock)
+        let apiService = ApiService.shared
+        apiService.apiResources = mock
         
         let expectation = expectation(description: "receiving bad response")
         

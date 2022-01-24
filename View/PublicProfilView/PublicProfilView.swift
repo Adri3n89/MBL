@@ -19,30 +19,39 @@ struct PublicProfilView: View {
             VStack(alignment: .leading) {
                 HStack {
                     ProfilImageView(imageURL: viewModel.userInfo.picture)
+                        .disabled(true)
                     ProfilInfoView(name: viewModel.userInfo.name, lastName: viewModel.userInfo.lastName)
+                        .disabled(true)
                     Button {
                         viewModel.createConversation()
                     } label: {
-                        Text(Constantes.contact)
                         Image(systemName: Constantes.envelope)
+                            .padding(5)
+                            .background(Color.gray.opacity(0.8))
+                            .cornerRadius(10)
+                            .padding(.trailing, 20)
                         
                     }.foregroundColor(.white)
-                    .glowBorder(color: .black, lineWidth: 4)
-                    .alert(viewModel.message, isPresented: $viewModel.showMessage) {
-                        Button(Constantes.cancel, role: .cancel) { }
-                    }
-                    Spacer()
+                        .fullScreenCover(isPresented: $viewModel.showConversation) {
+                            ConversationView(viewModel: ConversationViewModel(userInfo: viewModel.returnGoodUser(userID: viewModel.conversationRepo.currentUserID!), conversationID: viewModel.conversation!.conversationID))
+                        }
+                        .alert(viewModel.message, isPresented: $viewModel.showMessage) {
+                            Button(Constantes.cancel, role: .cancel) { }
+                        }
                 }
-                .padding()
-                Divider()
+                .padding(.top)
                 HStack {
                     Text(Constantes.city)
                     Text(viewModel.userInfo.city)
                         .multilineTextAlignment(.leading)
+                        .disabled(true)
                 }
-                .foregroundColor(.white)
-                .glowBorder(color: .black, lineWidth: 4)
-                .padding()
+                .padding(5)
+                .background(Color.gray.opacity(0.8))
+                .cornerRadius(10)
+                .frame(maxHeight: 40)
+                .padding([.leading, .trailing])
+                Divider()
                 Spacer()
                 ScrollView {
                     LazyVGrid(columns: viewModel.columns, spacing: 15) {

@@ -9,14 +9,17 @@ import Foundation
 @testable import MBL
 
 struct ConversationRepositoryMock: ConversationRepositoryProvider {
+    
     var currentUserID: String?
     var createConversationString: String?
     var conversationData: ConversationData?
     
-    func createConversation(user: String) {}
+    func searchIfConversationAlreadyExist(user: String, completed: @escaping (ConversationData) -> Void) {
+        completed(conversationData!)
+    }
     
-    func searchIfConversationAlreadyExist(user: String, completed: @escaping (String) -> Void) {
-        completed(createConversationString!)
+    func createConversation(user: String) -> String {
+        return createConversationString!
     }
     
     func addMessage(idConversation: String, text: String, date: String) {}

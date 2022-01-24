@@ -49,6 +49,7 @@ struct LogInView: View {
             Button(Constantes.ok, role: .cancel) { }
         }
         .background(BackgroundView())
+        .disableAutocorrection(true)
         .onAppear {
             viewModel.isPresented = authRepo.isSignIn()
         }

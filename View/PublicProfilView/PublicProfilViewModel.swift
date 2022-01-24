@@ -14,7 +14,9 @@ final class PublicProfilViewModel: ObservableObject {
     @Published var libraryGames: [GameData] = []
     @Published var libraryID: [String] = []
     @Published var userInfo: UserData = UserData()
+    @Published var showConversation = false
     @Published var showMessage = false
+    @Published var conversation: ConversationData?
     @Published var message = ""
     var cancellable = Set<AnyCancellable>()
     var userRepo: UserRepositoryProvider = UserRepository()
@@ -62,9 +64,17 @@ final class PublicProfilViewModel: ObservableObject {
     
     // create conversation beetween currentUser and selected user
     func createConversation() {
-        conversationRepo.searchIfConversationAlreadyExist(user: userInfo.userID) { message in
-            self.message = message
-            self.showMessage.toggle()
+        conversationRepo.searchIfConversationAlreadyExist(user: userInfo.userID) { conversation in
+            self.conversation = conversation
+            self.showConversation.toggle()
+        }
+    }
+    
+    func returnGoodUser(userID: String) -> UserData {
+        if conversation!.user1!.userID == userID {
+            return conversation!.user2!
+        } else {
+            return conversation!.user1!
         }
     }
     

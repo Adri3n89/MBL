@@ -42,6 +42,7 @@ struct SignUpView: View {
             Button(Constantes.ok, role: .cancel) { }
         }
         .background(BackgroundView())
+        .disableAutocorrection(true)
     }
 }
 

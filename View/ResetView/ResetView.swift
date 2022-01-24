@@ -38,7 +38,7 @@ struct ResetView: View {
             .padding([.leading, .trailing], 10)
             .background(.gray)
             .cornerRadius(15)
-            .tint(.black)
+            .tint(.white)
         }
         .padding()
         .background(.thinMaterial)

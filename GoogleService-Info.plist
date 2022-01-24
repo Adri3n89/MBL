@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>742862219115-fvc80anpf7umamnjfbvb244a8tchmnc5.apps.googleusercontent.com</string>
+	<string>742862219115-ellpq6q72rd135tcerb27gn39jlbmvco.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.742862219115-fvc80anpf7umamnjfbvb244a8tchmnc5</string>
+	<string>com.googleusercontent.apps.742862219115-ellpq6q72rd135tcerb27gn39jlbmvco</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBgCqsGjWYwI21DFsc3PZLb3cq_7D_eHMM</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>fr.AdrienPEREA.MGL</string>
+	<string>fr.AdrienPEREA.MBL</string>
 	<key>PROJECT_ID</key>
 	<string>myboardgamelibrary</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:742862219115:ios:61e67fade45efd87198e2e</string>
+	<string>1:742862219115:ios:18cc4e3ec3ba4e4a198e2e</string>
+	<key>DATABASE_URL</key>
+	<string>https://myboardgamelibrary-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

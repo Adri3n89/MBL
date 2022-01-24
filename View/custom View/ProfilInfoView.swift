@@ -16,27 +16,9 @@ struct ProfilInfoView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(name)
-                .foregroundColor(.white)
-                .onTapGesture(perform: {
-                    showName.toggle()
-                })
-                .sheet(isPresented: $showName, content: {
-                    AlertTFView(placeholder:Constantes.nameTF, buttonText: Constantes.updateName)
-                        .background(BackgroundClearView())
-                })
-                .padding([.bottom], 20)
-            Text(lastName)
-                .foregroundColor(.white)
-                .onTapGesture(perform: {
-                    showLastName.toggle()
-                })
-                .sheet(isPresented: $showLastName, content: {
-                    AlertTFView(placeholder: Constantes.lastNameTF, buttonText: Constantes.updateLastName)
-                        .background(BackgroundClearView())
-                })
+            CustomTextView(color: .white, text: name, placeholder: String(Constantes.name.dropLast()), buttonText: Constantes.updateName, show: $showName)
+            CustomTextView(color: .white, text: lastName, placeholder: String(Constantes.lastName.dropLast()), buttonText: Constantes.updateLastName, show: $showLastName)
         }
-        .glowBorder(color: .black, lineWidth: 4)
         Spacer()
     }
 }

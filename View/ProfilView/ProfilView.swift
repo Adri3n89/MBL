@@ -37,16 +37,15 @@ struct ProfilView: View {
                             presentationMode.wrappedValue.dismiss()
                             viewModel.logOut()
                         } label: {
-                            Text(Constantes.logOut)
                             Image(systemName: Constantes.power)
+                                .resizable()
+                                .frame(width: 25, height: 25)
                         }
                             .foregroundColor(Color.red)
-
-                        Spacer()
+                            .padding(.trailing, 20)
                     }.sheet(isPresented: $viewModel.showPicker) {
                         ImagePicker(sourceType: viewModel.sourceType, refPic: viewModel.userInfo.refPic)
                     }
-                    Divider()
                     HStack {
                         Text(Constantes.city)
                             .foregroundColor(.white)
@@ -61,8 +60,12 @@ struct ProfilView: View {
                                     .background(BackgroundClearView())
                             })
                     }
-                    .glowBorder(color: .black, lineWidth: 4)
-                        .padding()
+                    .padding(5)
+                    .background(Color.gray.opacity(0.8))
+                    .cornerRadius(10)
+                    .frame(maxHeight: 40)
+                    .padding([.leading, .trailing])
+                    Divider()
                     Picker("", selection: $viewModel.type) {
                         ForEach(Constantes.gameType, id: \.self) {
                             Text($0)
@@ -99,6 +102,7 @@ struct ProfilView: View {
                }
                .background(BackgroundView())
                .navigationBarHidden(true)
+               .disableAutocorrection(true)
             }
         }
     }

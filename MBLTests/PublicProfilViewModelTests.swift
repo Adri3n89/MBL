@@ -32,23 +32,14 @@ class PublicProfilViewModelTests: XCTestCase {
         XCTAssertEqual(publicProfilViewModel.userInfo.picture, "pic")
     }
     
-    func testCreateConversationAlreadyExist() {
-        publicProfilViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: Constantes.alreadyConversation, conversationData: nil)
+    func testCreateConversation() {
+        publicProfilViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: Constantes.alreadyConversation, conversationData: ConversationData(id: UUID(), conversationID: "12345", user1ID: "123", user2ID: "234", messages: [Message(text: "Au revoir", date: "2022-01-01 09:01:10", userID: "123"), Message(text: "Bonjour", date: "2022-01-01 08:01:10", userID: "123")], user1: nil, user2: nil))
         
         publicProfilViewModel.createConversation()
         
-        XCTAssertEqual(publicProfilViewModel.message, Constantes.alreadyConversation)
-        XCTAssertTrue(publicProfilViewModel.showMessage)
+        XCTAssertEqual(publicProfilViewModel.conversation?.conversationID, "12345")
     }
     
-    func testCreateConversation() {
-        publicProfilViewModel.conversationRepo = ConversationRepositoryMock(currentUserID: nil, createConversationString: Constantes.createConversation, conversationData: nil)
-        
-        publicProfilViewModel.createConversation()
-        
-        XCTAssertEqual(publicProfilViewModel.message, Constantes.createConversation)
-        XCTAssertTrue(publicProfilViewModel.showMessage)
-    }
     
     func testFetchLibraryIDwith2Games() {
         publicProfilViewModel.userRepo = UserRepositoryMock(userGame: ["1234", "2345"], userData: nil, allUsers: nil, addOrRemoveResult: nil)

@@ -30,8 +30,11 @@ struct AlertTFView: View {
                 .opacity(0.8)
                 .cornerRadius(15)
                 .padding([.trailing, .leading, .bottom], 20)
-            Button(buttonText) {
+            Button {
                 viewModel.changeValue(key: placeholder, value: viewModel.text)
+            } label: {
+                Text(buttonText)
+                    .foregroundColor(.white)
             }.alert(viewModel.message, isPresented: $viewModel.showAlert, actions: {
                 Button(role: .cancel) {
                     
@@ -42,7 +45,7 @@ struct AlertTFView: View {
             })
             .frame(height: 50)
             .padding([.leading, .trailing], 10)
-            .background(.gray)
+            .background(.gray.opacity(0.8))
             .cornerRadius(15)
             .tint(.black)
         }

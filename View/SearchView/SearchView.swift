@@ -18,6 +18,7 @@ struct SearchView: View {
                     .textFieldStyle(.roundedBorder)
                     .padding()
                     .foregroundColor(.black)
+                    .disableAutocorrection(true)
                 if viewModel.isLoading == false {
                     Button {
                         viewModel.isLoading = true
@@ -25,9 +26,9 @@ struct SearchView: View {
                     } label: {
                         Text(Constantes.search)
                     }
-                    .frame(height: 50)
+                    .frame(height: 40)
                     .padding([.leading, .trailing], 10)
-                    .background(.gray)
+                    .background(.gray.opacity(0.8))
                     .cornerRadius(15)
                     .foregroundColor(.white)
                 } else {
@@ -41,12 +42,17 @@ struct SearchView: View {
                         NavigationLink {
                             DetailsView(id: game.id)
                         } label: {
-                            Text("- \(game.name.value)")
-                                .glowBorder(color: .white, lineWidth: 4)
-                                .multilineTextAlignment(.leading)
-                            Spacer()
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(game.name.value)
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                }
+                            }
+                            .padding()
+                            .background(Color.gray.opacity(0.8))
+                            .cornerRadius(10)
                         }
-                        .foregroundColor(Color.black)
                     }
                 }
                 .padding()

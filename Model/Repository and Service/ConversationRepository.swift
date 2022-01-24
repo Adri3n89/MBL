@@ -20,26 +20,32 @@ final class ConversationRepository: ConversationRepositoryProvider {
     private let ref = Database.database(url: Constantes.refURL).reference()
     
     
-    func createConversation(user: String) {
+    func createConversation(user: String) -> String {
         let data = ["user1": user,
                     "user2": currentUserID]
         let newChild = ref.child("Conversations").childByAutoId()
         newChild.setValue(data)
+        return newChild.key!
     }
     
-    func searchIfConversationAlreadyExist(user: String, completed: @escaping (String) -> Void) {
+    func searchIfConversationAlreadyExist(user: String, completed: @escaping (ConversationData) -> Void) {
         ref.child("Conversations").observeSingleEvent(of: .value, with: { conversations in
             for conversation in conversations.children.allObjects as! [DataSnapshot] {
                 let value = conversation.value as? NSDictionary
                 let user1 = value?["user1"] as! String
                 let user2 = value?["user2"] as! String
                 if (user1 == self.currentUserID && user2 == user) || (user1 == user && user2 == self.currentUserID)  {
-                    completed(Constantes.alreadyConversation)
+                    self.fetchConversation(conversationID: conversation.key) { convers in
+                        self.fetchUserConversationForMapView(id: convers.conversationID) { conversation in
+                            completed(conversation!)
+                        }
+                    }
                     return
                 }
             }
-            self.createConversation(user: user)
-            completed(Constantes.createConversation)
+            self.fetchUserConversationForMapView(id: self.createConversation(user: user)) { conver in
+                completed(conver!)
+            }
          })
     }
     
@@ -122,5 +128,40 @@ final class ConversationRepository: ConversationRepositoryProvider {
         let picture = value?["Picture"] as! String?
         let refPic = value?["RefPic"] as! String?
         return UserData(name: name, lastName: lastName,userID: userID, city: city, picture: picture ?? Constantes.defaultProfilPicture, refPic: refPic ?? "")
-    } 
+    }
+    
+    func fetchUserConversationForMapView(id: String, completed: @escaping (ConversationData?) -> Void) {
+        ref.child("Conversations").child(id).observeSingleEvent(of: .value, with: { conversation in
+                let value = conversation.value as? NSDictionary
+                let user1ID = value?["user1"] as! String
+                let user2ID = value?["user2"] as! String
+                var conversationData = self.fetchConversationData(conversation: conversation)
+                var user1 : UserData? {
+                    didSet {
+                        if user1 != nil {
+                            self.ref.child("Users").child(user2ID).observe(.value, with: { infos in
+                                user2 = self.fetchData(data: infos)
+                             })
+                        }
+                    }
+                }
+                var user2 : UserData? {
+                    didSet {
+                        if user2 != nil {
+                            conversationData?.user2 = user2
+                            if user1ID == self.currentUserID || user2ID == self.currentUserID {
+                                completed(conversationData)
+                            }
+                        }
+                    }
+                }
+                self.ref.child("Users").child(user1ID).observe(.value, with: { infos in
+                    user1 = self.fetchData(data: infos)
+                    conversationData?.user1 = user1
+                 })
+            
+         })
+    }
+    
+    
 }

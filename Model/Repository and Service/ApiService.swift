@@ -75,8 +75,11 @@ final class ApiService {
                            // #4 if both fail
                            .mapError { _ in NetworkError.undecodableData }
                            // #3.2 ... and throw my singleItem
+//                           .flatMap({ oneResult in
+//                               self.getGames(gameID: oneResult.items.item.id)
+//                           })
                            .tryMap { result in
-                                return [result.items.item]
+                               return [result.items.item]
                            }
                      }
                      .mapError { NetworkError.convert(error: $0) }

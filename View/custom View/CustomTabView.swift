@@ -44,6 +44,7 @@ struct CustomTabView: View {
                     Image(systemName: Constantes.tab5Logo)
                 }.tag(5)
         }
+        .accentColor(.black)
     }
 }
 
