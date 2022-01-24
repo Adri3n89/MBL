@@ -11,7 +11,6 @@ import Combine
 
 final class ProfilViewModel: ObservableObject {
     
-    // TODO: trier les ID library et wishlist par numero pour ne pas qu'ils changent d'ordre
     @Published var type = Constantes.gameType[0]
     @Published var wishGames: [GameData] = []
     @Published var libraryGames: [GameData] = []

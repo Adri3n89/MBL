@@ -53,7 +53,7 @@ final class ChatViewModel: ObservableObject {
         }
     }
     
-    // filter messages by date by converte the Message in MessageDate
+    // filter messages by date by converting the Message in MessageDate
     private func filterMessages(conversation: ConversationData) -> [MessageDate] {
         var messages = [MessageDate]()
         if conversation.messages != nil {

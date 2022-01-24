@@ -20,7 +20,7 @@ final class ApiService {
 
     // MARK: - Methods
     func getHotGame(_ urlString: String = Constantes.urlTop50) -> AnyPublisher<[GameData],NetworkError> {
-        //reccupération du top50 des jeux du moment
+        //fetch top50 games
         guard let url = URL(string: urlString)?.absoluteURL else {
             return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
@@ -36,7 +36,7 @@ final class ApiService {
     }
 
     func getGames(gameID: String) -> AnyPublisher<GameData, NetworkError> {
-        //reccupération des informations pour l'ensemble des ID de jeu de la library de l'utilisateur
+        // fetch game information from ID
         let urlString = Constantes.urlByID + gameID
         guard let url = URL(string: urlString)?.absoluteURL else {
             return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
@@ -53,7 +53,7 @@ final class ApiService {
         }
 
     func searchGameName(name: String) -> AnyPublisher<[ItemResult], NetworkError> {
-        //retourne la liste de jeu correspondant à la reherche faite par l'utilisateur
+        //searching game by name
         let urlString = Constantes.urlByName(name: name)
         guard let url = URL(string: urlString)?.absoluteURL else {
             return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
@@ -75,9 +75,6 @@ final class ApiService {
                            // #4 if both fail
                            .mapError { _ in NetworkError.undecodableData }
                            // #3.2 ... and throw my singleItem
-//                           .flatMap({ oneResult in
-//                               self.getGames(gameID: oneResult.items.item.id)
-//                           })
                            .tryMap { result in
                                return [result.items.item]
                            }
